@@ -6,3 +6,7 @@ Description:
 Web server failed to start. Port 8080 was already in use.
 Action:
 Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+INFO [acme.Launcher] Starting Launcher using Java 1.8.0_281 on DESKTOP-9MDND1P with PID 9284 (C:\Users\villa\git\Acme-planner\target\classes started by villa in C:\Users\villa\git\Acme-planner)
+INFO [acme.Launcher] The following profiles are active: development,populator
+INFO [acme.Launcher] Starting Launcher using Java 1.8.0_281 on DESKTOP-9MDND1P with PID 7868 (C:\Users\villa\git\Acme-planner\target\classes started by villa in C:\Users\villa\git\Acme-planner)
+INFO [acme.Launcher] The following profiles are active: development,populator
