@@ -19,4 +19,17 @@
 
 	<import resource="classpath:/WEB-INF/population/conversion-service.xml"/>	
 
+	<bean id="shout1" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2019/08/09 15:55"/>
+		<property name="author" value="Pablo Gonzalez"/>
+		<property name="text" value="Buenas tardes."/>
+		<property name="info" value="https://www.google.com"/>
+	</bean> 
+	
+	<bean id="shout2" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2020/10/15 14:50"/>
+		<property name="author" value="Fernando Valdes"/>
+		<property name="text" value="Buenas noches"/>
+		<property name="info" value="https://www.xataka.com"/>
+	</bean> 
 </beans>
