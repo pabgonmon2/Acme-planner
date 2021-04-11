@@ -32,4 +32,30 @@
 		<property name="text" value="Buenas noches"/>
 		<property name="info" value="https://www.xataka.com"/>
 	</bean> 
+	<bean id="shout3" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2019/05/09 18:00"/>
+		<property name="author" value="Jose Carlos Romero"/>
+		<property name="text" value="Buenas dias."/>
+		<property name="info" value="https://www.facebook.com"/>
+	</bean> 
+	
+	<bean id="shout4" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/01/15 14:50"/>
+		<property name="author" value="Carlos Jesus Villadiego"/>
+		<property name="text" value="Buenas"/>
+		<property name="info" value="https://www.instagram.com"/>
+	</bean> 
+	<bean id="shout5" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2019/01/09 12:55"/>
+		<property name="author" value="Jose Carlos Morales"/>
+		<property name="text" value="Hola"/>
+		<property name="info" value="https://www.twitter.com"/>
+	</bean> 
+	
+	<bean id="shout6" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2020/10/15 11:50"/>
+		<property name="author" value="Francisco Perez"/>
+		<property name="text" value="Adios"/>
+		<property name="info" value="https://www.marca.com"/>
+	</bean> 
 </beans>
