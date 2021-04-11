@@ -6,6 +6,205 @@ Description:
 Web server failed to start. Port 8080 was already in use.
 Action:
 Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+INFO [acme.Launcher] Starting Launcher using Java 1.8.0_281 on DESKTOP-9MDND1P with PID 9284 (C:\Users\villa\git\Acme-planner\target\classes started by villa in C:\Users\villa\git\Acme-planner)
+INFO [acme.Launcher] The following profiles are active: development,populator
+INFO [acme.Launcher] Starting Launcher using Java 1.8.0_281 on DESKTOP-9MDND1P with PID 7868 (C:\Users\villa\git\Acme-planner\target\classes started by villa in C:\Users\villa\git\Acme-planner)
+INFO [acme.Launcher] The following profiles are active: development,populator
+INFO [acme.Launcher] Starting Launcher using Java 15.0.1 on LAPTOP-62O0A3RJ with PID 14256 (C:\Users\jcmor\DP2\Workspace-21.1\Projects\Acme-planner\target\classes started by jcmor in C:\Users\jcmor\DP2\Workspace-21.1\Projects\Acme-planner)
+INFO [acme.Launcher] The following profiles are active: development,populator
+INFO [acme.Launcher] Started Launcher in 10.051 seconds (JVM running for 11.46)
+INFO [acme.framework.utilities.DatabasePopulator] Populating initial data
+INFO [acme.framework.utilities.DatabasePopulator] Recreating schema
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/initial-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousAnonymous ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAdministrator ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAuthenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for anonymousUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for anonymousAnonymous.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for administratorUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 3 for administratorAdministrator.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 4 for administratorAuthenticated.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousUserAccount = acme.framework.entities.UserAccount{id=1, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousAnonymous = acme.framework.entities.Anonymous{id=2, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorUserAccount = acme.framework.entities.UserAccount{id=3, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAdministrator = acme.framework.entities.Administrator{id=4, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAuthenticated = acme.framework.entities.Authenticated{id=5, version=0}
+INFO [acme.framework.configuration.ShutdownConfiguration] The system is shutting down...
+WARN [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+ERROR [org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter] ***************************
+APPLICATION FAILED TO START
+***************************
+Description:
+Web server failed to start. Port 8080 was already in use.
+Action:
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+INFO [acme.Launcher] Starting Launcher using Java 15.0.1 on LAPTOP-62O0A3RJ with PID 11932 (C:\Users\jcmor\DP2\Workspace-21.1\Projects\Acme-planner\target\classes started by jcmor in C:\Users\jcmor\DP2\Workspace-21.1\Projects\Acme-planner)
+INFO [acme.Launcher] The following profiles are active: development,populator
+INFO [acme.Launcher] Started Launcher in 19.509 seconds (JVM running for 22.219)
+INFO [acme.framework.utilities.DatabasePopulator] Populating initial data
+INFO [acme.framework.utilities.DatabasePopulator] Recreating schema
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/initial-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousAnonymous ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAdministrator ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAuthenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for anonymousUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for anonymousAnonymous.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for administratorUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 3 for administratorAdministrator.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 4 for administratorAuthenticated.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousUserAccount = acme.framework.entities.UserAccount{id=1, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousAnonymous = acme.framework.entities.Anonymous{id=2, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorUserAccount = acme.framework.entities.UserAccount{id=3, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAdministrator = acme.framework.entities.Administrator{id=4, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAuthenticated = acme.framework.entities.Authenticated{id=5, version=0}
+INFO [acme.framework.configuration.ShutdownConfiguration] The system is shutting down...
+INFO [acme.Launcher] Starting Launcher using Java 15.0.1 on LAPTOP-62O0A3RJ with PID 3780 (C:\Users\jcmor\DP2\Workspace-21.1\Projects\Acme-planner\target\classes started by jcmor in C:\Users\jcmor\DP2\Workspace-21.1\Projects\Acme-planner)
+INFO [acme.Launcher] The following profiles are active: development,populator
+INFO [acme.Launcher] Started Launcher in 10.309 seconds (JVM running for 12.267)
+INFO [acme.framework.utilities.DatabasePopulator] Populating initial data
+INFO [acme.framework.utilities.DatabasePopulator] Recreating schema
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/initial-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousAnonymous ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAdministrator ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAuthenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for anonymousUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for anonymousAnonymous.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for administratorUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 3 for administratorAdministrator.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 4 for administratorAuthenticated.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousUserAccount = acme.framework.entities.UserAccount{id=1, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousAnonymous = acme.framework.entities.Anonymous{id=2, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorUserAccount = acme.framework.entities.UserAccount{id=3, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAdministrator = acme.framework.entities.Administrator{id=4, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAuthenticated = acme.framework.entities.Authenticated{id=5, version=0}
+INFO [acme.framework.configuration.ShutdownConfiguration] The system is shutting down...
+INFO [acme.Launcher] Starting Launcher using Java 15.0.1 on LAPTOP-62O0A3RJ with PID 12244 (C:\Users\jcmor\DP2\Workspace-21.1\Projects\Acme-planner\target\classes started by jcmor in C:\Users\jcmor\DP2\Workspace-21.1\Projects\Acme-planner)
+INFO [acme.Launcher] The following profiles are active: development,populator
+INFO [acme.Launcher] Started Launcher in 10.301 seconds (JVM running for 11.49)
+INFO [acme.framework.utilities.DatabasePopulator] Populating initial data
+INFO [acme.framework.utilities.DatabasePopulator] Recreating schema
+INFO [acme.Launcher] Starting Launcher using Java 15.0.1 on LAPTOP-62O0A3RJ with PID 352 (C:\Users\jcmor\DP2\Workspace-21.1\Projects\Acme-planner\target\classes started by jcmor in C:\Users\jcmor\DP2\Workspace-21.1\Projects\Acme-planner)
+INFO [acme.Launcher] The following profiles are active: development,populator
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/initial-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousAnonymous ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAdministrator ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAuthenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for anonymousUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for anonymousAnonymous.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for administratorUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 3 for administratorAdministrator.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 4 for administratorAuthenticated.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousUserAccount = acme.framework.entities.UserAccount{id=1, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousAnonymous = acme.framework.entities.Anonymous{id=2, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorUserAccount = acme.framework.entities.UserAccount{id=3, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAdministrator = acme.framework.entities.Administrator{id=4, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAuthenticated = acme.framework.entities.Authenticated{id=5, version=0}
+INFO [acme.framework.configuration.ShutdownConfiguration] The system is shutting down...
+INFO [acme.Launcher] Started Launcher in 12.365 seconds (JVM running for 14.055)
+INFO [acme.framework.utilities.DatabasePopulator] Populating sample data
+INFO [acme.framework.utilities.DatabasePopulator] Recreating schema
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/initial-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousAnonymous ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAdministrator ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAuthenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for anonymousUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for anonymousAnonymous.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for administratorUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 3 for administratorAdministrator.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 4 for administratorAuthenticated.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousUserAccount = acme.framework.entities.UserAccount{id=1, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousAnonymous = acme.framework.entities.Anonymous{id=2, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorUserAccount = acme.framework.entities.UserAccount{id=3, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAdministrator = acme.framework.entities.Administrator{id=4, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAuthenticated = acme.framework.entities.Authenticated{id=5, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/sample-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating task1 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task2 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task3 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task4 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task5 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task6 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for task1.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for task2.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for task3.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 3 for task4.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 4 for task5.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 5 for task6.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task1 = Task [title=Barrer la casa, startDate=Mon Aug 09 15:55:00 CEST 2021, endDate=Mon Aug 09 18:55:00 CEST 2021, workFlow=3.0, description=La casa estaba muy sucia, url=https://www.google.com]
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task2 = Task [title=Barrer la casa, startDate=Mon Aug 09 15:55:00 CEST 2021, endDate=Mon Aug 09 18:55:00 CEST 2021, workFlow=3.0, description=La casa estaba muy sucia, url=https://www.google.com]
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task3 = Task [title=Barrer la casa, startDate=Mon Aug 09 15:55:00 CEST 2021, endDate=Mon Aug 09 18:55:00 CEST 2021, workFlow=3.0, description=La casa estaba muy sucia, url=https://www.google.com]
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task4 = Task [title=Barrer la casa, startDate=Mon Aug 09 15:55:00 CEST 2021, endDate=Mon Aug 09 18:55:00 CEST 2021, workFlow=3.0, description=La casa estaba muy sucia, url=https://www.google.com]
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task5 = Task [title=Barrer la casa, startDate=Mon Aug 09 15:55:00 CEST 2021, endDate=Mon Aug 09 18:55:00 CEST 2021, workFlow=3.0, description=La casa estaba muy sucia, url=https://www.google.com]
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task6 = Task [title=Barrer la casa, startDate=Mon Aug 09 15:55:00 CEST 2021, endDate=Mon Aug 09 18:55:00 CEST 2021, workFlow=3.0, description=La casa estaba muy sucia, url=https://www.google.com]
+INFO [acme.framework.configuration.ShutdownConfiguration] The system is shutting down...
+INFO [acme.Launcher] Starting Launcher using Java 15.0.1 on LAPTOP-62O0A3RJ with PID 15308 (C:\Users\jcmor\DP2\Workspace-21.1\Projects\Acme-planner\target\classes started by jcmor in C:\Users\jcmor\DP2\Workspace-21.1\Projects\Acme-planner)
+INFO [acme.Launcher] The following profiles are active: development,populator
+INFO [acme.Launcher] Started Launcher in 9.678 seconds (JVM running for 11.045)
+INFO [acme.framework.utilities.DatabasePopulator] Populating sample data
+INFO [acme.framework.utilities.DatabasePopulator] Recreating schema
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/initial-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating anonymousAnonymous ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorUserAccount ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAdministrator ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating administratorAuthenticated ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for anonymousUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for anonymousAnonymous.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for administratorUserAccount.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 3 for administratorAdministrator.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 4 for administratorAuthenticated.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousUserAccount = acme.framework.entities.UserAccount{id=1, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting anonymousAnonymous = acme.framework.entities.Anonymous{id=2, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorUserAccount = acme.framework.entities.UserAccount{id=3, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAdministrator = acme.framework.entities.Administrator{id=4, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting administratorAuthenticated = acme.framework.entities.Authenticated{id=5, version=0}
+INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/sample-data.xml
+INFO [acme.framework.utilities.DatabasePopulator] Validating your entities.
+INFO [acme.framework.utilities.DatabasePopulator] Validating task1 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task2 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Validating task3 ... PASS
+INFO [acme.framework.utilities.DatabasePopulator] Sorting your entities topologically.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 0 for task1.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 1 for task2.
+INFO [acme.framework.utilities.DatabasePopulator] > Setting index 2 for task3.
+INFO [acme.framework.utilities.DatabasePopulator] Persiting your entities.
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task1 = Task [title=Barrer la casa, startDate=Mon Aug 09 15:55:00 CEST 2021, endDate=Mon Aug 09 18:55:00 CEST 2021, workFlow=3.0, description=La casa estaba muy sucia, url=https://www.google.com]
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task2 = Task [title=Hacer de comer, startDate=Wed Jun 09 15:55:00 CEST 2021, endDate=Wed Jun 09 19:55:00 CEST 2021, workFlow=4.0, description=Los niños tenian mucha hambre, url=https://www.google.com]
+INFO [acme.framework.utilities.DatabasePopulator] > Persisting task3 = Task [title=Pintar la habitacion, startDate=Thu Sep 09 15:55:00 CEST 2021, endDate=Thu Sep 09 16:55:00 CEST 2021, workFlow=1.0, description=La pintura estaba gastada, url=https://www.google.com]
+INFO [acme.framework.configuration.ShutdownConfiguration] The system is shutting down...
+
 INFO [acme.Launcher] Starting Launcher using Java 1.8.0_281 on DESKTOP-OFCCDL8 with PID 7420 (D:\Externo\Universidad\Tercero\Cuatrimestre 2\DP2\Workspace-21.1\Projects\Acme-planner\target\classes started by fvald in D:\Externo\Universidad\Tercero\Cuatrimestre 2\DP2\Workspace-21.1\Projects\Acme-planner)
 INFO [acme.Launcher] The following profiles are active: development,populator
 INFO [acme.Launcher] Started Launcher in 6.34 seconds (JVM running for 7.1)
@@ -120,3 +319,4 @@ INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout4 = acme.ent
 INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout5 = acme.entities.shouts.Shout{id=10, version=0}
 INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout6 = acme.entities.shouts.Shout{id=11, version=0}
 INFO [acme.framework.configuration.ShutdownConfiguration] The system is shutting down...
+
