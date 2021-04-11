@@ -19,4 +19,30 @@
 
 	<import resource="classpath:/WEB-INF/population/conversion-service.xml"/>	
 
+		<bean id="task1" class="acme.entities.tasks.Task">
+		<property name="title" value="Barrer la casa"/>
+		<property name="startDate" value="2021/08/09 15:55"/>
+		<property name="endDate" value="2021/08/09 18:55"/>
+		<property name="workFlow" value="3.0"/>
+		<property name="description" value="La casa estaba muy sucia"/>
+		<property name="url" value="https://www.google.com"/>
+	</bean> 
+	
+	<bean id="task2" class="acme.entities.tasks.Task">
+		<property name="title" value="Hacer de comer"/>
+		<property name="startDate" value="2021/06/09 15:55"/>
+		<property name="endDate" value="2021/06/09 19:55"/>
+		<property name="workFlow" value="4.0"/>
+		<property name="description" value="Los niños tenian mucha hambre"/>
+		<property name="url" value="https://www.google.com"/>
+	</bean> 
+	<bean id="task3" class="acme.entities.tasks.Task">
+		<property name="title" value="Pintar la habitacion"/>
+		<property name="startDate" value="2021/09/09 15:55"/>
+		<property name="endDate" value="2021/09/09 16:55"/>
+		<property name="workFlow" value="1.0"/>
+		<property name="description" value="La pintura estaba gastada"/>
+		<property name="url" value="https://www.google.com"/>
+	</bean> 
+	
 </beans>

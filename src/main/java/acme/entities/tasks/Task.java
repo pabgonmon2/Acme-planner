@@ -1,13 +1,16 @@
-package acme.framework.entities;
+package acme.entities.tasks;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import acme.framework.entities.DomainEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,12 +27,14 @@ public class Task extends DomainEntity{
 		@Size(max = 80)
 		private String			title;
 		
+		@Temporal(TemporalType.TIMESTAMP)
 		@FutureOrPresent
-		private LocalDate		startDate;
+		private Date		startDate;
 		
+		@Temporal(TemporalType.TIMESTAMP)
 		@FutureOrPresent
 		//Custom validator detras de inicio
-		private LocalDate		endDate;
+		private Date		endDate;
 		
 		//Custom validator
 		private Double			workFlow;
