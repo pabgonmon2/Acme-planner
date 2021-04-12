@@ -8,7 +8,10 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.URL;
 
 import acme.framework.entities.DomainEntity;
 import lombok.Getter;
@@ -25,26 +28,29 @@ public class Task extends DomainEntity{
 		// Attributes -------------------------------------------------------------
 		@NotBlank
 		@Size(max = 80)
-		private String			title;
+		private String title;
 		
 		@Temporal(TemporalType.TIMESTAMP)
 		@FutureOrPresent
-		private Date		startDate;
+		private Date startDate;
 		
 		@Temporal(TemporalType.TIMESTAMP)
 		@FutureOrPresent
 		//Custom validator detras de inicio
-		private Date		endDate;
+		private Date endDate;
 		
 		//Custom validator
-		private Double			workFlow;
+		private Double workFlow;
 		
 		@NotBlank
 		@Size(max = 500)
-		private String			description;
+		private String description;
 		
+		@NotNull
+		private Boolean publicTask;
 
-		private String			url;
+		@URL
+		private String url;
 		
 		// Derived atttributes ----------------------------------------------------
 

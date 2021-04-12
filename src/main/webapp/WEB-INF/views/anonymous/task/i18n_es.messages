@@ -3,3 +3,4 @@ anonymous.task.list.label.startDate = Fecha Inicial
 anonymous.task.list.label.endDate = Fecha Final
 anonymous.task.list.label.workFlow = Tiempo trabajado
 anonymous.task.list.label.description = Descripcion
+anonymous.task.list.label.publicTask = Tarea publica

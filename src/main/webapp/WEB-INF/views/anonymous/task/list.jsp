@@ -7,6 +7,7 @@
 	<acme:list-column code="anonymous.task.list.label.title" path="title" width="20%"/>
 	<acme:list-column code="anonymous.task.list.label.startDate" path="startDate" width="20%"/>
 	<acme:list-column code="anonymous.task.list.label.endDate" path="endDate" width="20%"/>
-	<acme:list-column code="anonymous.task.list.label.workFlow" path="workFlow" width="20%"/>
+	<acme:list-column code="anonymous.task.list.label.workFlow" path="workFlow" width="10%"/>
 	<acme:list-column code="anonymous.task.list.label.description" path="description" width="20%"/>
+	<acme:list-column code="anonymous.task.list.label.publicTask" path="publicTask" width="10%"/>
 </acme:list>
