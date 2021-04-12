@@ -1,0 +1,5 @@
+anonymous.task.list.label.title = Titulo
+anonymous.task.list.label.startDate = Fecha Inicial
+anonymous.task.list.label.endDate = Fecha Final
+anonymous.task.list.label.workFlow = Tiempo trabajado
+anonymous.task.list.label.description = Descripcion
