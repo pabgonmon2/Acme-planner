@@ -21,12 +21,13 @@
 
 
  <!--  ################### TASKS ################### -->
-	<bean id="task1" class="acme.entities.tasks.Task">
+		<bean id="task1" class="acme.entities.tasks.Task">
 		<property name="title" value="Barrer la casa"/>
 		<property name="startDate" value="2021/08/09 15:55"/>
 		<property name="endDate" value="2021/08/09 18:55"/>
 		<property name="workFlow" value="3.0"/>
 		<property name="description" value="La casa estaba muy sucia"/>
+		<property name="publicTask" value="true"/>
 		<property name="url" value="https://www.google.com"/>
 	</bean> 
 	
@@ -36,6 +37,7 @@
 		<property name="endDate" value="2021/06/09 19:55"/>
 		<property name="workFlow" value="4.0"/>
 		<property name="description" value="Los niños tenian mucha hambre"/>
+		<property name="publicTask" value="false"/>
 		<property name="url" value="https://www.google.com"/>
 	</bean> 
 	<bean id="task3" class="acme.entities.tasks.Task">
@@ -44,6 +46,7 @@
 		<property name="endDate" value="2021/09/09 16:55"/>
 		<property name="workFlow" value="1.0"/>
 		<property name="description" value="La pintura estaba gastada"/>
+		<property name="publicTask" value="true"/>
 		<property name="url" value="https://www.google.com"/>
 	</bean> 
   
