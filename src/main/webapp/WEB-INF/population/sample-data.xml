@@ -49,6 +49,16 @@
 		<property name="publicTask" value="true"/>
 		<property name="url" value="https://www.google.com"/>
 	</bean> 
+	
+		<bean id="task4" class="acme.entities.tasks.Task">
+		<property name="title" value="Pintar el coche"/>
+		<property name="startDate" value="2021/03/09 15:55"/>
+		<property name="endDate" value="2021/03/09 16:55"/>
+		<property name="workFlow" value="1.0"/>
+		<property name="description" value="La pintura estaba gastada"/>
+		<property name="publicTask" value="true"/>
+		<property name="url" value="https://www.google.com"/>
+	</bean>
   
   
  <!--  ################### SHOUTS ################### -->
