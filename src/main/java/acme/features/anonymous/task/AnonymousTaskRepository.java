@@ -13,4 +13,5 @@ public interface AnonymousTaskRepository extends AbstractRepository{
 	
 	@Query("SELECT t FROM Task t WHERE t.publicTask = TRUE AND t.endDate > CURRENT_DATE")
 	Collection<Task> findPublicTasksNonFinished();
+	
 }
