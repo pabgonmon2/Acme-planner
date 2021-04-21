@@ -59,6 +59,15 @@
 		<property name="publicTask" value="true"/>
 		<property name="url" value="https://www.google.com"/>
 	</bean>
+	<bean id="task5" class="acme.entities.tasks.Task">
+		<property name="title" value="Limpiar baños"/>
+		<property name="startDate" value="2021/06/09 15:55"/>
+		<property name="endDate" value="2021/06/15 19:55"/>
+		<property name="workFlow" value="25.0"/>
+		<property name="description" value="Cambiar toallas y limpiar WC"/>
+		<property name="publicTask" value="true"/>
+		<property name="url" value="https://www.google.com"/>
+	</bean> 
   
   
  <!--  ################### SHOUTS ################### -->
