@@ -12,13 +12,25 @@
 - they accept any liabilities with respect to them.
 -->
 
-<beans 
-	xmlns="http://www.springframework.org/schema/beans" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:util="http://www.springframework.org/schema/util"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                    http://www.springframework.org/schema/util
+                    http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
 	<import resource="classpath:/WEB-INF/population/conversion-service.xml"/>	
-
+	
+		<util:list id="spamwords1" value-type="java.lang.String">
+		    <value>sex</value>
+		    <value>cialis</value>
+		    <value>viagra</value>
+		    <value>million dollar</value>
+		    <value>you've won</value>
+		    <value>nigeria</value>
+		    <value>hard core</value>
+		</util:list>
 
  <!--  ################### TASKS ################### -->
 		<bean id="task1" class="acme.entities.tasks.Task">
@@ -110,4 +122,15 @@
 		<property name="text" value="Adios"/>
 		<property name="info" value="https://www.marca.com"/>
 	</bean> 
+	
+	<!--  ################### SPAMWORDS ################### -->
+	
+	<bean id="spamfilter" class="acme.entities.shouts.SpamFilter">
+		<property name="spamwords" ref="spamwords1"/>
+		<property name="threshold" value="10.0"/>
+	</bean> 
+
+	
+	
+	
 </beans>
