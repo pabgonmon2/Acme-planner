@@ -1,6 +1,5 @@
 package acme.features.administrator.spamfilter;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,16 +38,16 @@ public class AdministratorListSFService implements AbstractListService<Administr
 	public Collection<SpamFilter> findMany(final Request<SpamFilter> request) {
 		assert request != null;
 		
-		final Collection<SpamFilter> result = new ArrayList<SpamFilter>();
+		final Collection<SpamFilter> result;
 		
-		result.add(this.repository.getSpamFilter());
+		result = this.repository.getSpamFilter();
 		
 		return result;
 	}
 
-	public SpamFilter getSpamFilter() {
-		return this.repository.getSpamFilter();
-	}
+//	public SpamFilter getSpamFilter() {
+//		return this.repository.getSpamFilter();
+//	}
 	
 	
 }

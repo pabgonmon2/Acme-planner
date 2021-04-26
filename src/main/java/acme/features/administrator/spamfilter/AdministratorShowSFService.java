@@ -41,10 +41,10 @@ public class AdministratorShowSFService implements AbstractShowService<Administr
 	public SpamFilter findOne(final Request<SpamFilter> request) {
 		assert request != null;
 
-		SpamFilter result;
-		result = this.repository.getSpamFilter();
+		final SpamFilter result;
+//		result = this.repository.getSpamFilter();
 
-		return result;
+		return new SpamFilter();
 	}
 
 }

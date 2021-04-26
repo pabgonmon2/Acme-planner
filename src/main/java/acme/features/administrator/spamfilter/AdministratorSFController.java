@@ -15,17 +15,19 @@ import acme.framework.entities.Administrator;
 @RequestMapping("/administrator/spamfilter/")
 public class AdministratorSFController extends AbstractController<Administrator, SpamFilter>{
 	
-	@Autowired 
-	private AdministratorShowSFService showService;
+	
 	
 	@Autowired 
 	private AdministratorListSFService listService;
+	@Autowired 
+	private AdministratorShowSFService showService;
 	
 	
 	@PostConstruct
 	private void initialise() {
-		super.addBasicCommand(BasicCommand.SHOW, this.showService);
+		
 		super.addBasicCommand(BasicCommand.LIST, this.listService);
+		super.addBasicCommand(BasicCommand.SHOW, this.showService);
 	}
 	
 }
