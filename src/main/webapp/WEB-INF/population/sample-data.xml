@@ -122,6 +122,36 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="text" value="Adios"/>
 		<property name="info" value="https://www.marca.com"/>
 	</bean> 
+	<bean id="shout7" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/17 15:55"/>
+		<property name="author" value="Javier Rodriguez"/>
+		<property name="text" value="Hoy estoy contento."/>
+		<property name="info" value="https://www.google.com"/>
+	</bean> 
+	<bean id="shout8" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/20 15:55"/>
+		<property name="author" value="Roberto Gonzalez"/>
+		<property name="text" value="Hoy estoy triste"/>
+		<property name="info" value="https://www.instagram.com"/>
+	</bean> 
+	<bean id="shout9" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/23 15:55"/>
+		<property name="author" value="Pablo Garcia"/>
+		<property name="text" value="Esto es un shout."/>
+		<property name="info" value="https://www.facebook.com"/>
+	</bean> 
+	<bean id="shout10" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/25 15:55"/>
+		<property name="author" value="Maria Torres"/>
+		<property name="text" value="Ayer estaba cansada."/>
+		<property name="info" value="https://www.twitter.com"/>
+	</bean> 
+	<bean id="shout11" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/24 15:55"/>
+		<property name="author" value="Diego Rivera"/>
+		<property name="text" value="Hoy es un gran dia."/>
+		<property name="info" value="https://www.facebook.com"/>
+	</bean> 
 	
 	<!--  ################### SPAMWORDS ################### -->
 	
