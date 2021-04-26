@@ -15,6 +15,8 @@ package acme.features.anonymous.userAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.roles.Manager;
+import acme.features.authenticated.manager.AuthenticatedManagerRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.HttpMethod;
 import acme.framework.components.Model;
@@ -32,6 +34,9 @@ public class AnonymousUserAccountCreateService implements AbstractCreateService<
 
 	@Autowired
 	protected AnonymousUserAccountRepository repository;
+	
+	@Autowired
+	protected AuthenticatedManagerRepository repositoryManager;
 
 
 	@Override
@@ -112,11 +117,17 @@ public class AnonymousUserAccountCreateService implements AbstractCreateService<
 	public void create(final Request<UserAccount> request, final UserAccount entity) {
 		assert request != null;
 		assert entity != null;
+		
+		Manager result;
 
 		this.repository.save(entity);
 		for (final UserRole role : entity.getRoles()) {
 			this.repository.save(role);
 		}
+		
+		result = new Manager();
+		result.setUserAccount(entity);
+		this.repositoryManager.save(result);
 	}
 
 }
