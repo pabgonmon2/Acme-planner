@@ -153,12 +153,34 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="info" value="https://www.facebook.com"/>
 	</bean> 
 	
-	<!--  ################### SPAMWORDS ################### -->
+	<!--  ################### SPAMFILTER ################### -->
 	
-	<bean id="spamfilter" class="acme.entities.shouts.SpamFilter">
-		<property name="spamwords" ref="spamwords1"/>
-		<property name="threshold" value="10.0"/>
+	<bean id="spamword1" class="acme.entities.spamfilter.SpamWord">
+		<property name="word" value="sex"/>
 	</bean> 
+	<bean id="spamword2" class="acme.entities.spamfilter.SpamWord">
+		<property name="word" value="vaigra"/>
+	</bean> 
+	<bean id="spamword3" class="acme.entities.spamfilter.SpamWord">
+		<property name="word" value="million dollar"/>
+	</bean> 
+	<bean id="spamword4" class="acme.entities.spamfilter.SpamWord">
+		<property name="word" value="cialis"/>
+	</bean> 
+	<bean id="spamword5" class="acme.entities.spamfilter.SpamWord">
+		<property name="word" value="you've won"/>
+	</bean> 
+	<bean id="spamword6" class="acme.entities.spamfilter.SpamWord">
+		<property name="word" value="hardcore"/>
+	</bean> 
+	<bean id="spamword7" class="acme.entities.spamfilter.SpamWord">
+		<property name="word" value="nigeria"/>
+	</bean> 
+	
+	<bean id="threshold" class="acme.entities.spamfilter.Threshold">
+		<property name="value" value="10.0"/>
+	</bean> 
+	
 
 	
 	

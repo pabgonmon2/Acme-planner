@@ -1,4 +1,4 @@
-package acme.entities.shouts;
+package acme.entities.spamfilter;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,8 +25,10 @@ public class SpamFilter extends DomainEntity{
 	@NotNull
 	protected Double threshold;
 	
+	
 	public Collection<String> getSpamWords(){
 		return this.spamwords;
 	}
 	
 }
+
