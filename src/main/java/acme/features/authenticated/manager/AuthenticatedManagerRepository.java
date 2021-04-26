@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.consumer;
+package acme.features.authenticated.manager;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
