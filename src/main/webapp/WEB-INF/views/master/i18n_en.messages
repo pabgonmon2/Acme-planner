@@ -10,7 +10,7 @@
 
 # master.banner.welcome #######################################################
 
-master.banner.background = #c997d5
+master.banner.background = #14fa96
 
 # master.welcome ##############################################################
 
@@ -31,6 +31,7 @@ master.menu.anonymous = Anonymous
 master.menu.anonymous.favourite-link = Favourite link
 master.menu.anonymous.list-shouts = List shout
 master.menu.anonymous.create-shout = Shouts!
+master.menu.anonymous.list-tasks= Tasks
 
 
 # master.menu.administrator ###################################################
@@ -42,10 +43,10 @@ master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shutdown = Shut down
 
-# master.menu.provider ########################################################
+# master.menu.manager ########################################################
 
-master.menu.provider = Provider
-master.menu.provider.favourite-link = Favourite link
+master.menu.manager = Manager
+master.menu.manager.favourite-link = Favourite link
 
 # master.menu.consumer ##########################################################
 
@@ -108,3 +109,6 @@ master.panic.label.status = Status:
 master.panic.label.exceptions = Exceptions:
 master.panic.text.consult-log = Please, consult the log to see them full stack trace.
 
+#master.menu.administrator.task ################################################################
+
+master.menu.administrator.task.dashboard= Dashboard
