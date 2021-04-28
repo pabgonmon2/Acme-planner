@@ -3,7 +3,7 @@
 	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 	
 <tiles-definitions>
-	<definition name="authenticated/mytasks/list" extends="master">
-		<put-attribute name="body" type="template" value="../authenticated/mytasks/list.jsp" />
+	<definition name="manager/task/list" extends="master">
+		<put-attribute name="body" type="template" value="../manager/task/list.jsp" />
 	</definition>
 </tiles-definitions>

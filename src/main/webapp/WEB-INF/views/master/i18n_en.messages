@@ -48,6 +48,11 @@ master.menu.administrator.shutdown = Shut down
 master.menu.manager = Manager
 master.menu.manager.favourite-link = Favourite link
 master.menu.manager.list-tasks= Tasks
+master.menu.manager.own-tasks = Own tasks
+
+# master.menu.authenticated ####################################################
+
+master.menu.authenticated = Authenticated
 
 # master.menu.user-account ####################################################
 

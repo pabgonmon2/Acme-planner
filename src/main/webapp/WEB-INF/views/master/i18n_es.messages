@@ -50,6 +50,11 @@ master.menu.manager = Manager
 master.menu.manager.favourite-link = Link favorito
 master.menu.manager.favourite-link = Enlace favorito
 master.menu.manager.list-tasks= Tareas
+master.menu.manager.own-tasks = Mis tareas
+
+# master.menu.authenticated ####################################################
+
+master.menu.authenticated = Identificado
 
 # master.menu.user-account ####################################################
 

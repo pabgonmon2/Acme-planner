@@ -1,4 +1,4 @@
-package acme.features.authenticated.mytasks;
+package acme.features.manager.task;
 
 import java.util.Collection;
 
@@ -46,7 +46,4 @@ public class ManagerMyTasksListService implements AbstractListService<Manager, T
 		
 		return result;
 	}
-	
-
-	
 }

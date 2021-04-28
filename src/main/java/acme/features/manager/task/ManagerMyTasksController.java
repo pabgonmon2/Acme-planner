@@ -1,4 +1,4 @@
-package acme.features.authenticated.mytasks;
+package acme.features.manager.task;
 
 import javax.annotation.PostConstruct;
 
@@ -12,7 +12,7 @@ import acme.framework.components.BasicCommand;
 import acme.framework.controllers.AbstractController;
 
 @Controller
-@RequestMapping("/authenticated/mytasks/")
+@RequestMapping("/manager/task/")
 public class ManagerMyTasksController extends AbstractController<Manager, Task>{
 	
 	@Autowired 
