@@ -67,7 +67,7 @@ public class AuthenticatedManagerCreateService implements AbstractCreateService<
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "company", "sector");
+		request.unbind(entity, model);
 	}
 
 	@Override

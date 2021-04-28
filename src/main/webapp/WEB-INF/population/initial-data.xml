@@ -65,7 +65,7 @@
 		</property>
 	</bean>
 
-	<bean name="administratorAdministrator" class="acme.entities.roles.Administrator">
+	<bean name="administratorAdministrator" class="acme.framework.entities.Administrator">
 		<property name="userAccount" ref="administratorUserAccount" />
 	</bean>
 	

@@ -10,18 +10,17 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.entities.roles;
+package acme.framework.entities;
 
 import javax.persistence.Entity;
 
-import acme.framework.entities.Authenticated;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Administrator extends Authenticated {
+public class Administrator extends UserRole {
 
 	// Serialisation identifier -----------------------------------------------
 
