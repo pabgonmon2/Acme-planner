@@ -12,10 +12,13 @@
 - they accept any liabilities with respect to them.
 -->
 
-<beans 
-	xmlns="http://www.springframework.org/schema/beans" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:util="http://www.springframework.org/schema/util"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                    http://www.springframework.org/schema/util
+                    http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
 	<import resource="classpath:/WEB-INF/population/conversion-service.xml"/>	
 
@@ -89,7 +92,6 @@
 		<bean name="administrator2" class="acme.framework.entities.Administrator">
 			<property name="userAccount" ref="admin2UserAccount" />
 		</bean>
-		
 
  <!--  ################### TASKS ################### -->
 	<bean id="task1" class="acme.entities.tasks.Task">
@@ -185,4 +187,78 @@
 		<property name="text" value="Adios"/>
 		<property name="info" value="https://www.marca.com"/>
 	</bean> 
+	<bean id="shout7" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/17 15:55"/>
+		<property name="author" value="Javier Rodriguez"/>
+		<property name="text" value="Hoy estoy contento."/>
+		<property name="info" value="https://www.google.com"/>
+	</bean> 
+	<bean id="shout8" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/20 15:55"/>
+		<property name="author" value="Roberto Gonzalez"/>
+		<property name="text" value="Hoy estoy triste"/>
+		<property name="info" value="https://www.instagram.com"/>
+	</bean> 
+	<bean id="shout9" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/23 15:55"/>
+		<property name="author" value="Pablo Garcia"/>
+		<property name="text" value="Esto es un shout."/>
+		<property name="info" value="https://www.facebook.com"/>
+	</bean> 
+	<bean id="shout10" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/25 15:55"/>
+		<property name="author" value="Maria Torres"/>
+		<property name="text" value="Ayer estaba cansada."/>
+		<property name="info" value="https://www.twitter.com"/>
+	</bean> 
+	<bean id="shout11" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/24 15:55"/>
+		<property name="author" value="Diego Rivera"/>
+		<property name="text" value="Hoy es un gran dia."/>
+		<property name="info" value="https://www.facebook.com"/>
+	</bean> 
+	
+	<!--  ################### SPAMFILTER ################### -->
+	
+	<bean id="spamword1" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="sex"/>
+	</bean> 
+	<bean id="spamword2" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="viagra"/>
+	</bean> 
+	<bean id="spamword3" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="million dollar"/>
+	</bean> 
+	<bean id="spamword4" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="cialis"/>
+	</bean> 
+	<bean id="spamword5" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="you've won"/>
+	</bean> 
+	<bean id="spamword6" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="hardcore"/>
+	</bean> 
+	<bean id="spamword7" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="nigeria"/>
+	</bean> 
+	
+	<bean name="spamfilter" class="acme.entities.spamfilter.SpamFilter">
+		<property name="lista" >
+				<list>
+					<ref bean="spamword1" />
+					<ref bean="spamword2" />
+					<ref bean="spamword3" />
+					<ref bean="spamword4" />
+					<ref bean="spamword5" />
+					<ref bean="spamword6" />
+					<ref bean="spamword7" />
+				</list>
+			</property>
+		<property name="threshold" value="10.0" />
+	</bean>
+	
+
+	
+	
+	
 </beans>

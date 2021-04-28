@@ -113,5 +113,4 @@ master.panic.label.exceptions = Excepciones:
 master.panic.text.consult-log = Por favor, consulte el log para ver más detalles.
 
 #master.menu.administrator.task ################################################################
-
 master.menu.administrator.task.dashboard= Resumen

@@ -17,6 +17,7 @@ public class AnonymousShoutCreateService implements AbstractCreateService <Anony
 	
 	@Autowired
 	protected AnonymousShoutRepository repository;
+
 	
 	@Override
 	public boolean authorise(final Request<Shout> request) {
@@ -77,5 +78,7 @@ public class AnonymousShoutCreateService implements AbstractCreateService <Anony
 		entity.setMoment(moment);
 		this.repository.save(entity);
 	}
+	
+	
 	
 }
