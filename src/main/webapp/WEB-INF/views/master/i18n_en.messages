@@ -42,6 +42,7 @@ master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shutdown = Shut down
+master.menu.administrator.spamfilter = Spam filter
 
 # master.menu.manager ########################################################
 

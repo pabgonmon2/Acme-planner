@@ -16,7 +16,7 @@ master.banner.background = #14fa96
 
 master.welcome.title = ¡Bienvenidos!
 master.welcome.text = \
-	Bienvenidos a Acme Stater!  Nunca antes ha sido tan sencillo desarrollar un \
+	Bienvenidos a Acme-Planner!  Nunca antes ha sido tan sencillo desarrollar un \
 	proyecto y hacerlo funcionar.
 
 # master.menu #################################################################
@@ -42,6 +42,7 @@ master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shutdown = Parar el sistema
+master.menu.administrator.spamfilter = Filtro de spam
 
 # master.menu.manager ########################################################
 
