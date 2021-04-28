@@ -10,7 +10,7 @@
 
 # master.banner.welcome #######################################################
 
-master.banner.background = #c997d5 
+master.banner.background = #14fa96
 
 ﻿# master.welcome ##############################################################
 
@@ -32,6 +32,7 @@ master.menu.anonymous = Anónimo
 master.menu.anonymous.favourite-link = Enlace favorito
 master.menu.anonymous.list-shouts = Ver gritos
 master.menu.anonymous.create-shout = Dar un grito
+master.menu.anonymous.list-tasks= Tareas
 
 # master.menu.administrator ###################################################
 
@@ -43,25 +44,20 @@ master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shutdown = Parar el sistema
 master.menu.administrator.spamfilter = Filtro de spam
 
+# master.menu.manager ########################################################
 
-# master.menu.provider ########################################################
+master.menu.manager = Manager
 
-master.menu.provider = Proveedor
-master.menu.provider.favourite-link = Enlace favorito
-
-# master.menu.consumer ##########################################################
-
-master.menu.consumer = Consumidor
-master.menu.consumer.favourite-link = Enlace favorito
+master.menu.manager.favourite-link = Link favorito
+master.menu.manager.favourite-link = Enlace favorito
+master.menu.manager.list-tasks= Tareas
 
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
 master.menu.user-account.general-data = Datos generales
-master.menu.user-account.provider = Datos de proveedor
-master.menu.user-account.become-provider = Hazte proveedor
-master.menu.user-account.consumer = Datos de consumidor
-master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.manager = Manager
+master.menu.user-account.become-manager = Conviértete en Manager
 
 ﻿# master.footer ###############################################################
 
@@ -82,7 +78,7 @@ master.company.text = \
 	Starter Project, Inc. es una compañía fictícia que proporciona un proyecto \
 	plantilla para los estudiantes de la asignatura Diseño y Pruebas, en el Grado \
 	en Ingeniería del Software de la Universidad de Sevilla.
-master.company.name = Starter Project, Inc.
+master.company.name = Acme Planner, Inc.
 master.company.address = Calle, número, Ciudad, Estado, País
 master.company.phone = +000 123 456
 master.company.email = contact@acme.com
@@ -112,3 +108,6 @@ master.panic.label.status = Estado:
 master.panic.label.exceptions = Excepciones:
 master.panic.text.consult-log = Por favor, consulte el log para ver más detalles.
 
+#master.menu.administrator.task ################################################################
+
+master.menu.administrator.task.dashboard= Resumen

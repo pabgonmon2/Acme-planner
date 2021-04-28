@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import acme.entities.dashboard.Dashboard;
-import acme.entities.roles.Administrator;
 import acme.framework.components.BasicCommand;
 import acme.framework.controllers.AbstractController;
+import acme.framework.entities.Administrator;
 
 @Controller
 @RequestMapping("/administrator/dashboard/")
