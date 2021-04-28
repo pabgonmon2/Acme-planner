@@ -1939,28 +1939,9 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] HTTP GET /Acme-Planner/WEB-INF/views/framework/page.jsp HTTP/1.1
 ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Status: 500
 ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Exception: acme.framework.helpers.Assert.state(Assert.java:45): Access is not authorised
-ERROR [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [manager]
-WARN [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [manager]
-ERROR [org.springframework.boot.SpringApplication] at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788): Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [manager]
-at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421): [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [manager]
-at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:121): Schema-validation: missing table [manager]
-INFO [acme.Launcher] Starting Launcher using Java 15.0.1 on DESKTOP-9MDND1P with PID 3956 (C:\Users\villa\git\Acme-planner\target\classes started by villa in C:\Users\villa\git\Acme-planner)
+INFO [acme.Launcher] Starting Launcher using Java 1.8.0_281 on DESKTOP-OFCCDL8 with PID 7328 (D:\Externo\Universidad\Tercero\Cuatrimestre 2\DP2\Workspace-21.1\Projects\Acme-planner\target\classes started by fvald in D:\Externo\Universidad\Tercero\Cuatrimestre 2\DP2\Workspace-21.1\Projects\Acme-planner)
 INFO [acme.Launcher] The following profiles are active: development,populator
-ERROR [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [manager]
-WARN [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [manager]
-ERROR [org.springframework.boot.SpringApplication] at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788): Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [manager]
-at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421): [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [manager]
-at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:121): Schema-validation: missing table [manager]
-INFO [acme.Launcher] Starting Launcher using Java 15.0.1 on DESKTOP-9MDND1P with PID 8580 (C:\Users\villa\git\Acme-planner\target\classes started by villa in C:\Users\villa\git\Acme-planner)
-INFO [acme.Launcher] The following profiles are active: development,populator
-INFO [acme.Launcher] Started Launcher in 15.396 seconds (JVM running for 17.147)
-INFO [acme.framework.utilities.DatabasePopulator] Populating sample data
-INFO [acme.framework.utilities.DatabasePopulator] Recreating schema
-INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/initial-data.xml
-INFO [acme.framework.configuration.ShutdownConfiguration] The system is shutting down...
-INFO [acme.Launcher] Starting Launcher using Java 15.0.1 on DESKTOP-9MDND1P with PID 3180 (C:\Users\villa\git\Acme-planner\target\classes started by villa in C:\Users\villa\git\Acme-planner)
-INFO [acme.Launcher] The following profiles are active: development,populator
-INFO [acme.Launcher] Started Launcher in 14.97 seconds (JVM running for 16.778)
+INFO [acme.Launcher] Started Launcher in 7.947 seconds (JVM running for 8.75)
 INFO [acme.framework.utilities.DatabasePopulator] Populating sample data
 INFO [acme.framework.utilities.DatabasePopulator] Recreating schema
 INFO [acme.framework.utilities.DatabasePopulator] Populating entities from classpath:/WEB-INF/population/initial-data.xml
@@ -2019,73 +2000,7 @@ INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout3 = acme.ent
 INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout4 = acme.entities.shouts.Shout{id=14, version=0}
 INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout5 = acme.entities.shouts.Shout{id=15, version=0}
 INFO [acme.framework.utilities.DatabasePopulator] > Persisting shout6 = acme.entities.shouts.Shout{id=16, version=0}
-INFO [acme.framework.configuration.ShutdownConfiguration] The system is shutting down...
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[jsp]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[dispatcherServlet]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[jsp]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[dispatcherServlet]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost]] at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014): Request processing failed; nested exception is org.apache.tiles.request.render.CannotRenderException: ServletException including path '/WEB-INF/views/framework/page.jsp'.
-at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:399): ServletException including path '/WEB-INF/views/framework/page.jsp'.
-at org.apache.tiles.request.servlet.ServletUtil.wrapServletException(ServletUtil.java:63): ServletException including path '/WEB-INF/views/framework/page.jsp'.
-at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[jsp]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[dispatcherServlet]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[jsp]] at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:435): org.apache.jsp.WEB_002dINF.views.framework.page_jsp
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[dispatcherServlet]] at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:435): org.apache.jsp.WEB_002dINF.views.framework.page_jsp
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost]] at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014): Request processing failed; nested exception is org.apache.tiles.request.render.CannotRenderException: ServletException including path '/WEB-INF/views/framework/page.jsp'.
-at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:399): ServletException including path '/WEB-INF/views/framework/page.jsp'.
-at org.apache.tiles.request.servlet.ServletUtil.wrapServletException(ServletUtil.java:61): ServletException including path '/WEB-INF/views/framework/page.jsp'.
-at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:435): org.apache.jsp.WEB_002dINF.views.framework.page_jsp
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[jsp]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[dispatcherServlet]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[jsp]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[dispatcherServlet]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost]] at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014): Request processing failed; nested exception is org.apache.tiles.request.render.CannotRenderException: ServletException including path '/WEB-INF/views/framework/page.jsp'.
-at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:399): ServletException including path '/WEB-INF/views/framework/page.jsp'.
-at org.apache.tiles.request.servlet.ServletUtil.wrapServletException(ServletUtil.java:63): ServletException including path '/WEB-INF/views/framework/page.jsp'.
-at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[jsp]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[dispatcherServlet]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[jsp]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[dispatcherServlet]] at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
-ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost]] at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014): Request processing failed; nested exception is org.apache.tiles.request.render.CannotRenderException: ServletException including path '/WEB-INF/views/framework/page.jsp'.
-at org.apache.tiles.impl.BasicTilesContainer.render(BasicTilesContainer.java:399): ServletException including path '/WEB-INF/views/framework/page.jsp'.
-at org.apache.tiles.request.servlet.ServletUtil.wrapServletException(ServletUtil.java:63): ServletException including path '/WEB-INF/views/framework/page.jsp'.
-at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:103): Unable to compile class for JSP: 
-An error occurred at line: [18] in the generated java file: [C:\Users\villa\AppData\Local\Temp\tomcat.8080.10618843681677444415\work\Tomcat\localhost\Acme-Planner\org\apache\jsp\WEB_002dINF\views\framework\page_jsp.java]
-Only a type can be imported. acme.entities.roles.Provider resolves to a package
+INFO [ace.framework.configuration.ShutdownConfiguration] The system is shutting down...
 ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] HTTP GET /Acme-Planner/WEB-INF/views/framework/page.jsp HTTP/1.1
 ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Status: 500
 ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Exception: acme.framework.helpers.Assert.state(Assert.java:45): Access is not authorised
@@ -2257,18 +2172,16 @@ ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Status: 404
 ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] HTTP GET /Acme-Planner/WEB-INF/views/framework/page.jsp HTTP/1.1
 ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Status: 500
 ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Exception: acme.framework.helpers.Assert.state(Assert.java:45): Access is not authorised
-ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] HTTP GET /Acme-Planner/WEB-INF/views/framework/page.jsp HTTP/1.1
-ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Status: 404
-ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] HTTP GET /Acme-Planner/WEB-INF/views/framework/page.jsp HTTP/1.1
-ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Status: 404
-ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] HTTP GET /Acme-Planner/WEB-INF/views/framework/page.jsp HTTP/1.1
-ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Status: 500
-ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Exception: java.lang.AssertionError
-ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] HTTP GET /Acme-Planner/WEB-INF/views/framework/page.jsp HTTP/1.1
-ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Status: 500
-ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Exception: java.lang.AssertionError
+ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Exception: acme.framework.helpers.Assert.state(Assert.java:45): Acceso no autorizado
 ERROR [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/Acme-Planner].[dispatcherServlet]] at acme.framework.utilities.RememberMeLogoutHandler.logout(RememberMeLogoutHandler.java:31): java.lang.AssertionError
 ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] HTTP GET /Acme-Planner/WEB-INF/views/framework/page.jsp HTTP/1.1
 ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Status: 500
 ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Exception: org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:200): Filter execution threw an exception
-java.lang.AssertionError
+ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] HTTP GET /Acme-Planner/WEB-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Status: 500
+ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Exception: acme.framework.helpers.Assert.state(Assert.java:45): Acceso no autorizado
+ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] HTTP GET /Acme-Planner/WEB-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Status: 404
+ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] HTTP GET /Acme-Planner/WEB-INF/views/framework/page.jsp HTTP/1.1
+ERROR [org.apache.jsp.WEB_002dINF.views.framework.panic_jsp] Status: 404
+
