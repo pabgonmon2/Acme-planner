@@ -22,15 +22,6 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 
 	<import resource="classpath:/WEB-INF/population/conversion-service.xml"/>	
 	
-		<util:list id="spamwords1" value-type="java.lang.String">
-		    <value>sex</value>
-		    <value>cialis</value>
-		    <value>viagra</value>
-		    <value>million dollar</value>
-		    <value>you've won</value>
-		    <value>nigeria</value>
-		    <value>hard core</value>
-		</util:list>
 
  <!--  ################### TASKS ################### -->
 		<bean id="task1" class="acme.entities.tasks.Task">
@@ -155,31 +146,42 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	
 	<!--  ################### SPAMFILTER ################### -->
 	
-	<bean id="spamword1" class="acme.entities.spamfilter.SpamWord">
+	<bean id="spamword1" class="acme.entities.spamfilter.Spamword">
 		<property name="word" value="sex"/>
 	</bean> 
-	<bean id="spamword2" class="acme.entities.spamfilter.SpamWord">
-		<property name="word" value="vaigra"/>
+	<bean id="spamword2" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="viagra"/>
 	</bean> 
-	<bean id="spamword3" class="acme.entities.spamfilter.SpamWord">
+	<bean id="spamword3" class="acme.entities.spamfilter.Spamword">
 		<property name="word" value="million dollar"/>
 	</bean> 
-	<bean id="spamword4" class="acme.entities.spamfilter.SpamWord">
+	<bean id="spamword4" class="acme.entities.spamfilter.Spamword">
 		<property name="word" value="cialis"/>
 	</bean> 
-	<bean id="spamword5" class="acme.entities.spamfilter.SpamWord">
+	<bean id="spamword5" class="acme.entities.spamfilter.Spamword">
 		<property name="word" value="you've won"/>
 	</bean> 
-	<bean id="spamword6" class="acme.entities.spamfilter.SpamWord">
+	<bean id="spamword6" class="acme.entities.spamfilter.Spamword">
 		<property name="word" value="hardcore"/>
 	</bean> 
-	<bean id="spamword7" class="acme.entities.spamfilter.SpamWord">
+	<bean id="spamword7" class="acme.entities.spamfilter.Spamword">
 		<property name="word" value="nigeria"/>
 	</bean> 
 	
-	<bean id="threshold" class="acme.entities.spamfilter.Threshold">
-		<property name="value" value="10.0"/>
-	</bean> 
+	<bean name="spamfilter" class="acme.entities.spamfilter.SpamFilter">
+		<property name="lista" >
+				<list>
+					<ref bean="spamword1" />
+					<ref bean="spamword2" />
+					<ref bean="spamword3" />
+					<ref bean="spamword4" />
+					<ref bean="spamword5" />
+					<ref bean="spamword6" />
+					<ref bean="spamword7" />
+				</list>
+			</property>
+		<property name="threshold" value="10.0" />
+	</bean>
 	
 
 	

@@ -1,34 +1,25 @@
 package acme.entities.spamfilter;
 
 import java.util.Collection;
-import java.util.List;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
+import javax.persistence.OneToMany;
 
 import acme.framework.entities.DomainEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
 @Setter
+@Getter
 public class SpamFilter extends DomainEntity{
 
 	protected static final long serialVersionUID = 1L;
 	
-	@NotNull
-	@ElementCollection(targetClass=String.class)
-	protected List<String> spamwords;
+
+	@OneToMany
+	private Collection<Spamword> lista;
 	
-	@NotNull
-	protected Double threshold;
-	
-	
-	public Collection<String> getSpamWords(){
-		return this.spamwords;
-	}
+	protected Double Threshold;
 	
 }
-

@@ -10,7 +10,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class SpamWord extends DomainEntity{
+public class Spamword extends DomainEntity{
 
 	
 	protected static final long serialVersionUID = 1L;

@@ -3,7 +3,12 @@
 	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 	
 <tiles-definitions>
-	<definition name="administrator/spamfilter/list" extends="master">
-		<put-attribute name="body" type="template" value="../administrator/spamfilter/list.jsp" />
+	<definition name="administrator/spamwords/list" extends="master">
+		<put-attribute name="body" type="template" value="../administrator/spamfilter/listSW.jsp" />
 	</definition>
+	
+	<definition name="administrator/threshold/list" extends="master">
+		<put-attribute name="body" type="template" value="../administrator/spamfilter/listTH.jsp" />
+	</definition>
+	
 </tiles-definitions>
