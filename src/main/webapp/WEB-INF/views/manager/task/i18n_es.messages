@@ -1,0 +1,6 @@
+manager.mytasks.list.label.title = Titulo
+manager.mytasks.list.label.startDate = Fecha inicial
+manager.mytasks.list.label.endDate = Fecha final
+manager.mytasks.list.label.workFlow = Tiempo trabajado
+manager.mytasks.list.label.description = Descripcion
+manager.mytasks.list.label.publicTask = Tarea publica

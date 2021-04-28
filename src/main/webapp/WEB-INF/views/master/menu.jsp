@@ -26,6 +26,10 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.list-tasks" action="/anonymous/task/list"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.manager.list-tasks" action="/authenticated/task/list"/>
+		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
@@ -36,8 +40,6 @@
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/master/populate-sample"/>			
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shutdown" action="/master/shutdown"/>
-			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.administrator.spamfilter" action="/administrator/spamword/list"/>
 		</acme:menu-option>
 		
 
@@ -45,6 +47,8 @@
 			<acme:menu-suboption code="master.menu.manager.favourite-link" action="http://www.example.com/"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.manager.list-tasks" action="/authenticated/task/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.manager.own-tasks" action="/manager/task/list"/>
 		</acme:menu-option>
     
 	</acme:menu-left>
@@ -60,4 +64,3 @@
 		<acme:menu-option code="master.menu.sign-out" action="/master/sign-out" access="isAuthenticated()"/>
 	</acme:menu-right>
 </acme:menu-bar>
-
