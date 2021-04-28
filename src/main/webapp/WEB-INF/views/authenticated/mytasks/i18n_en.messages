@@ -1,0 +1,6 @@
+manager.mytasks.list.label.title = Title
+manager.mytasks.list.label.startDate = Start Date
+manager.mytasks.list.label.endDate = End Date
+manager.mytasks.list.label.workFlow = Work Flow
+manager.mytasks.list.label.description = Description
+manager.mytasks.list.label.publicTask = Public Task
