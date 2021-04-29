@@ -8,6 +8,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -33,15 +34,13 @@ public class Task extends DomainEntity{
 		private String title;
 		
 		@Temporal(TemporalType.TIMESTAMP)
-//		@FutureOrPresent
 		private Date startDate;
 		
 		@Temporal(TemporalType.TIMESTAMP)
-//		@FutureOrPresent
-		//Custom validator detras de inicio
 		private Date endDate;
 		
-		//Custom validator
+		//Validacion: el workflow debe ser momo maximo igual a enddate menos startdate
+		@Min(0)
 		private Double workFlow;
 		
 		@NotBlank

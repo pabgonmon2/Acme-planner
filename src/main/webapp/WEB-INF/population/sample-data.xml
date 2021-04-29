@@ -63,11 +63,15 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 			<property name="roles">
 				<list>
 					<ref bean="manager3" />
+					<ref bean="auth3" />
 				</list>
 			</property>
 		</bean>
 
 		<bean name="manager3" class="acme.entities.roles.Manager">
+			<property name="userAccount" ref="manager3UserAccount" />
+		</bean>
+		<bean name="auth3" class="acme.framework.entities.Authenticated">
 			<property name="userAccount" ref="manager3UserAccount" />
 		</bean>
 		
