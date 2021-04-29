@@ -51,6 +51,7 @@ master.menu.manager.favourite-link = Link favorito
 master.menu.manager.favourite-link = Enlace favorito
 master.menu.manager.list-tasks= Tareas
 master.menu.manager.own-tasks = Mis tareas
+master.menu.manager.create-own-tasks = Crear tarea
 
 # master.menu.authenticated ####################################################
 

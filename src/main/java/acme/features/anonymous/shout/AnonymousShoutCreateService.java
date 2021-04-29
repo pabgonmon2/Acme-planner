@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.shouts.Shout;
+import acme.features.administrator.spamfilter.AdministratorSpamFilterService;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -18,6 +19,8 @@ public class AnonymousShoutCreateService implements AbstractCreateService <Anony
 	@Autowired
 	protected AnonymousShoutRepository repository;
 
+	@Autowired
+	protected AdministratorSpamFilterService spamService;
 	
 	@Override
 	public boolean authorise(final Request<Shout> request) {
@@ -64,6 +67,9 @@ public class AnonymousShoutCreateService implements AbstractCreateService <Anony
 		assert request!=null;
 		assert entity!=null;
 		assert errors!=null;
+		
+		final Boolean b = this.spamService.filtro(entity);
+		errors.state(request, b, "text", "anonymous.shout.error.text");
 	}
 
 	

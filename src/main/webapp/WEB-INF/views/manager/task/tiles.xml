@@ -10,5 +10,4 @@
 	<definition name="manager/task/form" extends="master">
 		<put-attribute name="body" type="template" value="../manager/task/form.jsp" />
 	</definition>
-	
 </tiles-definitions>

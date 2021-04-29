@@ -49,6 +49,7 @@ master.menu.manager = Manager
 master.menu.manager.favourite-link = Favourite link
 master.menu.manager.list-tasks= Tasks
 master.menu.manager.own-tasks = Own tasks
+master.menu.manager.create-own-tasks = Create task
 
 # master.menu.authenticated ####################################################
 
