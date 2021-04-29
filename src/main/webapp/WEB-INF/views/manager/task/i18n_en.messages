@@ -4,3 +4,12 @@ manager.mytasks.list.label.endDate = End Date
 manager.mytasks.list.label.workFlow = Work Flow
 manager.mytasks.list.label.description = Description
 manager.mytasks.list.label.publicTask = Public Task
+
+manager.mytasks.form.label.title = Title
+manager.mytasks.form.label.startDate = Start Date
+manager.mytasks.form.label.endDate = End Date
+manager.mytasks.form.label.workFlow = Work Flow
+manager.mytasks.form.label.description = Description
+manager.mytasks.form.label.publicTask = Public Task
+
+manager.mytasks.form.button.return = Return
