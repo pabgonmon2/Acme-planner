@@ -49,6 +49,7 @@
 			<acme:menu-suboption code="master.menu.manager.list-tasks" action="/authenticated/task/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.manager.own-tasks" action="/manager/task/list"/>
+			<acme:menu-suboption code="master.menu.manager.create-own-tasks" action="/manager/task/create"/>
 		</acme:menu-option>
     
 	</acme:menu-left>
