@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import acme.entities.shouts.Shout;
 import acme.entities.spamfilter.SpamFilter;
 import acme.entities.spamfilter.Spamword;
+import acme.entities.tasks.Task;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Administrator;
@@ -61,6 +62,33 @@ public class AdministratorSpamFilterService implements AbstractListService<Admin
 		}
 		
 		final Integer cantPalabras = autor.split(" ").length + mensaje.split(" ").length;
+		final Double operacion = (double)count/cantPalabras*100.0;
+		if(operacion >= umbral) {
+			return false;
+		}else {
+			return true;
+		}
+		
+		
+	}
+	
+	public Boolean filtroTasks(final Task task) {
+		final SpamFilter spamFilter = this.repository.getSpamFilter();
+		final Collection<Spamword> spamwords = spamFilter.getLista();
+		final Double umbral = spamFilter.getThreshold();
+		final String title = task.getTitle().toLowerCase();
+		final String description = task.getDescription().toLowerCase();
+		Integer count = 0;
+		for(final Spamword sw: spamwords) {
+			if(title.contains(sw.getWord().toLowerCase())) {
+				count++;
+			}
+			if(description.contains(sw.getWord().toLowerCase())) {
+				count++;
+			}
+		}
+		
+		final Integer cantPalabras = title.split(" ").length + description.split(" ").length;
 		final Double operacion = (double)count/cantPalabras*100.0;
 		if(operacion >= umbral) {
 			return false;

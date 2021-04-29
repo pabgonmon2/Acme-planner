@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.roles.Manager;
 import acme.entities.tasks.Task;
+import acme.features.administrator.spamfilter.AdministratorSpamFilterService;
 import acme.features.authenticated.manager.AuthenticatedManagerRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
@@ -21,6 +22,9 @@ public class ManagerMyTasksCreateService implements AbstractCreateService<Manage
 	
 	@Autowired
 	protected AuthenticatedManagerRepository managerRepo;
+	
+	@Autowired
+	protected AdministratorSpamFilterService spamService;
 	
 	@Override
 	public boolean authorise(final Request<Task> request) {
@@ -77,9 +81,11 @@ public class ManagerMyTasksCreateService implements AbstractCreateService<Manage
 		final Boolean b1 = this.fechaInicialDespuesFechaActual(entity);
 		final Boolean b2 = this.fechaFinalDespuesFechaActual(entity);
 		final Boolean b3 = this.validacionFechas(entity);
+		final Boolean spam = this.spamService.filtroTasks(entity);
 		errors.state(request, b1, "startDate", "manager.mytasks.error.startDate");
 		errors.state(request, b2, "endDate", "manager.mytasks.error.endDate");
 		errors.state(request, b3, "endDate", "manager.mytasks.error.dates");
+		errors.state(request, spam, "description", "manager.mytasks.error.spam");
 	}
 
 	@Override
