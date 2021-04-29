@@ -14,4 +14,7 @@ public interface ManagerMyTasksRepository extends AbstractRepository {
 	
 	@Query("SELECT t FROM Task t WHERE t.manager.id=:id")
 	Collection<Task> findMyTasks(@Param("id") int id);
+	
+	@Query("SELECT t FROM Task t WHERE t.id=:id")
+	Task findTaskById(@Param("id") int id);
 }

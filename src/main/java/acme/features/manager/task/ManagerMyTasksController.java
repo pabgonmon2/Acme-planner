@@ -18,10 +18,14 @@ public class ManagerMyTasksController extends AbstractController<Manager, Task>{
 	@Autowired 
 	private ManagerMyTasksListService listService;
 	
+	@Autowired 
+	private ManagerTaskShowService showService;
+	
 	
 	@PostConstruct
 	private void initialise() {
 		super.addBasicCommand(BasicCommand.LIST, this.listService);
+		super.addBasicCommand(BasicCommand.SHOW, this.showService);
 	}
 	
 }
