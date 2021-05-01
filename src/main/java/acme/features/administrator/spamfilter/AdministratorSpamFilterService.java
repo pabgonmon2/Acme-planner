@@ -1,6 +1,9 @@
 package acme.features.administrator.spamfilter;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,29 +49,68 @@ public class AdministratorSpamFilterService implements AbstractListService<Admin
 	
 	public Boolean filtro(final Shout shout) {
 		final SpamFilter spamFilter = this.repository.getSpamFilter();
-		final Collection<Spamword> spamwords = spamFilter.getLista();
+		final List<Spamword> spamwords = spamFilter.getLista().stream().collect(Collectors.toList());
 		final Double umbral = spamFilter.getThreshold();
 		final String autor = shout.getAuthor().toLowerCase();
 		final String mensaje = shout.getText().toLowerCase();
-		Integer count = 0;
-		for(final Spamword sw: spamwords) {
-			if(autor.contains(sw.getWord().toLowerCase())) {
-				count++;
-			}
-			if(mensaje.contains(sw.getWord().toLowerCase())) {
-				count++;
-			}
-		}
-		
-		final Integer cantPalabras = autor.split(" ").length + mensaje.split(" ").length;
+		final Integer countCompuestasAutor = this.compruebaSpamWordsCompuestas(spamwords, autor);
+		final Integer countCompuestasMensaje = this.compruebaSpamWordsCompuestas(spamwords, mensaje);
+		final Integer countAutor = this.compruebaSpamWords(spamwords, autor);
+		final Integer countMensaje = this.compruebaSpamWords(spamwords, mensaje);
+		final Integer count = countAutor + countMensaje + countCompuestasAutor + countCompuestasMensaje;
+		final Integer cantPalabras = autor.replaceAll("\\s{2,}", " ").split(" ").length + mensaje.replaceAll("\\s{2,}", " ").split(" ").length;
 		final Double operacion = (double)count/cantPalabras*100.0;
 		if(operacion >= umbral) {
 			return false;
 		}else {
 			return true;
 		}
-		
-		
 	}
 
+	
+	public Integer compruebaSpamWordsCompuestas(final List<Spamword> spamwords, final String texto) {
+		Integer count = 0;
+		final String[] t = texto.replaceAll("\\s{2,}", " ").split(" ");
+		final List<Spamword> swCompuestas = this.escogeCompuestas(spamwords);
+
+		for(final Spamword sw : swCompuestas) {
+			final String[] s = sw.getWord().split(" ");
+			for(Integer i=0; i<t.length-1;i++) {
+				if(s[0].equals(t[i]) && s[1].equals(t[i+1])) {
+					count++;
+				}
+			}
+		}
+		return count;
+	}
+	
+	public List<Spamword> escogeCompuestas(final List<Spamword> spamwords){
+		final List<Spamword> swCompuestas = new ArrayList<Spamword>();
+		for(Integer i=0; i<spamwords.size();i++) {
+			final Spamword sw  = spamwords.get(i);
+			if(sw.getWord().split(" ").length > 1) {
+				swCompuestas.add(sw);
+			}
+		}
+		
+		return swCompuestas;
+	}
+	
+	public Integer compruebaSpamWords(final List<Spamword> spamwords, final String texto) {
+		Integer count = 0;
+		final String[] t = texto.replaceAll("\\s{2,}", " ").split(" ");
+		final List<Spamword> swCompuestas = this.escogeCompuestas(spamwords);
+
+		for(final Spamword sw : spamwords) {
+			if(!swCompuestas.contains(sw)) {
+				final String sws = sw.getWord();
+				for(Integer i=0; i<t.length;i++) {
+					if(sws.equals(t[i])) {
+						count++;
+					}
+				}
+			}
+		}
+		return count;
+	}
 }
