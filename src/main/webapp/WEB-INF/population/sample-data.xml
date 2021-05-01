@@ -149,7 +149,53 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="publicTask" value="true"/>
 		<property name="url" value="https://www.google.com"/>
 		<property name="manager" ref="manager2"/>
-	</bean> 
+	</bean>
+	<bean id="task6" class="acme.entities.tasks.Task">
+		<property name="title" value="Hacer tareas DP2"/>
+		<property name="startDate" value="2021/05/04 15:55"/>
+		<property name="endDate" value="2021/05/05 18:00"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Hacer delete de tasks"/>
+		<property name="publicTask" value="false"/>
+		<property name="manager" ref="manager2"/>
+	</bean>
+	<bean id="task7" class="acme.entities.tasks.Task">
+		<property name="title" value="Hacer la compra"/>
+		<property name="startDate" value="2021/06/04 16:00"/>
+		<property name="endDate" value="2021/06/04 18:00"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Ir al mercadona a por cocacola y por yogur"/>
+		<property name="publicTask" value="false"/>
+		<property name="manager" ref="manager3"/>
+	</bean>
+	<bean id="task8" class="acme.entities.tasks.Task">
+		<property name="title" value="Arreglar el coche"/>
+		<property name="startDate" value="2021/07/29 16:00"/>
+		<property name="endDate" value="2021/08/05 18:00"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Cambiar la rueda pinchada"/>
+		<property name="publicTask" value="true"/>
+		<property name="manager" ref="manager2"/>
+	</bean>
+	<bean id="task9" class="acme.entities.tasks.Task">
+		<property name="title" value="Hacer la comida"/>
+		<property name="startDate" value="2021/05/29 13:00"/>
+		<property name="endDate" value="2021/05/29 14:30"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Espaguetis a la carbonara"/>
+		<property name="publicTask" value="false"/>
+		<property name="manager" ref="manager2"/>
+	</bean>
+	<bean id="task10" class="acme.entities.tasks.Task">
+		<property name="title" value="Poner el cuadro"/>
+		<property name="startDate" value="2021/04/29 13:00"/>
+		<property name="endDate" value="2021/04/29 14:30"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Colocar el cuadro en la habitación"/>
+		<property name="publicTask" value="true"/>
+		<property name="manager" ref="manager3"/>
+	</bean>
+	
   
  <!--  ################### SHOUTS ################### -->
 	<bean id="shout1" class="acme.entities.shouts.Shout">
@@ -240,11 +286,27 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="word" value="you've won"/>
 	</bean> 
 	<bean id="spamword6" class="acme.entities.spamfilter.Spamword">
-		<property name="word" value="hardcore"/>
+		<property name="word" value="hard core"/>
 	</bean> 
 	<bean id="spamword7" class="acme.entities.spamfilter.Spamword">
 		<property name="word" value="nigeria"/>
 	</bean> 
+	
+	<bean id="spamword8" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="sexo"/>
+	</bean>
+	<bean id="spamword9" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="millon de dolares"/>
+	</bean>
+	<bean id="spamword10" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="has ganado"/>
+	</bean> 
+	<bean id="spamword11" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="dura"/>
+	</bean>
+	<bean id="spamword12" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="duro"/>
+	</bean>
 	
 	<bean name="spamfilter" class="acme.entities.spamfilter.SpamFilter">
 		<property name="lista" >
@@ -256,13 +318,13 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 					<ref bean="spamword5" />
 					<ref bean="spamword6" />
 					<ref bean="spamword7" />
+					<ref bean="spamword8" />
+					<ref bean="spamword9" />
+					<ref bean="spamword10" />
+					<ref bean="spamword11" />
+					<ref bean="spamword12" />
 				</list>
 			</property>
 		<property name="threshold" value="10.0" />
 	</bean>
-	
-
-	
-	
-	
 </beans>
