@@ -116,29 +116,22 @@ public class AdministratorSpamFilterService implements AbstractListService<Admin
 	}
 	
     public Boolean filtroTasks(final Task task) {
-        final SpamFilter spamFilter = this.repository.getSpamFilter();
-        final Collection<Spamword> spamwords = spamFilter.getLista();
-        final Double umbral = spamFilter.getThreshold();
-        final String title = task.getTitle().toLowerCase();
-        final String description = task.getDescription().toLowerCase();
-        Integer count = 0;
-        for(final Spamword sw: spamwords) {
-            if(title.contains(sw.getWord().toLowerCase())) {
-                count++;
-            }
-            if(description.contains(sw.getWord().toLowerCase())) {
-                count++;
-            }
-        }
-        
-        final Integer cantPalabras = title.split(" ").length + description.split(" ").length;
-        final Double operacion = (double)count/cantPalabras*100.0;
-        if(operacion >= umbral) {
-            return false;
-        }else {
-            return true;
-        }
-        
-        
+		final SpamFilter spamFilter = this.repository.getSpamFilter();
+		final List<Spamword> spamwords = spamFilter.getLista().stream().collect(Collectors.toList());
+		final Double umbral = spamFilter.getThreshold();
+		final String title = task.getTitle().toLowerCase();
+		final String description = task.getDescription().toLowerCase();
+		final Integer countCompuestasAutor = this.compruebaSpamWordsCompuestas(spamwords, title);
+		final Integer countCompuestasMensaje = this.compruebaSpamWordsCompuestas(spamwords, description);
+		final Integer countAutor = this.compruebaSpamWords(spamwords, title);
+		final Integer countMensaje = this.compruebaSpamWords(spamwords, description);
+		final Integer count = countAutor + countMensaje + countCompuestasAutor + countCompuestasMensaje;
+		final Integer cantPalabras = title.replaceAll("\\s{2,}", " ").split(" ").length + description.replaceAll("\\s{2,}", " ").split(" ").length;
+		final Double operacion = (double)count/cantPalabras*100.0;
+		if(operacion >= umbral) {
+			return false;
+		}else {
+			return true;
+		}
     }
 }
