@@ -12,16 +12,93 @@
 - they accept any liabilities with respect to them.
 -->
 
-<beans 
-	xmlns="http://www.springframework.org/schema/beans" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:util="http://www.springframework.org/schema/util"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                    http://www.springframework.org/schema/util
+                    http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
 	<import resource="classpath:/WEB-INF/population/conversion-service.xml"/>	
 
+ <!--  ################### USERS ################### -->
+ 		<bean name="manager2UserAccount" class="acme.framework.entities.UserAccount">
+			<property name="username" value="manager2" />
+			<property name="password" value="manager2" />
+			<property name="enabled" value="true" />
+			<property name="identity">
+				<bean class="acme.datatypes.UserIdentity">
+					<property name="name" value="Manager2" />
+					<property name="surname" value="Manager2" />
+					<property name="email" value="manager2@gmail.com" />
+				</bean>
+			</property>
+			<property name="roles">
+				<list>
+					<ref bean="manager2" />
+					<ref bean="auth2" />
+				</list>
+			</property>
+		</bean>
+
+		<bean name="manager2" class="acme.entities.roles.Manager">
+			<property name="userAccount" ref="manager2UserAccount" />
+		</bean>
+		<bean name="auth2" class="acme.framework.entities.Authenticated">
+			<property name="userAccount" ref="manager2UserAccount" />
+		</bean>
+		
+		<bean name="manager3UserAccount" class="acme.framework.entities.UserAccount">
+			<property name="username" value="manager3" />
+			<property name="password" value="manager3" />
+			<property name="enabled" value="true" />
+			<property name="identity">
+				<bean class="acme.datatypes.UserIdentity">
+					<property name="name" value="Manager3" />
+					<property name="surname" value="Manager3" />
+					<property name="email" value="manager3@gmail.com" />
+				</bean>
+			</property>
+			<property name="roles">
+				<list>
+					<ref bean="manager3" />
+					<ref bean="auth3" />
+				</list>
+			</property>
+		</bean>
+
+		<bean name="manager3" class="acme.entities.roles.Manager">
+			<property name="userAccount" ref="manager3UserAccount" />
+		</bean>
+		<bean name="auth3" class="acme.framework.entities.Authenticated">
+			<property name="userAccount" ref="manager3UserAccount" />
+		</bean>
+		
+		<bean name="admin2UserAccount" class="acme.framework.entities.UserAccount">
+			<property name="username" value="admin2" />
+			<property name="password" value="admin2" />
+			<property name="enabled" value="true" />
+			<property name="identity">
+				<bean class="acme.datatypes.UserIdentity">
+					<property name="name" value="Admin2" />
+					<property name="surname" value="Admin2" />
+					<property name="email" value="admin2@gmail.com" />
+				</bean>
+			</property>
+			<property name="roles">
+				<list>
+					<ref bean="administrator2" />
+				</list>
+			</property>
+		</bean>
+
+		<bean name="administrator2" class="acme.framework.entities.Administrator">
+			<property name="userAccount" ref="admin2UserAccount" />
+		</bean>
 
  <!--  ################### TASKS ################### -->
-		<bean id="task1" class="acme.entities.tasks.Task">
+	<bean id="task1" class="acme.entities.tasks.Task">
 		<property name="title" value="Barrer la casa"/>
 		<property name="startDate" value="2021/08/09 15:55"/>
 		<property name="endDate" value="2021/08/09 18:55"/>
@@ -29,6 +106,7 @@
 		<property name="description" value="La casa estaba muy sucia"/>
 		<property name="publicTask" value="true"/>
 		<property name="url" value="https://www.google.com"/>
+		<property name="manager" ref="manager3"/>
 	</bean> 
 	
 	<bean id="task2" class="acme.entities.tasks.Task">
@@ -39,6 +117,7 @@
 		<property name="description" value="Los niños tenian mucha hambre"/>
 		<property name="publicTask" value="false"/>
 		<property name="url" value="https://www.google.com"/>
+		<property name="manager" ref="manager2"/>
 	</bean> 
 	<bean id="task3" class="acme.entities.tasks.Task">
 		<property name="title" value="Pintar la habitacion"/>
@@ -48,9 +127,10 @@
 		<property name="description" value="La pintura estaba gastada"/>
 		<property name="publicTask" value="true"/>
 		<property name="url" value="https://www.google.com"/>
+		<property name="manager" ref="manager3"/>
 	</bean> 
 	
-		<bean id="task4" class="acme.entities.tasks.Task">
+	<bean id="task4" class="acme.entities.tasks.Task">
 		<property name="title" value="Pintar el coche"/>
 		<property name="startDate" value="2021/03/09 15:55"/>
 		<property name="endDate" value="2021/03/09 16:55"/>
@@ -58,6 +138,7 @@
 		<property name="description" value="La pintura estaba gastada"/>
 		<property name="publicTask" value="true"/>
 		<property name="url" value="https://www.google.com"/>
+		<property name="manager" ref="manager3"/>
 	</bean>
 	<bean id="task5" class="acme.entities.tasks.Task">
 		<property name="title" value="Limpiar baños"/>
@@ -67,8 +148,8 @@
 		<property name="description" value="Cambiar toallas y limpiar WC"/>
 		<property name="publicTask" value="true"/>
 		<property name="url" value="https://www.google.com"/>
+		<property name="manager" ref="manager2"/>
 	</bean> 
-  
   
  <!--  ################### SHOUTS ################### -->
 	<bean id="shout1" class="acme.entities.shouts.Shout">
@@ -110,4 +191,78 @@
 		<property name="text" value="Adios"/>
 		<property name="info" value="https://www.marca.com"/>
 	</bean> 
+	<bean id="shout7" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/17 15:55"/>
+		<property name="author" value="Javier Rodriguez"/>
+		<property name="text" value="Hoy estoy contento."/>
+		<property name="info" value="https://www.google.com"/>
+	</bean> 
+	<bean id="shout8" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/20 15:55"/>
+		<property name="author" value="Roberto Gonzalez"/>
+		<property name="text" value="Hoy estoy triste"/>
+		<property name="info" value="https://www.instagram.com"/>
+	</bean> 
+	<bean id="shout9" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/23 15:55"/>
+		<property name="author" value="Pablo Garcia"/>
+		<property name="text" value="Esto es un shout."/>
+		<property name="info" value="https://www.facebook.com"/>
+	</bean> 
+	<bean id="shout10" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/25 15:55"/>
+		<property name="author" value="Maria Torres"/>
+		<property name="text" value="Ayer estaba cansada."/>
+		<property name="info" value="https://www.twitter.com"/>
+	</bean> 
+	<bean id="shout11" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/04/24 15:55"/>
+		<property name="author" value="Diego Rivera"/>
+		<property name="text" value="Hoy es un gran dia."/>
+		<property name="info" value="https://www.facebook.com"/>
+	</bean> 
+	
+	<!--  ################### SPAMFILTER ################### -->
+	
+	<bean id="spamword1" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="sex"/>
+	</bean> 
+	<bean id="spamword2" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="viagra"/>
+	</bean> 
+	<bean id="spamword3" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="million dollar"/>
+	</bean> 
+	<bean id="spamword4" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="cialis"/>
+	</bean> 
+	<bean id="spamword5" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="you've won"/>
+	</bean> 
+	<bean id="spamword6" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="hardcore"/>
+	</bean> 
+	<bean id="spamword7" class="acme.entities.spamfilter.Spamword">
+		<property name="word" value="nigeria"/>
+	</bean> 
+	
+	<bean name="spamfilter" class="acme.entities.spamfilter.SpamFilter">
+		<property name="lista" >
+				<list>
+					<ref bean="spamword1" />
+					<ref bean="spamword2" />
+					<ref bean="spamword3" />
+					<ref bean="spamword4" />
+					<ref bean="spamword5" />
+					<ref bean="spamword6" />
+					<ref bean="spamword7" />
+				</list>
+			</property>
+		<property name="threshold" value="10.0" />
+	</bean>
+	
+
+	
+	
+	
 </beans>
