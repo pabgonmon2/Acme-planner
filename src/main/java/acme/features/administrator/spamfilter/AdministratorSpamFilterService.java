@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import acme.entities.shouts.Shout;
 import acme.entities.spamfilter.SpamFilter;
 import acme.entities.spamfilter.Spamword;
+import acme.entities.tasks.Task;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Administrator;
@@ -95,7 +96,7 @@ public class AdministratorSpamFilterService implements AbstractListService<Admin
 		
 		return swCompuestas;
 	}
-	
+  
 	public Integer compruebaSpamWords(final List<Spamword> spamwords, final String texto) {
 		Integer count = 0;
 		final String[] t = texto.replaceAll("\\s{2,}", " ").split(" ");
