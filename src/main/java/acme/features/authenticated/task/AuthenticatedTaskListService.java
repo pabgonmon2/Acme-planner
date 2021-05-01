@@ -40,7 +40,7 @@ public class AuthenticatedTaskListService implements AbstractListService<Authent
 		
 		Collection<Task> result;
 		
-		result = this.repository.findPublicTasksNonFinished();
+		result = this.repository.findPublicTasksFinished();
 		
 		return result;
 	}
