@@ -1,7 +1,5 @@
 package acme.features.authenticated.task;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,15 +7,14 @@ import acme.entities.tasks.Task;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
-import acme.framework.services.AbstractListService;
+import acme.framework.services.AbstractShowService;
 
 @Service
-public class AuthenticatedTaskListService implements AbstractListService<Authenticated, Task>{
+public class AuthenticatedTaskShowService implements AbstractShowService<Authenticated, Task>{
 
-	
 	@Autowired
-	protected AuthenticatedTaskRepository repository;
-
+	AuthenticatedTaskRepository repository;
+	
 	@Override
 	public boolean authorise(final Request<Task> request) {
 		assert request != null;
@@ -31,20 +28,19 @@ public class AuthenticatedTaskListService implements AbstractListService<Authent
 		assert model!=null;
 		
 		request.unbind(entity, model, "title","startDate","endDate","workFlow","description","publicTask");
-		
 	}
 
 	@Override
-	public Collection<Task> findMany(final Request<Task> request) {
+	public Task findOne(final Request<Task> request) {
 		assert request != null;
 		
-		Collection<Task> result;
+		Task result;
+		int id;
 		
-		result = this.repository.findPublicTasksFinished();
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOnePublicTasksFinished(id);
 		
 		return result;
 	}
-	
 
-	
 }

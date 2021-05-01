@@ -23,3 +23,4 @@ manager.mytasks.error.spam = Esta tarea contiene palabras spam
 manager.mytasks.form.button.update = Actualizar tarea!
 manager.mytasks.form.button.create = Crear tarea!
 manager.mytasks.form.button.return = Volver
+manager.mytasks.form.button.delete = Borrar

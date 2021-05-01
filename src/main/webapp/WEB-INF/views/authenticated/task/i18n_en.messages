@@ -1,6 +1,8 @@
-anonymous.task.list.label.title = Title
-anonymous.task.list.label.startDate = Start Date
-anonymous.task.list.label.endDate = End Date
-anonymous.task.list.label.workFlow = Work Flow
-anonymous.task.list.label.description = Description
-anonymous.task.list.label.publicTask = Public Task
+authenticated.task.list.label.title = Title
+authenticated.task.list.label.startDate = Start Date
+authenticated.task.list.label.endDate = End Date
+authenticated.task.list.label.workFlow = Work Flow
+authenticated.task.list.label.description = Description
+authenticated.task.list.label.publicTask = Public Task
+authenticated.task.list.label.id = ID
+authenticated.provider.form.button.return = Return

@@ -17,7 +17,6 @@
 			<acme:form-return  code= "manager.mytasks.form.button.return"/>
 		</acme:form>
 	</jstl:when>
-	
 	<jstl:otherwise>
 		<acme:form>
 			<acme:form-textbox code= "manager.mytasks.form.label.title" path="title"/>
@@ -29,8 +28,8 @@
 			<acme:form-url code="manager.mytasks.form.label.url" path="url"/>
 			
 			<acme:form-submit code= "manager.mytasks.form.button.update" action="/manager/task/update"/>
+      	<acme:form-submit code="manager.mytasks.form.button.delete" action="/manager/task/delete"/>
 			<acme:form-return  code= "manager.mytasks.form.button.return"/>
 		</acme:form>
 	</jstl:otherwise>
-
 </jstl:choose>

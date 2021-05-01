@@ -22,3 +22,4 @@ manager.mytasks.error.spam = This task contains spam words
 manager.mytasks.form.button.update = Update task!
 manager.mytasks.form.button.create = Create task!
 manager.mytasks.form.button.return = Return
+manager.mytasks.form.button.delete = Delete
