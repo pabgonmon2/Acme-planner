@@ -59,17 +59,29 @@ public class ManagerMyTasksCreateService implements AbstractCreateService<Manage
 	}
 	
 	public Boolean validacionFechas(final Task task) {
-		return task.getStartDate().before(task.getEndDate());
+		Boolean b = false;
+		if(task.getStartDate()!=null && task.getEndDate()!=null) {
+			b = task.getStartDate().before(task.getEndDate());
+		}
+		return b;
 	}
 	
 	public Boolean fechaInicialDespuesFechaActual(final Task task) {
-		final Date actual = new Date(System.currentTimeMillis()-1);
-		return task.getStartDate().after(actual);
+		if(task.getStartDate()!=null) {
+			final Date actual = new Date(System.currentTimeMillis()-1);
+			return task.getStartDate().after(actual);
+		} else {
+			return false;
+		}
 	}
 	
 	public Boolean fechaFinalDespuesFechaActual(final Task task) {
-		final Date actual = new Date(System.currentTimeMillis()-1);
-		return task.getEndDate().after(actual);
+		if(task.getEndDate()!=null) {
+			final Date actual = new Date(System.currentTimeMillis()-1);
+			return task.getEndDate().after(actual);
+		} else {
+			return false;
+		}
 	}
 
 	@Override
@@ -78,13 +90,19 @@ public class ManagerMyTasksCreateService implements AbstractCreateService<Manage
 		assert entity!=null;
 		assert errors!=null;
 		
-		final Boolean b1 = this.fechaInicialDespuesFechaActual(entity);
-		final Boolean b2 = this.fechaFinalDespuesFechaActual(entity);
-		final Boolean b3 = this.validacionFechas(entity);
+		if(entity.getEndDate()!=null && entity.getStartDate()!=null) {
+			final Boolean b3 = this.validacionFechas(entity);
+			errors.state(request, b3, "endDate", "manager.mytasks.error.dates");
+		}
+		if(entity.getStartDate()!=null) {
+			final Boolean b1 = this.fechaInicialDespuesFechaActual(entity);
+			errors.state(request, b1, "startDate", "manager.mytasks.error.startDate");
+		}
+		if(entity.getEndDate()!=null) {
+			final Boolean b2 = this.fechaFinalDespuesFechaActual(entity);
+			errors.state(request, b2, "endDate", "manager.mytasks.error.endDate");
+		}
 		final Boolean spam = this.spamService.filtroTasks(entity);
-		errors.state(request, b1, "startDate", "manager.mytasks.error.startDate");
-		errors.state(request, b2, "endDate", "manager.mytasks.error.endDate");
-		errors.state(request, b3, "endDate", "manager.mytasks.error.dates");
 		errors.state(request, spam, "description", "manager.mytasks.error.spam");
 	}
 
