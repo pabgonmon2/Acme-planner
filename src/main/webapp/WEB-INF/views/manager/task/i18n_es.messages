@@ -16,7 +16,10 @@ manager.mytasks.form.label.url = Enlace
 manager.mytasks.error.dates = La fecha de fin debe ser después de la fecha de inicio
 manager.mytasks.error.startDate = La fecha inicial debe ser posterior a la fecha actual
 manager.mytasks.error.endDate = La fecha final debe ser posterior a la fecha actual
+manager.mytasks.error.workFlow = El flujo de trabajo debe ser menor o igual a las horas entre la fecha de inicio y fin
+manager.mytasks.error.endDateNull = Las fechas no pueden estar vacías
 manager.mytasks.error.spam = Esta tarea contiene palabras spam
 
+manager.mytasks.form.button.update = Actualizar tarea!
 manager.mytasks.form.button.create = Crear tarea!
 manager.mytasks.form.button.return = Volver

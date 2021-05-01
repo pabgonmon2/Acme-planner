@@ -150,6 +150,16 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="url" value="https://www.google.com"/>
 		<property name="manager" ref="manager2"/>
 	</bean> 
+	<bean id="task6" class="acme.entities.tasks.Task">
+		<property name="title" value="Barrer la casa Pasado"/>
+		<property name="startDate" value="2021/04/09 15:55"/>
+		<property name="endDate" value="2021/04/10 18:55"/>
+		<property name="workFlow" value="3.0"/>
+		<property name="description" value="La casa estaba muy sucia"/>
+		<property name="publicTask" value="true"/>
+		<property name="url" value="https://www.google.com"/>
+		<property name="manager" ref="manager2"/>
+	</bean> 
   
  <!--  ################### SHOUTS ################### -->
 	<bean id="shout1" class="acme.entities.shouts.Shout">
