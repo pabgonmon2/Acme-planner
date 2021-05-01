@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import acme.entities.shouts.Shout;
 import acme.entities.spamfilter.Spamword;
-import acme.entities.spamfilter.Threshold;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
@@ -23,7 +22,4 @@ public interface AnonymousShoutRepository extends AbstractRepository{
 	@Query("SELECT sw FROM Spamword sw")
 	Collection<Spamword> findAllSpamWords();
 	
-	@Query("SELECT th FROM Threshold th")
-	Threshold getValue();
-
 }
