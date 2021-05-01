@@ -11,6 +11,7 @@
 	<acme:form-url code="manager.mytasks.form.label.url" path="url"/>
 	
 	<acme:form-submit code= "manager.mytasks.form.button.create" action="/manager/task/create"/>
+	<acme:form-submit code="manager.mytasks.form.button.delete" action="/manager/task/delete"/>
 	<acme:form-return  code= "manager.mytasks.form.button.return"/>
 </acme:form>
 
