@@ -3,14 +3,14 @@ manager.mytasks.list.label.startDate = Fecha inicial
 manager.mytasks.list.label.endDate = Fecha final
 manager.mytasks.list.label.workFlow = Tiempo trabajado
 manager.mytasks.list.label.description = Descripcion
-manager.mytasks.list.label.publicTask = Tarea publica
+manager.mytasks.list.label.publicTask = Tarea Publica
 
 manager.mytasks.form.label.title = Titulo
 manager.mytasks.form.label.startDate = Fecha inicial
 manager.mytasks.form.label.endDate = Fecha final
 manager.mytasks.form.label.description = Descripcion
 manager.mytasks.form.label.workFlow = Flujo de trabajo
-manager.mytasks.form.label.publicTask = Tarea Publica
+manager.mytasks.form.label.publicTask = Publicar tarea
 manager.mytasks.form.label.url = Enlace
 
 manager.mytasks.error.dates = La fecha de fin debe ser después de la fecha de inicio
