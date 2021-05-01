@@ -114,4 +114,31 @@ public class AdministratorSpamFilterService implements AbstractListService<Admin
 		}
 		return count;
 	}
+	
+    public Boolean filtroTasks(final Task task) {
+        final SpamFilter spamFilter = this.repository.getSpamFilter();
+        final Collection<Spamword> spamwords = spamFilter.getLista();
+        final Double umbral = spamFilter.getThreshold();
+        final String title = task.getTitle().toLowerCase();
+        final String description = task.getDescription().toLowerCase();
+        Integer count = 0;
+        for(final Spamword sw: spamwords) {
+            if(title.contains(sw.getWord().toLowerCase())) {
+                count++;
+            }
+            if(description.contains(sw.getWord().toLowerCase())) {
+                count++;
+            }
+        }
+        
+        final Integer cantPalabras = title.split(" ").length + description.split(" ").length;
+        final Double operacion = (double)count/cantPalabras*100.0;
+        if(operacion >= umbral) {
+            return false;
+        }else {
+            return true;
+        }
+        
+        
+    }
 }
