@@ -1,0 +1,5 @@
+administrator.spamfilter.form.button.return = Return
+administrator.spamfilter.list.label.spamword = Spam word
+administrator.spamfilter.form.label.spamword = Spam word
+administrator.spamfilter.form.button.update = Update
+administrator.spamfilter.form.button.create = Crear palabra spam
