@@ -37,7 +37,8 @@ master.menu.anonymous.list-tasks= Tasks
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
-master.menu.administrator.dashboard = Dashboard
+master.menu.administrator.task.dashboard = Dashboard Tasks
+master.menu.administrator.workplan.dashboar = Dashboard Work Plans
 master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
