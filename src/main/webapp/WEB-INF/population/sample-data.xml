@@ -301,7 +301,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
   
   
  <!--  ################### WORKPLANS ################### -->
- 	<bean id="workplan1" class="acme.entities.workplans.WorkPlan">
+ 	<bean id="workplan1" class="acme.entities.workplans.Workplan">
  		<property name="startDate" value="2021/04/29 13:00"/>
  		<property name="endDate" value="2021/04/29 14:30"/>
  		<property name="workLoad" value="1.0"/>

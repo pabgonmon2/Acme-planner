@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -22,7 +23,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class WorkPlan extends DomainEntity{
+public class Workplan extends DomainEntity{
 	
 	// Serialisation identifier -----------------------------------------------
 
@@ -30,11 +31,9 @@ public class WorkPlan extends DomainEntity{
 
 			// Attributes -------------------------------------------------------------			
 			@Temporal(TemporalType.TIMESTAMP)
-			@NotNull
 			private Date startDate;
 			
 			@Temporal(TemporalType.TIMESTAMP)
-			@NotNull
 			private Date endDate;
 			
 			@Min(0)
@@ -47,7 +46,7 @@ public class WorkPlan extends DomainEntity{
 			
 			// Relationships
 			@Valid
-			@ManyToMany
+			@ManyToMany(fetch=FetchType.EAGER)
 			protected Set<Task> tasks;
 			
 			@Valid
@@ -86,7 +85,7 @@ public class WorkPlan extends DomainEntity{
 					return false;
 				if (this.getClass() != obj.getClass())
 					return false;
-				final WorkPlan other = (WorkPlan) obj;
+				final Workplan other = (Workplan) obj;
 				if (this.endDate == null) {
 					if (other.endDate != null)
 						return false;
@@ -117,6 +116,18 @@ public class WorkPlan extends DomainEntity{
 
 			@Override
 			public String toString() {
-				return "WorkPlan [startDate=" + this.startDate + ", endDate=" + this.endDate + ", workLoad=" + this.workLoad + ", publicPlan=" + this.publicPlan + ", tasks=" + this.tasks + "]";
+				return "Workplan [startDate=" + this.startDate + ", endDate=" + this.endDate + ", workLoad=" + this.workLoad + ", publicPlan=" + this.publicPlan + ", tasks=" + this.tasks + "]";
+			}
+			
+			public void setWorkLoad() {
+				this.workLoad=this.tasks.stream().mapToDouble(Task::getWorkFlow).sum();
+			}
+			
+			public void setStartDate() {
+				this.startDate=this.tasks.stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(null);
+			}
+			
+			public void setEndDate() {
+				this.endDate=this.tasks.stream().map(Task::getEndDate).max((x,y)->x.compareTo(y)).orElse(null);
 			}
 }

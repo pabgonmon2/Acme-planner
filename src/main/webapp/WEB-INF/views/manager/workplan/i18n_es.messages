@@ -1,0 +1,14 @@
+manager.workplan.list.label.startDate= Fecha Inicio
+manager.workplan.list.label.endDate= Fecha Fin
+manager.workplan.list.label.workLoad= Tiempo de trabajo
+
+manager.workplan.form.label.startDate= Fecha Inicio
+manager.workplan.form.label.endDate= Fecha Fin
+manager.workplan.form.label.workLoad= Tiempo de trabajo
+manager.workplan.form.label.publicPlan= ¿Es publico?
+manager.workplan.form.button.create= Crear
+manager.workplan.form.button.return= Volver
+
+manager.workplan.tasks.title= Titulo
+manager.workplan.tasks.description= Descripcion
+manager.workplan.tasks.workflow= Carga de trabajo
