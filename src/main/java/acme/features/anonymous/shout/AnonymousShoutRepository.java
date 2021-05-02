@@ -7,23 +7,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.shouts.Shout;
-import acme.entities.spamfilter.Spamword;
-import acme.entities.spamfilter.Threshold;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
 public interface AnonymousShoutRepository extends AbstractRepository{
 	
-	@Query("select s from Shout s")
+	@Query("select s from Shout s ORDER BY s.moment DESC")
 	Collection<Shout> findMany();
 	
-	@Query("select s from Shout s where s.moment >= ?1")
+	@Query("select s from Shout s where s.moment >= ?1 ORDER BY s.moment DESC")
 	Collection<Shout> findRecentShouts(Date deadline);
 	
-	@Query("SELECT sw FROM Spamword sw")
-	Collection<Spamword> findAllSpamWords();
 	
-	@Query("SELECT th FROM Threshold th")
-	Threshold getValue();
-
 }

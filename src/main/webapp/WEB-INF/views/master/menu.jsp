@@ -36,10 +36,15 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.task.dashboard" action="/administrator/dashboard/list"/>
 			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.spamwords" action="/administrator/spamword/list"/>
+			<acme:menu-suboption code="master.menu.administrator.threshold" action="/administrator/threshold/list"/>
+			<acme:menu-suboption code="master.menu.administrator.createSW" action="/administrator/spamword/create"/>
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/master/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/master/populate-sample"/>			
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shutdown" action="/master/shutdown"/>
+			
 		</acme:menu-option>
 		
 

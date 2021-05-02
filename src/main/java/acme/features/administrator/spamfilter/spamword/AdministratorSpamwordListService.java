@@ -1,4 +1,4 @@
-package acme.features.administrator.spamfilter;
+package acme.features.administrator.spamfilter.spamword;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,49 +9,48 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.shouts.Shout;
-import acme.entities.spamfilter.SpamFilter;
 import acme.entities.spamfilter.Spamword;
 import acme.entities.tasks.Task;
+import acme.features.administrator.spamfilter.AdministratorSpamFilterRepository;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Administrator;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AdministratorSpamFilterService implements AbstractListService<Administrator, SpamFilter>{
+public class AdministratorSpamwordListService implements AbstractListService<Administrator, Spamword>{
 
 	
 	@Autowired
 	AdministratorSpamFilterRepository repository;
 	
 	@Override
-	public boolean authorise(final Request<SpamFilter> request) {
+	public boolean authorise(final Request<Spamword> request) {
 
 		assert request != null;
 		return true;
 	}
 
 	@Override
-	public void unbind(final Request<SpamFilter> request, final SpamFilter entity, final Model model) {
+	public void unbind(final Request<Spamword> request, final Spamword entity, final Model model) {
 
 		assert request!=null;
 		assert entity!=null;
 		assert model!=null;
 		
-		request.unbind(entity, model, "word");
+		request.unbind(entity, model, "spamword");
 	}
 
 	@Override
-	public Collection<SpamFilter> findMany(final Request<SpamFilter> request) {
-		final Collection<SpamFilter> r = null;
-		return r;
+	public Collection<Spamword> findMany(final Request<Spamword> request) {
+
+		return this.repository.getSpamwords();
 	}
 	
 	
 	public Boolean filtro(final Shout shout) {
-		final SpamFilter spamFilter = this.repository.getSpamFilter();
-		final List<Spamword> spamwords = spamFilter.getLista().stream().collect(Collectors.toList());
-		final Double umbral = spamFilter.getThreshold();
+		final List<Spamword> spamwords = this.repository.getSpamwords().stream().collect(Collectors.toList());
+		final Double umbral = this.repository.getThreshold().stream().collect(Collectors.toList()).get(0).getValue();
 		final String autor = shout.getAuthor().toLowerCase();
 		final String mensaje = shout.getText().toLowerCase();
 		final Integer countCompuestasAutor = this.compruebaSpamWordsCompuestas(spamwords, autor);
@@ -75,7 +74,7 @@ public class AdministratorSpamFilterService implements AbstractListService<Admin
 		final List<Spamword> swCompuestas = this.escogeCompuestas(spamwords);
 
 		for(final Spamword sw : swCompuestas) {
-			final String[] s = sw.getWord().split(" ");
+			final String[] s = sw.getSpamword().split(" ");
 			for(Integer i=0; i<t.length-1;i++) {
 				if(s[0].equals(t[i]) && s[1].equals(t[i+1])) {
 					count++;
@@ -89,7 +88,7 @@ public class AdministratorSpamFilterService implements AbstractListService<Admin
 		final List<Spamword> swCompuestas = new ArrayList<Spamword>();
 		for(Integer i=0; i<spamwords.size();i++) {
 			final Spamword sw  = spamwords.get(i);
-			if(sw.getWord().split(" ").length > 1) {
+			if(sw.getSpamword().split(" ").length > 1) {
 				swCompuestas.add(sw);
 			}
 		}
@@ -104,7 +103,7 @@ public class AdministratorSpamFilterService implements AbstractListService<Admin
 
 		for(final Spamword sw : spamwords) {
 			if(!swCompuestas.contains(sw)) {
-				final String sws = sw.getWord();
+				final String sws = sw.getSpamword();
 				for(Integer i=0; i<t.length;i++) {
 					if(sws.equals(t[i])) {
 						count++;
@@ -116,9 +115,8 @@ public class AdministratorSpamFilterService implements AbstractListService<Admin
 	}
 	
     public Boolean filtroTasks(final Task task) {
-		final SpamFilter spamFilter = this.repository.getSpamFilter();
-		final List<Spamword> spamwords = spamFilter.getLista().stream().collect(Collectors.toList());
-		final Double umbral = spamFilter.getThreshold();
+    	final List<Spamword> spamwords = this.repository.getSpamwords().stream().collect(Collectors.toList());
+		final Double umbral = this.repository.getThreshold().stream().collect(Collectors.toList()).get(0).getValue();
 		final String title = task.getTitle().toLowerCase();
 		final String description = task.getDescription().toLowerCase();
 		final Integer countCompuestasAutor = this.compruebaSpamWordsCompuestas(spamwords, title);
