@@ -3,3 +3,4 @@ administrator.spamfilter.form.label.spamword = Palabra spam
 administrator.spamfilter.list.label.spamword = Palabra spam
 administrator.spamfilter.form.button.update = Actualizar
 administrator.spamfilter.form.button.create = Create spam word
+administrator.spamfilter.form.button.delete = Eliminar

@@ -16,7 +16,7 @@ import acme.framework.entities.Administrator;
 public class AdministratorSpamwordController extends AbstractController<Administrator, Spamword>{
 	
 	@Autowired
-	private AdministratorSpamwordListService spamFilterService;
+	private AdministratorSpamwordListService spamwordListService;
 	
 	@Autowired
 	private AdministratorSpamwordUpdateService spamwordUpdateService;
@@ -27,11 +27,15 @@ public class AdministratorSpamwordController extends AbstractController<Administ
 	@Autowired
 	private AdministratorSpamwordCreateService spamwordCreateService;
 	
+	@Autowired
+	private AdministratorSpamwordDeleteService spamwordDeleteService;
+	
 	@PostConstruct
 	private void initialise() {
-		super.addBasicCommand(BasicCommand.LIST, this.spamFilterService);
+		super.addBasicCommand(BasicCommand.LIST, this.spamwordListService);
 		super.addBasicCommand(BasicCommand.SHOW, this.spamwordShowService);
 		super.addBasicCommand(BasicCommand.UPDATE, this.spamwordUpdateService);
 		super.addBasicCommand(BasicCommand.CREATE, this.spamwordCreateService);
+		super.addBasicCommand(BasicCommand.DELETE, this.spamwordDeleteService);
 	}
 }
