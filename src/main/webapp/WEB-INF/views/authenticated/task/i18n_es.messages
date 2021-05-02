@@ -5,4 +5,5 @@ authenticated.task.list.label.workFlow = Tiempo trabajado
 authenticated.task.list.label.description = Descripcion
 authenticated.task.list.label.publicTask = Tarea publica
 authenticated.task.list.label.id = ID
+authenticated.task.list.label.url= URL
 authenticated.provider.form.button.return = Retorno
