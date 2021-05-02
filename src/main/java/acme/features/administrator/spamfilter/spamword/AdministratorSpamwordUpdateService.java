@@ -17,8 +17,6 @@ public class AdministratorSpamwordUpdateService implements AbstractUpdateService
 	@Autowired
 	protected AdministratorSpamFilterRepository repository;
 
-	// AbstractUpdateService<Authenticated, Consumer> interface -----------------
-
 
 	@Override
 	public boolean authorise(final Request<Spamword> request) {
@@ -75,15 +73,5 @@ public class AdministratorSpamwordUpdateService implements AbstractUpdateService
 
 		this.repository.save(entity);
 	}
-
-//	@Override
-//	public void onSuccess(final Request<Spamword> request, final Response<Spamword> response) {
-//		assert request != null;
-//		assert response != null;
-//
-//		if (request.isMethod(HttpMethod.POST)) {
-//			PrincipalHelper.handleUpdate();
-//		}
-//	}
 
 }
