@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -12,6 +13,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import acme.entities.roles.Manager;
 import acme.entities.tasks.Task;
 import acme.framework.entities.DomainEntity;
 import lombok.Getter;
@@ -47,6 +49,10 @@ public class WorkPlan extends DomainEntity{
 			@Valid
 			@ManyToMany
 			protected Set<Task> tasks;
+			
+			@Valid
+			@ManyToOne(optional = true)
+			protected Manager manager;
 
 			@Override
 			@Transient

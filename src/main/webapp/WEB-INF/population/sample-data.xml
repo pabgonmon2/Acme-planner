@@ -197,6 +197,21 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="manager" ref="manager3"/>
 	</bean>
   
+ <!--  ################### WORKPLANS ################### -->
+ 	<bean id="workplan1" class="acme.entities.workplans.WorkPlan">
+ 		<property name="startDate" value="2021/04/29 13:00"/>
+ 		<property name="endDate" value="2021/04/29 14:30"/>
+ 		<property name="workLoad" value="1.0"/>
+ 		<property name="publicPlan" value="true"/>
+ 		<property name="manager" ref="manager3"/>
+ 		<property name="tasks">
+				<set>
+					<ref bean="task10" />
+					<ref bean="task4" />
+				</set>
+		</property>
+ 	</bean>
+  
  <!--  ################### SHOUTS ################### -->
 	<bean id="shout1" class="acme.entities.shouts.Shout">
 		<property name="moment" value="2021/04/09 15:55"/>
