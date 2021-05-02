@@ -14,7 +14,7 @@ import acme.framework.repositories.AbstractRepository;
 public interface AdministratorSpamFilterRepository extends AbstractRepository{
 	
 	
-	@Query("SELECT sw FROM Spamword sw")
+	@Query("SELECT sw FROM Spamword sw ORDER BY sw.id DESC")
 	Collection<Spamword> getSpamwords();
 	
 	@Query("SELECT th FROM Threshold th")

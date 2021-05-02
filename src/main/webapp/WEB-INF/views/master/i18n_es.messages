@@ -43,6 +43,7 @@ master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shutdown = Parar el sistema
 master.menu.administrator.spamwords = Filtro de spam
 master.menu.administrator.threshold = Umbral de spam
+master.menu.administrator.createSW = Añadir palabra spam
 
 # master.menu.manager ########################################################
 

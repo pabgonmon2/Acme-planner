@@ -44,6 +44,7 @@ master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shutdown = Shut down
 master.menu.administrator.spamwords = Spam filter
 master.menu.administrator.threshold = Spam threshold
+master.menu.administrator.createSW = Add spam word
 
 # master.menu.manager ########################################################
 
