@@ -23,6 +23,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.create-shout" action="/anonymous/shout/create"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.list-tasks" action="/anonymous/task/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-workplans" action="/anonymous/workplan/list"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
@@ -33,6 +34,7 @@
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.task.dashboard" action="/administrator/dashboard/list"/>
+			<acme:menu-suboption code="master.menu.administrator.workplan.dashboar" action="/administrator/dashboardwp/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.spamwords" action="/administrator/spamword/list"/>
 			<acme:menu-suboption code="master.menu.administrator.threshold" action="/administrator/threshold/list"/>

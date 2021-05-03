@@ -46,11 +46,12 @@ public class Workplan extends DomainEntity{
 			
 			// Relationships
 			@Valid
-			@ManyToMany(fetch=FetchType.EAGER)
+
+			@ManyToMany(fetch = FetchType.EAGER)
 			protected Set<Task> tasks;
 			
 			@Valid
-			@ManyToOne(optional = true)
+			@ManyToOne(optional = false)
 			protected Manager manager;
 
 			@Override
@@ -116,25 +117,17 @@ public class Workplan extends DomainEntity{
 
 			@Override
 			public String toString() {
-				return "Workplan [startDate=" + this.startDate + ", endDate=" + this.endDate + ", workLoad=" + this.workLoad + ", publicPlan=" + this.publicPlan + ", tasks=" + this.tasks + "]";
+        	return "WorkPlan [startDate=" + this.startDate + ", endDate=" + this.endDate + ", workLoad=" + this.workLoad + ", publicPlan=" + this.publicPlan + ", tasks=" + this.tasks + "]";
 			}
 			
 			public void setWorkLoad() {
 				this.workLoad=this.tasks.stream().mapToDouble(Task::getWorkFlow).sum();
 			}
-			
-//			public void setStartDate() {
-//
-//				this.startDate=this.tasks.stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(null);
-//			}
-//			
-//			public void setEndDate() {
-//				this.endDate=this.tasks.stream().map(Task::getEndDate).max((x,y)->x.compareTo(y)).orElse(null);
-//			}
-			
+  
 			public boolean canUpdate() {
 				Date now;
 				now = new Date(System.currentTimeMillis());
 				return this.endDate.after(now);
-			}
+      }
+			
 }
