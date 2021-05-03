@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -45,11 +46,11 @@ public class Workplan extends DomainEntity{
 			
 			// Relationships
 			@Valid
-			@ManyToMany
+			@ManyToMany(fetch = FetchType.EAGER)
 			protected Set<Task> tasks;
 			
 			@Valid
-			@ManyToOne(optional = true)
+			@ManyToOne(optional = false)
 			protected Manager manager;
 
 			@Override
