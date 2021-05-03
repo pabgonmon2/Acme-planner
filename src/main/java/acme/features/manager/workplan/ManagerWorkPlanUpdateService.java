@@ -1,12 +1,16 @@
 package acme.features.manager.workplan;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.roles.Manager;
+import acme.entities.tasks.Task;
 import acme.entities.workplans.Workplan;
+import acme.features.manager.task.ManagerMyTasksRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -17,6 +21,9 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 
 	@Autowired
 	protected ManagerWorkPlanRepository repository;
+	@Autowired
+	protected ManagerMyTasksRepository tasksRepository;
+	
 	@Override
 	public boolean authorise(final Request<Workplan> request) {
 		assert request!=null;
@@ -77,6 +84,31 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 			errors.state(request, b2a, "endDate", "manager.workplan.error.endDate.task");
 		}
 		
+		Collection<Task>ta;
+		
+		if(!wp.getTasks().isEmpty()) {
+			final Date startRecommend=wp.getTasks().stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(null);
+			startRecommend.setDate(startRecommend.getDate()-1);
+			startRecommend.setHours(8);
+			startRecommend.setMinutes(0);
+			
+			final Date finalRecommend=wp.getTasks().stream().map(Task::getEndDate).min((x,y)->x.compareTo(y)).orElse(null);
+			finalRecommend.setDate(finalRecommend.getDate()+1);
+			finalRecommend.setHours(17);
+			finalRecommend.setMinutes(0);
+			request.getModel().setAttribute("startRecommend", startRecommend);
+			request.getModel().setAttribute("finalRecommend", finalRecommend);
+			}
+			if(wp.getPublicPlan())ta= this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
+			else ta= this.tasksRepository.findMyTasks(wp.getManager().getId());
+			ta.stream().filter(x->!wp.getTasks().contains(x)).collect(Collectors.toSet());
+			
+			request.getModel().setAttribute("tasksInsert", ta);
+		
+		if(wp.getEndDate()!=null)request.getModel().setAttribute("canUpdate", wp.canUpdate());
+		else request.getModel().setAttribute("canUpdate",true);
+		
+		request.getModel().setAttribute("tasks", wp.getTasks());
 	}
 	
 	public Boolean validacionFechas(final Workplan wp) {

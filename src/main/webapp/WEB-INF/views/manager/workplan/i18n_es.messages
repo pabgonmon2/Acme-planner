@@ -13,6 +13,9 @@ manager.workplan.form.button.update= Actualizar
 manager.workplan.form.button.publish= Publicar
 manager.workplan.form.addTask= Añadir Tarea
 manager.workplan.form.button.addTask= Añadir
+manager.workpla.form.public.true=Visibilidad: Publico
+manager.workpla.form.public.false=Visibilidad: Privado
+
 
 manager.workplan.error.dates = La fecha de fin debe ser después de la fecha de inicio
 manager.workplan.error.startDate = La fecha inicial debe ser posterior a la fecha actual

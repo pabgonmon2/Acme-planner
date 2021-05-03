@@ -13,8 +13,11 @@ manager.workplan.form.button.publish= Publish
 manager.workplan.form.button.return= Return
 manager.workplan.form.addTask= Add Task
 manager.workplan.form.button.addTask=Add
+manager.workplan.form.public.true=Visibility: Public
+manager.workplan.form.public.false=Visibility: Private
 
-manager.workplan.error.dates = End date must be before start date
+
+manager.workplan.error.dates = End date must be after start date
 manager.workplan.error.startDate = Start date must be later current date
 manager.workplan.error.endDate = End date must be later current date
 manager.workplan.error.arentPublic= Any task is private

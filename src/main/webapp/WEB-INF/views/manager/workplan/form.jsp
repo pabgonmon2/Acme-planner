@@ -5,53 +5,56 @@
 
 
 <acme:form>
- 	
- <jstl:if test="${canUpdate}">
+<jstl:if test="${command=='create' }">
 	<acme:form-moment code="manager.workplan.form.label.startDate" path="startDate"/>
-	<jstl:if test="${command!='create' }">
-	<acme:message code="manager.workplan.message.recommend"/>
-	<acme:message code= "${startRecommend}"/>
-</jstl:if>
-</jstl:if>
- <jstl:if test="${!canUpdate}">
-	<acme:form-moment readonly="true" code="manager.workplan.form.label.startDate" path="startDate"/>
+	<acme:form-moment code="manager.workplan.form.label.endDate" path="endDate"/>
+	<acme:form-checkbox readonly="true" code="manager.workplan.form.label.publicPlan" path="publicPlan"/>
+	<acme:form-submit code="manager.workplan.form.button.create" action="/manager/workplan/create"/>
+	
 </jstl:if>
 
- <jstl:if test="${canUpdate}">
-	<acme:form-moment  code="manager.workplan.form.label.endDate" path="endDate"/>
-<jstl:if test="${command!='create' }">
+<jstl:if test="${command!='create' && canUpdate}">
+	<acme:form-moment code="manager.workplan.form.label.startDate" path="startDate"/>
+	<acme:message code="manager.workplan.message.recommend"/>
+	<acme:message code= "${startRecommend}"/>
+
+	<acme:form-moment code="manager.workplan.form.label.endDate" path="endDate"/>
 	<acme:message code="manager.workplan.message.recommend"/>
 	<acme:message code= "${finalRecommend}"/>
+
+	<acme:form-double readonly="true" code="manager.workplan.form.label.workLoad" path="workLoad"/>
+	<acme:form-checkbox readonly="true" code="manager.workplan.form.label.publicPlan" path="publicPlan"/>
+<%-- 	<label for="publicPlan"><acme:message code="manager.workplan.form.public.${publicPlan}" /></label><br/> --%>
+
+	<acme:form-submit code="manager.workplan.form.button.update" action="/manager/workplan/update"/>
+	<acme:form-submit code="manager.workplan.form.button.delete" action="/manager/workplan/delete"/>
 </jstl:if>
-</jstl:if>
-<jstl:if test="${!canUpdate}">
-	<acme:form-moment  readonly="true" code="manager.workplan.form.label.endDate" path="endDate"/>
-</jstl:if>
-<jstl:if test="${command!='create' }">
+
+<jstl:if test="${command!='create' && !canUpdate}">
+	<acme:form-moment readonly="true" code="manager.workplan.form.label.startDate" path="startDate"/>
+	<acme:form-moment readonly="true" code="manager.workplan.form.label.endDate" path="endDate"/>
+
 	<acme:form-double readonly="true" code="manager.workplan.form.label.workLoad" path="workLoad"/>
 	<acme:form-checkbox readonly="true" code="manager.workplan.form.label.publicPlan" path="publicPlan"/>
 </jstl:if>
-	<jstl:if test="${command=='create' }">
-	<acme:form-submit code="manager.workplan.form.button.create" action="/manager/workplan/create"/>
-	</jstl:if>
-	 <jstl:if test="${command!='create' }">
-		<acme:form-submit code="manager.workplan.form.button.delete" action="/manager/workplan/delete"/>
-		 <jstl:if test="${canUpdate}"><acme:form-submit code="manager.workplan.form.button.update" action="/manager/workplan/update"/></jstl:if>
-		<acme:form-submit code="manager.workplan.form.button.publish" action="/manager/workplan/publish"/>
-	</jstl:if>
+
+<jstl:if test="${command!='create' && !publicTask}"> 
+	<acme:form-submit code="manager.workplan.form.button.publish" action="/manager/workplan/publish"/>
+</jstl:if>
+
 	<acme:form-return  code= "manager.workplan.form.button.return"/>
 </acme:form>
 
 <br>
 
-<jstl:if test="${command!='create' && tasks.size()>0 }">
-	<table class="table table-striped table-condensed table-hover nowrap w-100"> 
+<table class="table table-striped table-condensed table-hover nowrap w-100"> 
 		<thead><tr>
 			<th width="20%"><acme:message code="manager.workplan.tasks.title"/></th>
 			<th width="40%"><acme:message code="manager.workplan.tasks.description"/></th>
 			<th width="20%"><acme:message code="manager.workplan.tasks.workflow"/></th>
 			<th></th>
 		</tr></thead>
+<jstl:if test="${command!='create' && tasks.size()>0 }">
 		<tbody>
 			<jstl:forEach items="${tasks}" var="task">
 				<tr class="table-light">
@@ -66,8 +69,9 @@
 				</tr>
 			</jstl:forEach>
 		</tbody>
-	</table>
- </jstl:if>
+		 </jstl:if>
+</table>
+
  
  	 <jstl:if test="${command!='create' && canUpdate}">
 	<acme:form>

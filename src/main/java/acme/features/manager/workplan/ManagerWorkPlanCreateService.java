@@ -51,6 +51,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		final Collection<Task>t;
 		t=this.tasksRepository.findMyTasks(request.getPrincipal().getActiveRoleId());
 		model.setAttribute("tasksInsert", t);
+		model.setAttribute("canUpdate",true);
 		request.unbind(entity, model,"startDate", "endDate");
 		
 	}
@@ -110,6 +111,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 			final Boolean b2 = this.fechaFinalDespuesFechaActual(entity);
 			errors.state(request, b2, "endDate", "manager.workplan.error.endDate");
 		}
+		request.getModel().setAttribute("canUpdate",true);
 	}
 
 	@Override
