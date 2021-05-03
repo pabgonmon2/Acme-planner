@@ -301,9 +301,9 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
   
   
  <!--  ################### WORKPLANS ################### -->
- 	<bean id="workplan1" class="acme.entities.workplans.WorkPlan">
- 		<property name="startDate" value="2021/04/29 13:00"/>
- 		<property name="endDate" value="2021/04/29 14:30"/>
+ 	<bean id="workplan1" class="acme.entities.workplans.Workplan">
+ 		<property name="startDate" value="2021/05/29 13:00"/>
+ 		<property name="endDate" value="2021/05/29 14:30"/>
  		<property name="workLoad" value="1.0"/>
  		<property name="publicPlan" value="true"/>
  		<property name="manager" ref="manager3"/>
@@ -315,13 +315,13 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		</property>
  	</bean>
  	
- 	<bean id="workplan2" class="acme.entities.workplans.WorkPlan">
+ 	<bean id="workplan2" class="acme.entities.workplans.Workplan">
  		<property name="workLoad" value="0.0"/>
  		<property name="publicPlan" value="false"/>
  		<property name="manager" ref="manager3"/>
  	</bean>
  	
- 	<bean id="workplan3" class="acme.entities.workplans.WorkPlan">
+ 	<bean id="workplan3" class="acme.entities.workplans.Workplan">
  		<property name="workLoad" value="0.0"/>
  		<property name="publicPlan" value="false"/>
  		<property name="manager" ref="manager2"/>

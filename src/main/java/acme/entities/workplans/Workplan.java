@@ -22,7 +22,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class WorkPlan extends DomainEntity{
+public class Workplan extends DomainEntity{
 	
 	// Serialisation identifier -----------------------------------------------
 
@@ -84,7 +84,7 @@ public class WorkPlan extends DomainEntity{
 					return false;
 				if (this.getClass() != obj.getClass())
 					return false;
-				final WorkPlan other = (WorkPlan) obj;
+				final Workplan other = (Workplan) obj;
 				if (this.endDate == null) {
 					if (other.endDate != null)
 						return false;
