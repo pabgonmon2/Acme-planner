@@ -31,9 +31,11 @@ public class Workplan extends DomainEntity{
 
 			// Attributes -------------------------------------------------------------			
 			@Temporal(TemporalType.TIMESTAMP)
+			@NotNull
 			private Date startDate;
 			
 			@Temporal(TemporalType.TIMESTAMP)
+			@NotNull
 			private Date endDate;
 			
 			@Min(0)

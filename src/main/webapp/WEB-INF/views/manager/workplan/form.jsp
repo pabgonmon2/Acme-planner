@@ -24,7 +24,6 @@
 
 	<acme:form-double readonly="true" code="manager.workplan.form.label.workLoad" path="workLoad"/>
 	<acme:form-checkbox readonly="true" code="manager.workplan.form.label.publicPlan" path="publicPlan"/>
-<%-- 	<label for="publicPlan"><acme:message code="manager.workplan.form.public.${publicPlan}" /></label><br/> --%>
 
 	<acme:form-submit code="manager.workplan.form.button.update" action="/manager/workplan/update"/>
 	<acme:form-submit code="manager.workplan.form.button.delete" action="/manager/workplan/delete"/>
@@ -46,7 +45,7 @@
 </acme:form>
 
 <br>
-
+<jstl:if test="${command!='create'}">
 <table class="table table-striped table-condensed table-hover nowrap w-100"> 
 		<thead><tr>
 			<th width="20%"><acme:message code="manager.workplan.tasks.title"/></th>
@@ -54,7 +53,7 @@
 			<th width="20%"><acme:message code="manager.workplan.tasks.workflow"/></th>
 			<th></th>
 		</tr></thead>
-<jstl:if test="${command!='create' && tasks.size()>0 }">
+<jstl:if test="${tasks.size()>0 }">
 		<tbody>
 			<jstl:forEach items="${tasks}" var="task">
 				<tr class="table-light">
@@ -71,6 +70,7 @@
 		</tbody>
 		 </jstl:if>
 </table>
+</jstl:if>
 
  
  	 <jstl:if test="${command!='create' && canUpdate}">
