@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import acme.components.CustomCommand;
 import acme.entities.roles.Manager;
 import acme.entities.workplans.Workplan;
 import acme.framework.components.BasicCommand;
@@ -26,6 +27,14 @@ public class ManagerWorkPlanController extends AbstractController<Manager, Workp
 	
 	@Autowired
 	private ManagerWorkPlanDeleteService deleteService;
+	
+	@Autowired
+	private ManagerWorkPlanAddTaskService addTaskService;
+	
+	@Autowired
+	private ManagerWorkPlanUpdateService updateService;
+	@Autowired
+	private ManagerWorkPlanDeleteTaskService deleteTaskService;
 
 	
 	@PostConstruct
@@ -34,6 +43,9 @@ public class ManagerWorkPlanController extends AbstractController<Manager, Workp
 		super.addBasicCommand(BasicCommand.SHOW, this.showService);
 		super.addBasicCommand(BasicCommand.CREATE, this.createService);
 		super.addBasicCommand(BasicCommand.DELETE, this.deleteService);
+		super.addBasicCommand(BasicCommand.UPDATE, this.updateService);
+		super.addCustomCommand(CustomCommand.ADD_TASK, BasicCommand.UPDATE, this.addTaskService);
+		super.addCustomCommand(CustomCommand.DELETE_TASK, BasicCommand.UPDATE, this.deleteTaskService);
 	}
 	
 }

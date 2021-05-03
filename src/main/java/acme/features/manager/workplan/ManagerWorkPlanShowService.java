@@ -1,10 +1,15 @@
 package acme.features.manager.workplan;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.roles.Manager;
+import acme.entities.tasks.Task;
 import acme.entities.workplans.Workplan;
+import acme.features.manager.task.ManagerMyTasksRepository;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.services.AbstractShowService;
@@ -14,6 +19,9 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 
 	@Autowired
 	ManagerWorkPlanRepository repository;
+	
+	@Autowired
+	ManagerMyTasksRepository tasksRepository;
 	
 	@Override
 	public boolean authorise(final Request<Workplan> request) {
@@ -29,6 +37,13 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 		assert request!=null;
 		assert entity!=null;
 		assert model!=null;
+		final int id=request.getModel().getInteger("id");
+		final Workplan wp=this.repository.findById(id);
+		Collection<Task>t;
+		if(wp.getPublicPlan())t=this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
+		else t=this.tasksRepository.findMyTasks(wp.getManager().getId());
+		t.stream().filter(x->!wp.getTasks().contains(x)).collect(Collectors.toSet());
+		model.setAttribute("tasksInsert", t);
 		request.unbind(entity, model, "startDate", "endDate", "workLoad", "publicPlan", "tasks");
 	}
 

@@ -1,9 +1,8 @@
 package acme.features.manager.workplan;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,7 +48,7 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		assert request!=null;
 		assert entity!=null;
 		assert model!=null;
-		Collection<Task>t;
+		final Collection<Task>t;
 		t=this.tasksRepository.findMyTasks(request.getPrincipal().getActiveRoleId());
 		model.setAttribute("tasksInsert", t);
 		request.unbind(entity, model,"startDate", "endDate");
@@ -62,34 +61,61 @@ public class ManagerWorkPlanCreateService implements AbstractCreateService<Manag
 		final Workplan wp=new Workplan();
 		wp.setTasks(new HashSet<>());
 		wp.setWorkLoad(0.0);
-		wp.setEndDate();
-		wp.setStartDate();
+		wp.setManager(this.managerRepository.findManagerById(request.getPrincipal().getActiveRoleId()));
 		return wp;
 	}
 
+	public Boolean validacionFechas(final Workplan wp) {
+		Boolean b = false;
+		if(wp.getStartDate()!=null && wp.getEndDate()!=null) {
+			b = wp.getStartDate().before(wp.getEndDate());
+		}
+		return b;
+	}
+	
+	public Boolean fechaInicialDespuesFechaActual(final Workplan wp) {
+		if(wp.getStartDate()!=null) {
+			final Date actual = new Date(System.currentTimeMillis()-1);
+			return wp.getStartDate().after(actual);
+		} else {
+			return false;
+		}
+	}
+	
+	public Boolean fechaFinalDespuesFechaActual(final Workplan wp) {
+		if(wp.getEndDate()!=null) {
+			final Date actual = new Date(System.currentTimeMillis()-1);
+			return wp.getEndDate().after(actual);
+		} else {
+			return false;
+		}
+	}
+	
 	@Override
 	public void validate(final Request<Workplan> request, final Workplan entity, final Errors errors) {
 		assert request!=null;
 		assert entity!=null;
 		assert errors!=null;
+		
+		if(entity.getEndDate()!=null && entity.getStartDate()!=null) {
+			final Boolean b3 = this.validacionFechas(entity);
+			errors.state(request, b3, "endDate", "manager.workplan.error.dates");
+		}
+		if(entity.getStartDate()!=null) {
+			final Boolean b1 = this.fechaInicialDespuesFechaActual(entity);
+			errors.state(request, b1, "startDate", "manager.workplan.error.startDate");
+		}
+		if(entity.getEndDate()!=null) {
+			final Boolean b2 = this.fechaFinalDespuesFechaActual(entity);
+			errors.state(request, b2, "endDate", "manager.workplan.error.endDate");
+		}
 	}
 
 	@Override
 	public void create(final Request<Workplan> request, final Workplan entity) {
 		assert request!=null;
 		assert entity!=null;
-		entity.setManager(this.managerRepository.findManagerById(request.getPrincipal().getActiveRoleId()));
-		final Set<Task> t=entity.getTasks();
-		final List<String> ids=request.getModel().getAttribute("tasks1", List.class);
-		
-		for(final String id:ids) {
-			t.add(this.tasksRepository.findTaskById(Integer.valueOf(id)));
-		}
-		
-		entity.setTasks(t);
-		entity.setWorkLoad();
-		entity.setEndDate();
-		entity.setStartDate();
+
 		this.repository.save(entity);
 	}
 

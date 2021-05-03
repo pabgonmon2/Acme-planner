@@ -7,7 +7,15 @@ manager.workplan.form.label.endDate= Fecha Fin
 manager.workplan.form.label.workLoad= Tiempo de trabajo
 manager.workplan.form.label.publicPlan= ¿Es publico?
 manager.workplan.form.button.create= Crear
+manager.workplan.form.button.delete= Borrar
 manager.workplan.form.button.return= Volver
+manager.workplan.form.button.update= Actualizar
+manager.workplan.form.addTask= Añadir Tarea
+manager.workplan.form.button.addTask= Añadir
+
+manager.workplan.error.dates = La fecha de fin debe ser después de la fecha de inicio
+manager.workplan.error.startDate = La fecha inicial debe ser posterior a la fecha actual
+manager.workplan.error.endDate = La fecha final debe ser posterior a la fecha actual
 
 manager.workplan.tasks.title= Titulo
 manager.workplan.tasks.description= Descripcion
