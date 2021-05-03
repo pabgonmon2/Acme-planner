@@ -70,7 +70,7 @@ public class Task extends DomainEntity{
 		
 //		@Valid
 //		@ManyToMany
-//		protected Set<WorkPlan> plans;
+//		protected Set<Workplan> plans;
 
 		@Override
 		@Transient

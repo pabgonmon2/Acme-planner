@@ -46,6 +46,7 @@ public class Workplan extends DomainEntity{
 			
 			// Relationships
 			@Valid
+
 			@ManyToMany(fetch = FetchType.EAGER)
 			protected Set<Task> tasks;
 			
@@ -116,6 +117,17 @@ public class Workplan extends DomainEntity{
 
 			@Override
 			public String toString() {
-				return "WorkPlan [startDate=" + this.startDate + ", endDate=" + this.endDate + ", workLoad=" + this.workLoad + ", publicPlan=" + this.publicPlan + ", tasks=" + this.tasks + "]";
+        	return "WorkPlan [startDate=" + this.startDate + ", endDate=" + this.endDate + ", workLoad=" + this.workLoad + ", publicPlan=" + this.publicPlan + ", tasks=" + this.tasks + "]";
 			}
+			
+			public void setWorkLoad() {
+				this.workLoad=this.tasks.stream().mapToDouble(Task::getWorkFlow).sum();
+			}
+  
+			public boolean canUpdate() {
+				Date now;
+				now = new Date(System.currentTimeMillis());
+				return this.endDate.after(now);
+      }
+			
 }
