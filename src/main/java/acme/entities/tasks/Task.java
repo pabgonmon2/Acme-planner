@@ -34,12 +34,13 @@ public class Task extends DomainEntity{
 		private String title;
 		
 		@Temporal(TemporalType.TIMESTAMP)
+		@NotNull
 		private Date startDate;
 		
 		@Temporal(TemporalType.TIMESTAMP)
+		@NotNull
 		private Date endDate;
 		
-		//Validacion: el workflow debe ser momo maximo igual a enddate menos startdate
 		@Min(0)
 		private Double workFlow;
 		
@@ -54,6 +55,12 @@ public class Task extends DomainEntity{
 		private String url;
 		
 		// Derived atttributes ----------------------------------------------------
+		
+		public boolean canUpdate() {
+			Date now;
+			now = new Date(System.currentTimeMillis());
+			return this.endDate.after(now);
+		}
 
 		
 		// Relationships

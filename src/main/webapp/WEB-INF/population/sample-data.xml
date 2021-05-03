@@ -89,6 +89,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 			<property name="roles">
 				<list>
 					<ref bean="administrator2" />
+					<ref bean="auth5" />
+					<ref bean="manager4"/>
 				</list>
 			</property>
 		</bean>
@@ -96,6 +98,34 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<bean name="administrator2" class="acme.framework.entities.Administrator">
 			<property name="userAccount" ref="admin2UserAccount" />
 		</bean>
+		<bean name="auth5" class="acme.framework.entities.Authenticated">
+			<property name="userAccount" ref="admin2UserAccount" />
+		</bean>
+		<bean name="manager4" class="acme.entities.roles.Manager">
+			<property name="userAccount" ref="admin2UserAccount" />
+		</bean>
+		
+		<bean name="autenticadoUserAccount" class="acme.framework.entities.UserAccount">
+			<property name="username" value="fervalnav" />
+			<property name="password" value="Qwerty123" />
+			<property name="enabled" value="true" />
+			<property name="identity">
+				<bean class="acme.datatypes.UserIdentity">
+					<property name="name" value="Fernando" />
+					<property name="surname" value="Valdes" />
+					<property name="email" value="fervalnav@gmail.com" />
+				</bean>
+			</property>
+			<property name="roles">
+				<list>
+					<ref bean="auth6" />
+				</list>
+			</property>
+		</bean>
+		<bean name="auth6" class="acme.framework.entities.Authenticated">
+			<property name="userAccount" ref="autenticadoUserAccount" />
+		</bean>
+
 
  <!--  ################### TASKS ################### -->
 	<bean id="task1" class="acme.entities.tasks.Task">
@@ -149,7 +179,126 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="publicTask" value="true"/>
 		<property name="url" value="https://www.google.com"/>
 		<property name="manager" ref="manager2"/>
-	</bean> 
+
+	</bean>
+	<bean id="task6" class="acme.entities.tasks.Task">
+		<property name="title" value="Hacer tareas DP2"/>
+		<property name="startDate" value="2021/05/04 15:55"/>
+		<property name="endDate" value="2021/05/05 18:00"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Hacer delete de tasks"/>
+		<property name="publicTask" value="false"/>
+		<property name="manager" ref="manager2"/>
+	</bean>
+	<bean id="task7" class="acme.entities.tasks.Task">
+		<property name="title" value="Hacer la compra"/>
+		<property name="startDate" value="2021/06/04 16:00"/>
+		<property name="endDate" value="2021/06/04 18:00"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Ir al mercadona a por cocacola y por yogur"/>
+		<property name="publicTask" value="false"/>
+		<property name="manager" ref="manager3"/>
+	</bean>
+	<bean id="task8" class="acme.entities.tasks.Task">
+		<property name="title" value="Arreglar el coche"/>
+		<property name="startDate" value="2021/07/29 16:00"/>
+		<property name="endDate" value="2021/08/05 18:00"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Cambiar la rueda pinchada"/>
+		<property name="publicTask" value="true"/>
+		<property name="manager" ref="manager2"/>
+	</bean>
+	<bean id="task9" class="acme.entities.tasks.Task">
+		<property name="title" value="Hacer la comida"/>
+		<property name="startDate" value="2021/05/29 13:00"/>
+		<property name="endDate" value="2021/05/29 14:30"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Espaguetis a la carbonara"/>
+		<property name="publicTask" value="false"/>
+		<property name="manager" ref="manager2"/>
+	</bean>
+	<bean id="task10" class="acme.entities.tasks.Task">
+		<property name="title" value="Poner el cuadro"/>
+		<property name="startDate" value="2021/04/29 13:00"/>
+		<property name="endDate" value="2021/04/29 14:30"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Colocar el cuadro en la habitación"/>
+		<property name="publicTask" value="true"/>
+		<property name="manager" ref="manager3"/>
+	</bean>
+	<bean id="task11" class="acme.entities.tasks.Task">
+		<property name="title" value="Lavar los platos"/>
+		<property name="startDate" value="2022/04/29 13:00"/>
+		<property name="endDate" value="2022/04/29 14:30"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Lavar todos los platos de la comunion"/>
+		<property name="publicTask" value="true"/>
+		<property name="manager" ref="manager3"/>
+	</bean>
+	<bean id="task12" class="acme.entities.tasks.Task">
+		<property name="title" value="Cortar el cesped"/>
+		<property name="startDate" value="2022/04/29 13:00"/>
+		<property name="endDate" value="2022/04/29 18:30"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Cortar cesped y bordes del patio principal"/>
+		<property name="publicTask" value="true"/>
+		<property name="manager" ref="manager3"/>
+	</bean>
+	<bean id="task13" class="acme.entities.tasks.Task">
+		<property name="title" value="Lavar los platos"/>
+		<property name="startDate" value="2022/04/29 13:00"/>
+		<property name="endDate" value="2022/04/29 14:30"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Lavar todos los platos de la comunion"/>
+		<property name="publicTask" value="true"/>
+		<property name="manager" ref="manager2"/>
+	</bean>
+	<bean id="task14" class="acme.entities.tasks.Task">
+		<property name="title" value="Cortar el cesped"/>
+		<property name="startDate" value="2022/04/29 13:00"/>
+		<property name="endDate" value="2022/04/29 18:30"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Cortar cesped y bordes del patio principal"/>
+		<property name="publicTask" value="true"/>
+		<property name="manager" ref="manager2"/>
+	</bean>
+	<bean id="task15" class="acme.entities.tasks.Task">
+		<property name="title" value="Arreglar ordenador"/>
+		<property name="startDate" value="2019/04/29 13:00"/>
+		<property name="endDate" value="2019/04/29 14:30"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Volver a conectar los cables de ordeandor"/>
+		<property name="publicTask" value="true"/>
+		<property name="manager" ref="manager3"/>
+	</bean>
+	<bean id="task16" class="acme.entities.tasks.Task">
+		<property name="title" value="Programar algortmo IA"/>
+		<property name="startDate" value="2019/04/29 13:00"/>
+		<property name="endDate" value="2019/04/29 14:30"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Hacer ejercicios de programacion"/>
+		<property name="publicTask" value="true"/>
+		<property name="manager" ref="manager3"/>
+	</bean>
+	<bean id="task17" class="acme.entities.tasks.Task">
+		<property name="title" value="Sacar al perro"/>
+		<property name="startDate" value="2019/04/29 13:00"/>
+		<property name="endDate" value="2019/04/29 14:30"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Dar un paseo por el pueblo a Lebron"/>
+		<property name="publicTask" value="true"/>
+		<property name="manager" ref="manager2"/>
+	</bean>
+	<bean id="task18" class="acme.entities.tasks.Task">
+		<property name="title" value="Estudiar Matematicas"/>
+		<property name="startDate" value="2019/04/29 13:00"/>
+		<property name="endDate" value="2019/04/29 14:30"/>
+		<property name="workFlow" value="0.0"/>
+		<property name="description" value="Estudiar para el examen de matematicas"/>
+		<property name="publicTask" value="true"/>
+		<property name="manager" ref="manager2"/>
+	</bean>
+  
   
  <!--  ################### SHOUTS ################### -->
 	<bean id="shout1" class="acme.entities.shouts.Shout">
@@ -225,44 +374,46 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	<!--  ################### SPAMFILTER ################### -->
 	
 	<bean id="spamword1" class="acme.entities.spamfilter.Spamword">
-		<property name="word" value="sex"/>
+		<property name="spamword" value="sex"/>
 	</bean> 
 	<bean id="spamword2" class="acme.entities.spamfilter.Spamword">
-		<property name="word" value="viagra"/>
+		<property name="spamword" value="viagra"/>
 	</bean> 
 	<bean id="spamword3" class="acme.entities.spamfilter.Spamword">
-		<property name="word" value="million dollar"/>
+		<property name="spamword" value="million dollar"/>
 	</bean> 
 	<bean id="spamword4" class="acme.entities.spamfilter.Spamword">
-		<property name="word" value="cialis"/>
+		<property name="spamword" value="cialis"/>
 	</bean> 
 	<bean id="spamword5" class="acme.entities.spamfilter.Spamword">
-		<property name="word" value="you've won"/>
+		<property name="spamword" value="you've won"/>
 	</bean> 
 	<bean id="spamword6" class="acme.entities.spamfilter.Spamword">
-		<property name="word" value="hardcore"/>
+		<property name="spamword" value="hard core"/>
 	</bean> 
 	<bean id="spamword7" class="acme.entities.spamfilter.Spamword">
-		<property name="word" value="nigeria"/>
+		<property name="spamword" value="nigeria"/>
 	</bean> 
 	
-	<bean name="spamfilter" class="acme.entities.spamfilter.SpamFilter">
-		<property name="lista" >
-				<list>
-					<ref bean="spamword1" />
-					<ref bean="spamword2" />
-					<ref bean="spamword3" />
-					<ref bean="spamword4" />
-					<ref bean="spamword5" />
-					<ref bean="spamword6" />
-					<ref bean="spamword7" />
-				</list>
-			</property>
-		<property name="threshold" value="10.0" />
+	<bean id="spamword8" class="acme.entities.spamfilter.Spamword">
+		<property name="spamword" value="sexo"/>
+	</bean>
+	<bean id="spamword9" class="acme.entities.spamfilter.Spamword">
+		<property name="spamword" value="millon de dolares"/>
+	</bean>
+	<bean id="spamword10" class="acme.entities.spamfilter.Spamword">
+		<property name="spamword" value="has ganado"/>
+	</bean> 
+	<bean id="spamword11" class="acme.entities.spamfilter.Spamword">
+		<property name="spamword" value="dura"/>
+	</bean>
+	<bean id="spamword12" class="acme.entities.spamfilter.Spamword">
+		<property name="spamword" value="duro"/>
+	</bean>
+	
+	<bean id="threshold1" class="acme.entities.spamfilter.Threshold">
+		<property name="value" value="10.0"/>
 	</bean>
 	
 
-	
-	
-	
 </beans>

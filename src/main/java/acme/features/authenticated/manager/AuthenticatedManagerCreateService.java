@@ -41,8 +41,9 @@ public class AuthenticatedManagerCreateService implements AbstractCreateService<
 	@Override
 	public boolean authorise(final Request<Manager> request) {
 		assert request != null;
-
-		return true;
+		final int id=request.getPrincipal().getAccountId();
+		this.repository.findOneManagerByUserAccountId(id);
+		return this.repository.findOneManagerByUserAccountId(id)==null;
 	}
 
 	@Override
@@ -50,6 +51,7 @@ public class AuthenticatedManagerCreateService implements AbstractCreateService<
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
 	}
 
 	@Override

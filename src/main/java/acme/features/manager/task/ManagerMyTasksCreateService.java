@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.roles.Manager;
 import acme.entities.tasks.Task;
-import acme.features.administrator.spamfilter.AdministratorSpamFilterService;
+import acme.features.administrator.spamfilter.spamword.AdministratorSpamwordListService;
 import acme.features.authenticated.manager.AuthenticatedManagerRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
@@ -24,7 +24,7 @@ public class ManagerMyTasksCreateService implements AbstractCreateService<Manage
 	protected AuthenticatedManagerRepository managerRepo;
 	
 	@Autowired
-	protected AdministratorSpamFilterService spamService;
+	protected AdministratorSpamwordListService spamService;
 	
 	@Override
 	public boolean authorise(final Request<Task> request) {
@@ -53,23 +53,37 @@ public class ManagerMyTasksCreateService implements AbstractCreateService<Manage
 		assert request != null;
 		Task task;
 		final Double workFlow = 0.0;
+		final Boolean publicTask = false;
 		task = new Task();
 		task.setWorkFlow(workFlow);
+		task.setPublicTask(publicTask);
 		return task;
 	}
 	
 	public Boolean validacionFechas(final Task task) {
-		return task.getStartDate().before(task.getEndDate());
+		Boolean b = false;
+		if(task.getStartDate()!=null && task.getEndDate()!=null) {
+			b = task.getStartDate().before(task.getEndDate());
+		}
+		return b;
 	}
 	
 	public Boolean fechaInicialDespuesFechaActual(final Task task) {
-		final Date actual = new Date(System.currentTimeMillis()-1);
-		return task.getStartDate().after(actual);
+		if(task.getStartDate()!=null) {
+			final Date actual = new Date(System.currentTimeMillis()-1);
+			return task.getStartDate().after(actual);
+		} else {
+			return false;
+		}
 	}
 	
 	public Boolean fechaFinalDespuesFechaActual(final Task task) {
-		final Date actual = new Date(System.currentTimeMillis()-1);
-		return task.getEndDate().after(actual);
+		if(task.getEndDate()!=null) {
+			final Date actual = new Date(System.currentTimeMillis()-1);
+			return task.getEndDate().after(actual);
+		} else {
+			return false;
+		}
 	}
 
 	@Override
@@ -78,13 +92,19 @@ public class ManagerMyTasksCreateService implements AbstractCreateService<Manage
 		assert entity!=null;
 		assert errors!=null;
 		
-		final Boolean b1 = this.fechaInicialDespuesFechaActual(entity);
-		final Boolean b2 = this.fechaFinalDespuesFechaActual(entity);
-		final Boolean b3 = this.validacionFechas(entity);
+		if(entity.getEndDate()!=null && entity.getStartDate()!=null) {
+			final Boolean b3 = this.validacionFechas(entity);
+			errors.state(request, b3, "endDate", "manager.mytasks.error.dates");
+		}
+		if(entity.getStartDate()!=null) {
+			final Boolean b1 = this.fechaInicialDespuesFechaActual(entity);
+			errors.state(request, b1, "startDate", "manager.mytasks.error.startDate");
+		}
+		if(entity.getEndDate()!=null) {
+			final Boolean b2 = this.fechaFinalDespuesFechaActual(entity);
+			errors.state(request, b2, "endDate", "manager.mytasks.error.endDate");
+		}
 		final Boolean spam = this.spamService.filtroTasks(entity);
-		errors.state(request, b1, "startDate", "manager.mytasks.error.startDate");
-		errors.state(request, b2, "endDate", "manager.mytasks.error.endDate");
-		errors.state(request, b3, "endDate", "manager.mytasks.error.dates");
 		errors.state(request, spam, "description", "manager.mytasks.error.spam");
 	}
 
@@ -94,11 +114,13 @@ public class ManagerMyTasksCreateService implements AbstractCreateService<Manage
 		assert entity!=null;
 		
 		final Double workFlow = 0.0;
+		final Boolean publicTask = false;
 		final Manager manager;
 		final int id = request.getPrincipal().getActiveRoleId();
 		manager = this.managerRepo.findManagerById(id);
 		
 		entity.setWorkFlow(workFlow);
+		entity.setPublicTask(publicTask);
 		entity.setManager(manager);
 		this.repository.save(entity);
 	}

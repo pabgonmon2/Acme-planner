@@ -16,7 +16,7 @@ public class AuthenticatedTaskListService implements AbstractListService<Authent
 
 	
 	@Autowired
-	AuthenticatedTaskRepository repository;
+	protected AuthenticatedTaskRepository repository;
 
 	@Override
 	public boolean authorise(final Request<Task> request) {
@@ -30,7 +30,7 @@ public class AuthenticatedTaskListService implements AbstractListService<Authent
 		assert entity!=null;
 		assert model!=null;
 		
-		request.unbind(entity, model, "title","startDate","endDate","workFlow","description","publicTask");
+		request.unbind(entity, model, "title","startDate","endDate","workFlow","description","publicTask", "url");
 		
 	}
 
@@ -40,7 +40,7 @@ public class AuthenticatedTaskListService implements AbstractListService<Authent
 		
 		Collection<Task> result;
 		
-		result = this.repository.findPublicTasksNonFinished();
+		result = this.repository.findPublicTasksFinished();
 		
 		return result;
 	}
