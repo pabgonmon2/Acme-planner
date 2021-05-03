@@ -8,24 +8,26 @@
  	
  <jstl:if test="${canUpdate}">
 	<acme:form-moment code="manager.workplan.form.label.startDate" path="startDate"/>
+	<jstl:if test="${command!='create' }">
+	<acme:message code="manager.workplan.message.recommend"/>
+	<acme:message code= "${startRecommend}"/>
+</jstl:if>
 </jstl:if>
  <jstl:if test="${!canUpdate}">
 	<acme:form-moment readonly="true" code="manager.workplan.form.label.startDate" path="startDate"/>
 </jstl:if>
-<jstl:if test="${command!='create' }">
-	<acme:message code="manager.workplan.message.recommend"/>
-	<acme:message code= "${startRecommend}"/>
-</jstl:if>
 
  <jstl:if test="${canUpdate}">
 	<acme:form-moment  code="manager.workplan.form.label.endDate" path="endDate"/>
+<jstl:if test="${command!='create' }">
+	<acme:message code="manager.workplan.message.recommend"/>
+	<acme:message code= "${finalRecommend}"/>
+</jstl:if>
 </jstl:if>
 <jstl:if test="${!canUpdate}">
 	<acme:form-moment  readonly="true" code="manager.workplan.form.label.endDate" path="endDate"/>
 </jstl:if>
 <jstl:if test="${command!='create' }">
-	<acme:message code="manager.workplan.message.recommend"/>
-	<acme:message code= "${finalRecommend}"/>
 	<acme:form-double readonly="true" code="manager.workplan.form.label.workLoad" path="workLoad"/>
 	<acme:form-checkbox readonly="true" code="manager.workplan.form.label.publicPlan" path="publicPlan"/>
 </jstl:if>
@@ -34,7 +36,7 @@
 	</jstl:if>
 	 <jstl:if test="${command!='create' }">
 		<acme:form-submit code="manager.workplan.form.button.delete" action="/manager/workplan/delete"/>
-		<acme:form-submit code="manager.workplan.form.button.update" action="/manager/workplan/update"/>
+		 <jstl:if test="${canUpdate}"><acme:form-submit code="manager.workplan.form.button.update" action="/manager/workplan/update"/></jstl:if>
 		<acme:form-submit code="manager.workplan.form.button.publish" action="/manager/workplan/publish"/>
 	</jstl:if>
 	<acme:form-return  code= "manager.workplan.form.button.return"/>
@@ -56,18 +58,18 @@
 					<td><jstl:out value="${task.title}"/></td>
 					<td><jstl:out value="${task.description}"/></td>
 					<td><jstl:out value="${task.workFlow}"/></td>
-					<td><acme:form>
+					 <jstl:if test="${canUpdate}"><td><acme:form>
 						<input type="hidden" name="deleteTask" value="${task.id}"/>
 						<acme:form-hidden path="id"/>
 						<acme:form-submit code="manager.workplan.form.button.delete" action="/manager/workplan/delete_task"/>
-					</acme:form></td>
+					</acme:form></td></jstl:if>
 				</tr>
 			</jstl:forEach>
 		</tbody>
 	</table>
  </jstl:if>
  
- 	 <jstl:if test="${command!='create' }">
+ 	 <jstl:if test="${command!='create' && canUpdate}">
 	<acme:form>
 		<acme:form-select code="manager.workplan.form.addTask" path="addTask">
 			<jstl:forEach items="${tasksInsert}" var="task">
