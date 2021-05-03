@@ -1,11 +1,11 @@
 package acme.features.manager.workplan;
 
-import org.junit.jupiter.api.Assertions;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.roles.Manager;
-import acme.entities.tasks.Task;
 import acme.entities.workplans.Workplan;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
@@ -57,9 +57,70 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		if(entity.getPublicPlan()) {
-			Assertions.assertTrue(entity.getTasks().stream().map(Task::getPublicTask).allMatch(x->true));
+		
+		final Workplan wp=(Workplan) this.repository.findById(request.getModel().getInteger("id")).get();
+		
+		if(entity.getEndDate()!=null && entity.getStartDate()!=null) {
+			final Boolean b3 = this.validacionFechas(entity);
+			errors.state(request, b3, "endDate", "manager.workplan.error.dates");
 		}
+		if(entity.getStartDate()!=null) {
+			final Boolean b1 = this.fechaInicialDespuesFechaActual(entity);
+			final Boolean b1a = this.validacionFechaInicial(entity);
+			errors.state(request, b1, "startDate", "manager.workplan.error.startDate");
+			errors.state(request, b1a, "startDate", "manager.workplan.error.startDate.task");
+		}
+		if(entity.getEndDate()!=null) {
+			final Boolean b2 = this.fechaFinalDespuesFechaActual(entity);
+			final Boolean b2a = this.validacionFechaFinal(entity);
+			errors.state(request, b2, "endDate", "manager.workplan.error.endDate");
+			errors.state(request, b2a, "endDate", "manager.workplan.error.endDate.task");
+		}
+		
+	}
+	
+	public Boolean validacionFechas(final Workplan wp) {
+		Boolean b = false;
+		if(wp.getStartDate()!=null && wp.getEndDate()!=null) {
+			b = wp.getStartDate().before(wp.getEndDate());
+		}
+		return b;
+	}
+	
+	public Boolean fechaInicialDespuesFechaActual(final Workplan wp) {
+		if(wp.getStartDate()!=null) {
+			final Date actual = new Date(System.currentTimeMillis()-1);
+			return wp.getStartDate().after(actual);
+		} else {
+			return false;
+		}
+	}
+	
+	public Boolean fechaFinalDespuesFechaActual(final Workplan wp) {
+		if(wp.getEndDate()!=null) {
+			final Date actual = new Date(System.currentTimeMillis()-1);
+			return wp.getEndDate().after(actual);
+		} else {
+			return false;
+		}
+	}
+	
+	public Boolean validacionFechaInicial(final Workplan wp) {
+		Boolean b = false;
+		if(wp.getStartDate()!=null) {
+			wp.getTasks().stream().allMatch(x->x.getStartDate().after(wp.getStartDate()));
+			b = wp.getStartDate().before(wp.getEndDate());
+		}
+		return b;
+	}
+	
+	public Boolean validacionFechaFinal(final Workplan wp) {
+		Boolean b = false;
+		if(wp.getEndDate()!=null) {
+			wp.getTasks().stream().allMatch(x->x.getEndDate().before(wp.getEndDate()));
+			b = wp.getStartDate().before(wp.getEndDate());
+		}
+		return b;
 	}
 
 	@Override

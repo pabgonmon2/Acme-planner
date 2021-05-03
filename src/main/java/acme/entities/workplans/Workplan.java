@@ -123,15 +123,18 @@ public class Workplan extends DomainEntity{
 				this.workLoad=this.tasks.stream().mapToDouble(Task::getWorkFlow).sum();
 			}
 			
-			public void setStartDate() {
-//				final Date start=this.tasks.stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(null);
-//				this.startDate=new Date(start.getYear(), start.getMonth(), start.getDate()-1, 8, 0,0);
-				this.startDate=this.tasks.stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(null);
-			}
+//			public void setStartDate() {
+//
+//				this.startDate=this.tasks.stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(null);
+//			}
+//			
+//			public void setEndDate() {
+//				this.endDate=this.tasks.stream().map(Task::getEndDate).max((x,y)->x.compareTo(y)).orElse(null);
+//			}
 			
-			public void setEndDate() {
-//				final Date end=this.tasks.stream().map(Task::getEndDate).max((x,y)->x.compareTo(y)).orElse(null);
-//				this.endDate=new Date(end.getYear(), end.getMonth(), end.getDate()+1, 17, 0,0);
-				this.endDate=this.tasks.stream().map(Task::getEndDate).max((x,y)->x.compareTo(y)).orElse(null);
+			public boolean canUpdate() {
+				Date now;
+				now = new Date(System.currentTimeMillis());
+				return this.endDate.after(now);
 			}
 }

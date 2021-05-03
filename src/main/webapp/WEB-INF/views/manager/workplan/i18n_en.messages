@@ -9,6 +9,7 @@ manager.workplan.form.label.publicPlan= IsPublic
 manager.workplan.form.button.create= Create
 manager.workplan.form.button.delete= Delete
 manager.workplan.form.button.update= Update
+manager.workplan.form.button.publish= Publish
 manager.workplan.form.button.return= Return
 manager.workplan.form.addTask= Add Task
 manager.workplan.form.button.addTask=Add
@@ -16,7 +17,13 @@ manager.workplan.form.button.addTask=Add
 manager.workplan.error.dates = End date must be before start date
 manager.workplan.error.startDate = Start date must be later current date
 manager.workplan.error.endDate = End date must be later current date
+manager.workplan.error.arentPublic= Any task is private
+manager.workplan.error.taskPrivate=Can't add private task into public workplan
+manager.workplan.error.differentManager= Can't add a task of other manager
+manager.workplan.error.startDate.task=Workplan start date must be before first start date of his tasks
+manager.workplan.error.endDate.task=Workplan end date must be after last end date of his tasks
 
+manager.workplan.message.recommend= We recommend: 
 
 manager.workplan.tasks.title= Title
 manager.workplan.tasks.description= Description

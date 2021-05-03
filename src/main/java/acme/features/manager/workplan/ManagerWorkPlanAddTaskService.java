@@ -1,7 +1,6 @@
 package acme.features.manager.workplan;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import java.util.Collection;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +47,13 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		
+		final int id=request.getModel().getInteger("id");
+		final Workplan wp=this.repository.findById(id);
+		Collection<Task>t;
+		t=this.tasksRepository.findMyTasks(wp.getManager().getId());
+		
+		model.setAttribute("tasksInsert", t);
 
 		request.unbind(entity, model, "startDate", "endDate", "workLoad", "publicPlan", "tasks");
 		
@@ -66,11 +72,13 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 		assert entity != null;
 		assert errors != null;
 		
+		final Task t=(Task) this.tasksRepository.findById(request.getModel().getInteger("addTask")).get();
 		if(entity.getPublicPlan()) {
-			assertTrue(entity.getTasks().stream().map(Task::getPublicTask).allMatch(x->true));
-			
+			final Boolean b=t.getPublicTask();
+			errors.state(request,b, "addTask", "manager.workplan.error.taskPrivate");
 		}
-		
+//		final Boolean b1=entity.getManager()==t.getManager();
+//		errors.state(request,b1, "addTask", "manager.workplan.error.differentManager");
 	}
 
 	@Override
@@ -84,8 +92,6 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 		tasks=entity.getTasks();
 		tasks.add(t);
 		wp.setTasks(tasks);
-		wp.setEndDate();
-		wp.setStartDate();
 		wp.setWorkLoad();
 		this.repository.save(wp);
 	}

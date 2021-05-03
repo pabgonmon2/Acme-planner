@@ -76,8 +76,6 @@ public class ManagerWorkPlanDeleteTaskService implements AbstractUpdateService<M
 		tasks=entity.getTasks();
 		tasks.remove(t);
 		wp.setTasks(tasks);
-		wp.setEndDate();
-		wp.setStartDate();
 		wp.setWorkLoad();
 		this.repository.save(wp);
 	}
