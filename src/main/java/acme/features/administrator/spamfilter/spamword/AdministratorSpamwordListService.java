@@ -50,6 +50,9 @@ public class AdministratorSpamwordListService implements AbstractListService<Adm
 	
 	public Boolean filtro(final Shout shout) {
 		final List<Spamword> spamwords = this.repository.getSpamwords().stream().collect(Collectors.toList());
+		if(!spamwords.isEmpty()) {
+			
+		
 		final Double umbral = this.repository.getThreshold().stream().collect(Collectors.toList()).get(0).getValue();
 		final String autor = shout.getAuthor().toLowerCase();
 		final String mensaje = shout.getText().toLowerCase();
@@ -65,6 +68,10 @@ public class AdministratorSpamwordListService implements AbstractListService<Adm
 		}else {
 			return true;
 		}
+		}else {
+			return true;
+		}
+		
 	}
 
 	
@@ -116,6 +123,7 @@ public class AdministratorSpamwordListService implements AbstractListService<Adm
 	
     public Boolean filtroTasks(final Task task) {
     	final List<Spamword> spamwords = this.repository.getSpamwords().stream().collect(Collectors.toList());
+    	if(!spamwords.isEmpty()) {
 		final Double umbral = this.repository.getThreshold().stream().collect(Collectors.toList()).get(0).getValue();
 		final String title = task.getTitle().toLowerCase();
 		final String description = task.getDescription().toLowerCase();
@@ -131,5 +139,8 @@ public class AdministratorSpamwordListService implements AbstractListService<Adm
 		}else {
 			return true;
 		}
+    	}else {
+    		return true;
+    	}
     }
 }
