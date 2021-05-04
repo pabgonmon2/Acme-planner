@@ -2,9 +2,6 @@ package acme.features.anonymous.workplan;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Collection;
-
-import acme.entities.tasks.Task;
 
 import acme.entities.workplans.Workplan;
 import acme.framework.components.Model;
