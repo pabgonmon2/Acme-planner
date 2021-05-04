@@ -185,7 +185,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="title" value="Hacer tareas DP2"/>
 		<property name="startDate" value="2021/05/04 15:55"/>
 		<property name="endDate" value="2021/05/05 18:00"/>
-		<property name="workFlow" value="0.0"/>
+		<property name="workFlow" value="5.0"/>
 		<property name="description" value="Hacer delete de tasks"/>
 		<property name="publicTask" value="false"/>
 		<property name="manager" ref="manager2"/>
@@ -194,7 +194,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="title" value="Hacer la compra"/>
 		<property name="startDate" value="2021/06/04 16:00"/>
 		<property name="endDate" value="2021/06/04 18:00"/>
-		<property name="workFlow" value="0.0"/>
+		<property name="workFlow" value="2.0"/>
 		<property name="description" value="Ir al mercadona a por cocacola y por yogur"/>
 		<property name="publicTask" value="false"/>
 		<property name="manager" ref="manager3"/>
@@ -203,7 +203,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="title" value="Arreglar el coche"/>
 		<property name="startDate" value="2021/07/29 16:00"/>
 		<property name="endDate" value="2021/08/05 18:00"/>
-		<property name="workFlow" value="0.0"/>
+		<property name="workFlow" value="1.0"/>
 		<property name="description" value="Cambiar la rueda pinchada"/>
 		<property name="publicTask" value="true"/>
 		<property name="manager" ref="manager2"/>
@@ -212,7 +212,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="title" value="Hacer la comida"/>
 		<property name="startDate" value="2021/05/29 13:00"/>
 		<property name="endDate" value="2021/05/29 14:30"/>
-		<property name="workFlow" value="0.0"/>
+		<property name="workFlow" value="1.0"/>
 		<property name="description" value="Espaguetis a la carbonara"/>
 		<property name="publicTask" value="false"/>
 		<property name="manager" ref="manager2"/>
@@ -221,7 +221,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="title" value="Poner el cuadro"/>
 		<property name="startDate" value="2021/04/29 13:00"/>
 		<property name="endDate" value="2021/04/29 14:30"/>
-		<property name="workFlow" value="0.0"/>
+		<property name="workFlow" value="1.5"/>
 		<property name="description" value="Colocar el cuadro en la habitación"/>
 		<property name="publicTask" value="true"/>
 		<property name="manager" ref="manager3"/>
@@ -230,7 +230,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="title" value="Lavar los platos"/>
 		<property name="startDate" value="2022/04/29 13:00"/>
 		<property name="endDate" value="2022/04/29 14:30"/>
-		<property name="workFlow" value="0.0"/>
+		<property name="workFlow" value="1.5"/>
 		<property name="description" value="Lavar todos los platos de la comunion"/>
 		<property name="publicTask" value="true"/>
 		<property name="manager" ref="manager3"/>
@@ -239,7 +239,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="title" value="Cortar el cesped"/>
 		<property name="startDate" value="2022/04/29 13:00"/>
 		<property name="endDate" value="2022/04/29 18:30"/>
-		<property name="workFlow" value="0.0"/>
+		<property name="workFlow" value="2.0"/>
 		<property name="description" value="Cortar cesped y bordes del patio principal"/>
 		<property name="publicTask" value="true"/>
 		<property name="manager" ref="manager3"/>
@@ -248,7 +248,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="title" value="Lavar los platos"/>
 		<property name="startDate" value="2022/04/29 13:00"/>
 		<property name="endDate" value="2022/04/29 14:30"/>
-		<property name="workFlow" value="0.0"/>
+		<property name="workFlow" value="1.0"/>
 		<property name="description" value="Lavar todos los platos de la comunion"/>
 		<property name="publicTask" value="true"/>
 		<property name="manager" ref="manager2"/>
@@ -257,7 +257,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="title" value="Cortar el cesped"/>
 		<property name="startDate" value="2022/04/29 13:00"/>
 		<property name="endDate" value="2022/04/29 18:30"/>
-		<property name="workFlow" value="0.0"/>
+		<property name="workFlow" value="3.0"/>
 		<property name="description" value="Cortar cesped y bordes del patio principal"/>
 		<property name="publicTask" value="true"/>
 		<property name="manager" ref="manager2"/>
@@ -266,7 +266,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="title" value="Arreglar ordenador"/>
 		<property name="startDate" value="2019/04/29 13:00"/>
 		<property name="endDate" value="2019/04/29 14:30"/>
-		<property name="workFlow" value="0.0"/>
+		<property name="workFlow" value="1.0"/>
 		<property name="description" value="Volver a conectar los cables de ordeandor"/>
 		<property name="publicTask" value="true"/>
 		<property name="manager" ref="manager3"/>
@@ -275,7 +275,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="title" value="Programar algortmo IA"/>
 		<property name="startDate" value="2019/04/29 13:00"/>
 		<property name="endDate" value="2019/04/29 14:30"/>
-		<property name="workFlow" value="0.0"/>
+		<property name="workFlow" value="1.0"/>
 		<property name="description" value="Hacer ejercicios de programacion"/>
 		<property name="publicTask" value="true"/>
 		<property name="manager" ref="manager3"/>
@@ -284,7 +284,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="title" value="Sacar al perro"/>
 		<property name="startDate" value="2019/04/29 13:00"/>
 		<property name="endDate" value="2019/04/29 14:30"/>
-		<property name="workFlow" value="0.0"/>
+		<property name="workFlow" value="1.0"/>
 		<property name="description" value="Dar un paseo por el pueblo a Lebron"/>
 		<property name="publicTask" value="true"/>
 		<property name="manager" ref="manager2"/>
@@ -293,12 +293,117 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="title" value="Estudiar Matematicas"/>
 		<property name="startDate" value="2019/04/29 13:00"/>
 		<property name="endDate" value="2019/04/29 14:30"/>
-		<property name="workFlow" value="0.0"/>
+		<property name="workFlow" value="1.0"/>
 		<property name="description" value="Estudiar para el examen de matematicas"/>
 		<property name="publicTask" value="true"/>
 		<property name="manager" ref="manager2"/>
 	</bean>
   
+  
+ <!--  ################### WORKPLANS ################### -->
+ 	<bean id="workplan1" class="acme.entities.workplans.Workplan">
+ 		<property name="startDate" value="2021/05/29 13:00"/>
+ 		<property name="endDate" value="2021/05/29 14:30"/>
+ 		<property name="workLoad" value="2.5"/>
+ 		<property name="publicPlan" value="true"/>
+ 		<property name="manager" ref="manager3"/>
+ 		<property name="tasks">
+				<set>
+					<ref bean="task10" />
+					<ref bean="task4" />
+				</set>
+		</property>
+ 	</bean>
+ 	
+ 	<bean id="workplan2" class="acme.entities.workplans.Workplan">
+ 		<property name="startDate" value="2021/05/30 15:00"/>
+ 		<property name="endDate" value="2021/05/30 18:30"/>
+ 		<property name="workLoad" value="4.0"/>
+ 		<property name="publicPlan" value="true"/>
+ 		<property name="manager" ref="manager3"/>
+ 		<property name="tasks">
+				<set>
+					<ref bean="task1" />
+					<ref bean="task4" />
+				</set>
+		</property>
+ 	</bean>
+ 	
+ 	<bean id="workplan3" class="acme.entities.workplans.Workplan">
+ 		<property name="startDate" value="2021/07/30 10:00"/>
+ 		<property name="endDate" value="2021/07/30 11:30"/>
+ 		<property name="workLoad" value="26.0"/>
+ 		<property name="publicPlan" value="true"/>
+ 		<property name="manager" ref="manager3"/>
+ 		<property name="tasks">
+				<set>
+					<ref bean="task5" />
+					<ref bean="task8" />
+				</set>
+		</property>
+ 	</bean>
+ 	
+ 	<bean id="workplan4" class="acme.entities.workplans.Workplan">
+ 		<property name="startDate" value="2021/08/12 12:00"/>
+ 		<property name="endDate" value="2021/08/12 15:00"/>
+ 		<property name="workLoad" value="2.0"/>
+ 		<property name="publicPlan" value="true"/>
+ 		<property name="manager" ref="manager2"/>
+ 		<property name="tasks">
+				<set>
+					<ref bean="task3" />
+					<ref bean="task8" />
+				</set>
+		</property>
+ 	</bean>
+ 	
+ 	<bean id="workplan5" class="acme.entities.workplans.Workplan">
+ 		<property name="startDate" value="2021/05/10 15:00"/>
+ 		<property name="endDate" value="2021/05/10 18:30"/>
+ 		<property name="workLoad" value="2.0"/>
+ 		<property name="publicPlan" value="true"/>
+ 		<property name="manager" ref="manager3"/>
+ 		<property name="tasks">
+				<set>
+					<ref bean="task17" />
+					<ref bean="task18" />
+				</set>
+		</property>
+ 	</bean>
+ 	
+ 	<bean id="workplan6" class="acme.entities.workplans.Workplan">
+ 		<property name="startDate" value="2021/12/30 15:00"/>
+ 		<property name="endDate" value="2021/12/30 18:30"/>
+ 		<property name="workLoad" value="4.0"/>
+ 		<property name="publicPlan" value="true"/>
+ 		<property name="manager" ref="manager3"/>
+ 		<property name="tasks">
+				<set>
+					<ref bean="task14" />
+					<ref bean="task15" />
+				</set>
+		</property>
+ 	</bean>
+ 	
+ 	<bean id="workplan7" class="acme.entities.workplans.Workplan">
+ 		<property name="startDate" value="2021/09/18 20:00"/>
+ 		<property name="endDate" value="2021/09/18 22:30"/>
+ 		<property name="workLoad" value="5.0"/>
+ 		<property name="publicPlan" value="true"/>
+ 		<property name="manager" ref="manager2"/>
+ 		<property name="tasks">
+				<set>
+					<ref bean="task1" />
+					<ref bean="task12" />
+				</set>
+		</property>
+ 	</bean>
+ 	
+ 	<bean id="workplan8" class="acme.entities.workplans.Workplan">
+ 		<property name="workLoad" value="0.0"/>
+ 		<property name="publicPlan" value="false"/>
+ 		<property name="manager" ref="manager2"/>
+ 	</bean>
   
  <!--  ################### SHOUTS ################### -->
 	<bean id="shout1" class="acme.entities.shouts.Shout">
