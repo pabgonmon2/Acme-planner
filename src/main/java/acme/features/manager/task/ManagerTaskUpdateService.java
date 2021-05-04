@@ -47,7 +47,7 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		assert entity!=null;
 		assert model!=null;
 				
-		request.unbind(entity, model, "title","startDate","endDate","workFlow","description","publicTask");
+		request.unbind(entity, model, "title","startDate","endDate","workFlow","description","publicTask", "url");
 		
 	}
 
@@ -129,18 +129,21 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		Double workFlow;
 		String description;
 		Boolean publicTask;
+		String url;
 		
 		title = request.getModel().getString("title");
 		endDate =request.getModel().getDate("endDate");
 		workFlow = request.getModel().getDouble("workFlow");
 		description = request.getModel().getString("description");
 		publicTask = request.getModel().getBoolean("publicTask");
+		url = request.getModel().getString("url");
 		
 		entity.setTitle(title);
 		entity.setEndDate(endDate);
 		entity.setWorkFlow(workFlow);
 		entity.setDescription(description);
 		entity.setPublicTask(publicTask);
+		entity.setUrl(url);
 		
 		this.repository.save(entity);
 		
