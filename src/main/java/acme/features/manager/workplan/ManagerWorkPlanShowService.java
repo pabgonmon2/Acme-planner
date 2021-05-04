@@ -41,7 +41,7 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 		
 		final int id=request.getModel().getInteger("id");
 		final Workplan wp=this.repository.findById(id);
-		Collection<Task>t;
+		final Collection<Task>t;
 		
 		if(!wp.getTasks().isEmpty()) {
 		final Date startRecommend=wp.getTasks().stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(null);
@@ -49,10 +49,13 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 		startRecommend.setHours(8);
 		startRecommend.setMinutes(0);
 		
-		final Date finalRecommend=wp.getTasks().stream().map(Task::getEndDate).min((x,y)->x.compareTo(y)).orElse(null);
+		final Date finalRecommend=wp.getTasks().stream().map(Task::getEndDate).max((x,y)->x.compareTo(y)).orElse(null);
 		finalRecommend.setDate(finalRecommend.getDate()+1);
 		finalRecommend.setHours(17);
 		finalRecommend.setMinutes(0);
+		
+		
+//		finalRecommend.toString().replaceAll("-","/");
 		model.setAttribute("startRecommend", startRecommend);
 		model.setAttribute("finalRecommend", finalRecommend);
 		}

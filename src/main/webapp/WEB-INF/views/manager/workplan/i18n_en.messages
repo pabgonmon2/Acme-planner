@@ -25,6 +25,7 @@ manager.workplan.error.taskPrivate=Can't add private task into public workplan
 manager.workplan.error.differentManager= Can't add a task of other manager
 manager.workplan.error.startDate.task=Workplan start date must be before first start date of his tasks
 manager.workplan.error.endDate.task=Workplan end date must be after last end date of his tasks
+manager.workplan.error.taskStarted=Task is already started
 
 manager.workplan.message.recommend= We recommend: 
 

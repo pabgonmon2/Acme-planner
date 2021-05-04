@@ -25,6 +25,7 @@ manager.workplan.error.taskPrivate=No se puede añadir una tarea privada a un pl
 manager.workplan.error.differentManager= No se puede añadir una tarea de otro manager
 manager.workplan.error.startDate.task=Fecha inicio del plan de trabajo tiene que ser anterior a la primera fecha incial de sus tareas
 manager.workplan.error.endDate.task=Fecha fin del plan de trabajo tiene que ser despues de la ultima fecha fin de sus tareas
+manager.workplan.error.taskStarted=La tarea ya esta empezada
 
 manager.workplan.message.recommend =Recomendamos: 
 

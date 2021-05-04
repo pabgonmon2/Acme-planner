@@ -2,7 +2,7 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <acme:form>
 <jstl:if test="${command=='create' }">
@@ -16,11 +16,11 @@
 <jstl:if test="${command!='create' && canUpdate}">
 	<acme:form-moment code="manager.workplan.form.label.startDate" path="startDate"/>
 	<acme:message code="manager.workplan.message.recommend"/>
-	<acme:message code= "${startRecommend}"/>
-
+	<fmt:formatDate value="${startRecommend}" pattern="yyyy/MM/dd HH:mm" type = "both" dateStyle="short"/>
 	<acme:form-moment code="manager.workplan.form.label.endDate" path="endDate"/>
 	<acme:message code="manager.workplan.message.recommend"/>
-	<acme:message code= "${finalRecommend}"/>
+
+	<fmt:formatDate value="${finalRecommend}" pattern="yyyy/MM/dd HH:mm" type = "both" dateStyle="short"/>
 
 	<acme:form-double readonly="true" code="manager.workplan.form.label.workLoad" path="workLoad"/>
 	<acme:form-checkbox readonly="true" code="manager.workplan.form.label.publicPlan" path="publicPlan"/>
@@ -51,6 +51,8 @@
 			<th width="20%"><acme:message code="manager.workplan.tasks.title"/></th>
 			<th width="40%"><acme:message code="manager.workplan.tasks.description"/></th>
 			<th width="20%"><acme:message code="manager.workplan.tasks.workflow"/></th>
+			<th></th>
+			<th></th>
 			<th></th>
 		</tr></thead>
 <jstl:if test="${tasks.size()>0 }">
