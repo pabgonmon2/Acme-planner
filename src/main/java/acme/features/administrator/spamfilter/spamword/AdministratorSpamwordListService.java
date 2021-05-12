@@ -50,7 +50,15 @@ public class AdministratorSpamwordListService implements AbstractListService<Adm
 	
 	public Boolean filtro(final Shout shout) {
 		final List<Spamword> spamwords = this.repository.getSpamwords().stream().collect(Collectors.toList());
-		final Double umbral = this.repository.getThreshold().stream().collect(Collectors.toList()).get(0).getValue();
+		final Double umbral;
+		if(!spamwords.isEmpty()) {
+			
+		if(!this.repository.getThreshold().isEmpty()) {
+			umbral = this.repository.getThreshold().stream().collect(Collectors.toList()).get(0).getValue();
+		}else {
+			umbral = 10.0;
+		}
+		
 		final String autor = shout.getAuthor().toLowerCase();
 		final String mensaje = shout.getText().toLowerCase();
 		final Integer countCompuestasAutor = this.compruebaSpamWordsCompuestas(spamwords, autor);
@@ -65,6 +73,10 @@ public class AdministratorSpamwordListService implements AbstractListService<Adm
 		}else {
 			return true;
 		}
+		}else {
+			return true;
+		}
+		
 	}
 
 	
@@ -116,20 +128,29 @@ public class AdministratorSpamwordListService implements AbstractListService<Adm
 	
     public Boolean filtroTasks(final Task task) {
     	final List<Spamword> spamwords = this.repository.getSpamwords().stream().collect(Collectors.toList());
-		final Double umbral = this.repository.getThreshold().stream().collect(Collectors.toList()).get(0).getValue();
-		final String title = task.getTitle().toLowerCase();
-		final String description = task.getDescription().toLowerCase();
-		final Integer countCompuestasAutor = this.compruebaSpamWordsCompuestas(spamwords, title);
-		final Integer countCompuestasMensaje = this.compruebaSpamWordsCompuestas(spamwords, description);
-		final Integer countAutor = this.compruebaSpamWords(spamwords, title);
-		final Integer countMensaje = this.compruebaSpamWords(spamwords, description);
-		final Integer count = countAutor + countMensaje + countCompuestasAutor + countCompuestasMensaje;
-		final Integer cantPalabras = title.replaceAll("\\s{2,}", " ").split(" ").length + description.replaceAll("\\s{2,}", " ").split(" ").length;
-		final Double operacion = (double)count/cantPalabras*100.0;
-		if(operacion >= umbral) {
-			return false;
-		}else {
-			return true;
-		}
+    	final Double umbral;
+    	if(!spamwords.isEmpty()) {
+			if(!this.repository.getThreshold().isEmpty()) {
+				umbral = this.repository.getThreshold().stream().collect(Collectors.toList()).get(0).getValue();
+			}else {
+				umbral = 10.0;
+			}
+			final String title = task.getTitle().toLowerCase();
+			final String description = task.getDescription().toLowerCase();
+			final Integer countCompuestasAutor = this.compruebaSpamWordsCompuestas(spamwords, title);
+			final Integer countCompuestasMensaje = this.compruebaSpamWordsCompuestas(spamwords, description);
+			final Integer countAutor = this.compruebaSpamWords(spamwords, title);
+			final Integer countMensaje = this.compruebaSpamWords(spamwords, description);
+			final Integer count = countAutor + countMensaje + countCompuestasAutor + countCompuestasMensaje;
+			final Integer cantPalabras = title.replaceAll("\\s{2,}", " ").split(" ").length + description.replaceAll("\\s{2,}", " ").split(" ").length;
+			final Double operacion = (double)count/cantPalabras*100.0;
+			if(operacion >= umbral) {
+				return false;
+			}else {
+				return true;
+			}
+    	}else {
+    		return true;
+    	}
     }
 }

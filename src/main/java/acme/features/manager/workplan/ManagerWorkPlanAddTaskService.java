@@ -60,6 +60,7 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 		return this.repository.findById(id);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void validate(final Request<Workplan> request, final Workplan entity, final Errors errors) {
 		assert request != null;
@@ -111,6 +112,7 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 	
 	
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void update(final Request<Workplan> request, final Workplan entity) {
 		Set<Task> tasks;

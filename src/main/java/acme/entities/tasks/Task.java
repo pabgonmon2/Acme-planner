@@ -67,10 +67,6 @@ public class Task extends DomainEntity{
 		@Valid
 		@ManyToOne(optional = true)
 		protected Manager manager;
-		
-//		@Valid
-//		@ManyToMany
-//		protected Set<Workplan> plans;
 
 		@Override
 		@Transient

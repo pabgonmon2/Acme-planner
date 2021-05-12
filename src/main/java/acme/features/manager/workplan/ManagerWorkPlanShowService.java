@@ -33,6 +33,7 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 		return wp.getManager().getId()==managerId;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void unbind(final Request<Workplan> request, final Workplan entity, final Model model) {
 		assert request!=null;

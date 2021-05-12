@@ -49,8 +49,6 @@
 		
 
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
-			<acme:menu-suboption code="master.menu.manager.favourite-link" action="http://www.example.com/"/>
-			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.manager.own-tasks" action="/manager/task/list"/>
 			<acme:menu-suboption code="master.menu.manager.create-own-tasks" action="/manager/task/create"/>
 			<acme:menu-separator/>

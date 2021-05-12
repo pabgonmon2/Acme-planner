@@ -20,7 +20,7 @@ public class AdministratorSpamwordUpdateService implements AbstractUpdateService
 
 	@Override
 	public boolean authorise(final Request<Spamword> request) {
-		final boolean result;
+		assert request!=null;
 		
 
 		

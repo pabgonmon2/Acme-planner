@@ -59,6 +59,7 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 		return this.repository.findById(id);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void validate(final Request<Workplan> request, final Workplan entity, final Errors errors) {
 		assert request != null;
