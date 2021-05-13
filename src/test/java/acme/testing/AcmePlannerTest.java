@@ -12,11 +12,12 @@ public class AcmePlannerTest extends AcmeTest{
 		super.beforeAll();
 
 		super.setBaseCamp("http", "localhost", "8080", "/Acme-Planner", "/master/welcome", "?language=en&debug=true");
-		super.setAutoPausing(true);
+		super.setAutoPausing(false);
 		
 		this.navigateHome();
 		this.signIn("administrator", "administrator");
 		super.clickOnMenu("Administrator", "Populate DB (samples)");
+		super.checkAlertExists(true);
 		this.signOut();
 	}
 	
@@ -28,7 +29,7 @@ public class AcmePlannerTest extends AcmeTest{
 		super.clickOnMenu("Sign in", null);
 		super.fillInputBoxIn("username", username);
 		super.fillInputBoxIn("password", password);
-		super.fillInputBoxIn("remenber", "true");
+		super.fillInputBoxIn("remember", "true");
 		super.clickOnSubmitButton("Sign in");
 		super.checkSimplePath("/master/welcome");
 		super.checkLinkExists("Account");
