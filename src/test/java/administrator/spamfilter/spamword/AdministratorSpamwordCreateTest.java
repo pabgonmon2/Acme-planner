@@ -13,7 +13,7 @@ public class AdministratorSpamwordCreateTest extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/spamfilter/createSpamword.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void updatePositive(final int recordIndex, final String spamword) {
+	public void createPositive(final int recordIndex, final String spamword) {
 		this.signIn("administrator", "administrator");
 		
 		super.clickOnMenu("Administrator", "Add spam word");
