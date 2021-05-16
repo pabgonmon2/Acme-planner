@@ -1,6 +1,7 @@
 package administrator.spamfilter.threshold;
 
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -28,19 +29,17 @@ public class AdministratorThresholdListTest extends AcmePlannerTest {
 		this.signOut();
 	}
 	
-	@ParameterizedTest
-	@CsvFileSource(resources = "/administrator/spamfilter/listThreshold.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@Test
 	@Order(20)
-	public void listNegativeAnonymous(final int recordIndex, final String value) {
+	public void listNegativeAnonymous() {
 		super.navigate("/administrator/threshold/list", ""); ;
 		super.checkErrorsExist();
 	}
 	
 	
-	@ParameterizedTest
-	@CsvFileSource(resources = "/administrator/spamfilter/listThreshold.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@Test
 	@Order(30)
-	public void listNegativeManager(final int recordIndex, final String value) {
+	public void listNegativeManager() {
 		this.signIn("manager2", "manager2");
 		super.navigate("/administrator/threshold/list", ""); ;
 		super.checkErrorsExist();

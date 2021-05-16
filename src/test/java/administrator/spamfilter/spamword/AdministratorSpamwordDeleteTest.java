@@ -7,40 +7,46 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 import acme.testing.AcmePlannerTest;
 
-public class AdministratorSpamwordListTest extends AcmePlannerTest{
+public class AdministratorSpamwordDeleteTest extends AcmePlannerTest{
 
-	
+	public static Integer i=0;
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/spamfilter/listSpamword.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void listPositive(final int recordIndex, final String spamword) {
+	public void deletePositive(final int recordIndex, final String spamword) {
 		this.signIn("administrator", "administrator");
 		
 		super.clickOnMenu("Administrator", "Spam filter");
 		
-		super.checkColumnHasValue(recordIndex, 0, spamword);
+		super.checkColumnHasValue(recordIndex-AdministratorSpamwordDeleteTest.i, 0, spamword);
 		
-		super.clickOnListingRecord(recordIndex);
+		super.clickOnListingRecord(recordIndex-AdministratorSpamwordDeleteTest.i);
 		
 //		super.checkSimplePath("/administrator/threshold/show");
 		
 		super.checkInputBoxHasValue("spamword", spamword);
 		
+		
+		super.clickOnSubmitButton("Delete");
+		AdministratorSpamwordDeleteTest.i++;
 		this.signOut();
 	}
 	
 	@Test
 	@Order(20)
-	public void listNegativeAnonymous() {
-		super.navigate("/administrator/spamword/list", ""); ;
+	public void deleteNegativeManager() {	
+		this.signIn("manager2", "manager2");
+		super.navigate("/administrator/spamword/delete", "id=59"); ;
 		super.checkErrorsExist();
+		this.signOut();
 	}
 	
 	@Test
-	@Order(30)
-	public void listNegativeManager() {
-		this.signIn("manager2", "manager2");
-		super.navigate("/administrator/spamword/list", ""); ;
+	@Order(20)
+	public void deleteNegativeAnonymous() {	
+		super.navigate("/administrator/spamword/delete", "id=59"); ;
 		super.checkErrorsExist();
 	}
+	
+	
 }
