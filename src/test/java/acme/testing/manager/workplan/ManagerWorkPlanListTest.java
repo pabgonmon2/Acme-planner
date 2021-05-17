@@ -1,4 +1,4 @@
-package acme.testing.manager.test;
+package acme.testing.manager.workplan;
 
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -40,7 +40,7 @@ public class ManagerWorkPlanListTest extends AcmePlannerTest {
 	}
 	
 	@Test
-	@Order(20)
+	@Order(30)
 	public void listAdministratorNegative() {
 		super.signIn("administrator", "administrator");
 		super.navigate("/manager/workplan/list","");

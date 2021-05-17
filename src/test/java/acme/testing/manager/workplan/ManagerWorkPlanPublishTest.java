@@ -1,4 +1,4 @@
-package acme.testing.manager.test;
+package acme.testing.manager.workplan;
 
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.params.ParameterizedTest;

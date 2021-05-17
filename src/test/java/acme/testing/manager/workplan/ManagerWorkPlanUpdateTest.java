@@ -1,4 +1,4 @@
-package acme.testing.manager.test;
+package acme.testing.manager.workplan;
 
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,7 +28,7 @@ public class ManagerWorkPlanUpdateTest  extends AcmePlannerTest {
 	
 	@ParameterizedTest
 	@CsvFileSource(resources="/manager/workplan/update-negative.csv", encoding="utf-8", numLinesToSkip=1)
-	@Order(10)
+	@Order(20)
 	public void updateNegative(final int recordIndex, final String startDate, final String endDate) {
 		super.signIn("manager2", "manager2");
 		super.clickOnMenu("Manager", "Works Plans");
