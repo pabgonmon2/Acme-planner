@@ -52,10 +52,27 @@ public class ManagerMyTasksDeleteTest extends AcmePlannerTest {
 	}
 	
 	@Test
-	@Order(20)
+	@Order(30)
 	public void deleteNegativeAnonymous() {	
 		super.navigate("/manager/task/delete", "id=23"); ;
 		super.checkErrorsExist();
 	}
+	
+	@Test
+	@Order(40)
+	public void deleteNegativeManager3() {	
+		super.signIn("manager3", "manager3");
+		super.navigate("/manager/task/delete", "id=23"); ;
+		super.checkErrorsExist();
+	}
+	
+	@Test
+	@Order(50)
+	public void deleteNegativeManager2() {	
+		super.signIn("manager2", "manager2");
+		super.navigate("/manager/task/delete", "id="); ;
+		super.checkErrorsExist();
+	}
+
 
 }
