@@ -1,6 +1,7 @@
 package acme.testing.manager.test;
 
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -30,5 +31,22 @@ public class ManagerWorkPlanListTest extends AcmePlannerTest {
 		
 		super.signOut();
 	}
+	
+	@Test
+	@Order(20)
+	public void listAnonymousNegative() {
+		super.navigate("/manager/workplan/list","");
+		super.checkErrorsExist();
+	}
+	
+	@Test
+	@Order(20)
+	public void listAdministratorNegative() {
+		super.signIn("administrator", "administrator");
+		super.navigate("/manager/workplan/list","");
+		super.checkErrorsExist();
+	}
+	
+	
 	
 }
