@@ -15,7 +15,7 @@
 		<acme:form-return  code= "manager.mytasks.form.button.return"/>
 	</acme:form>
 </jstl:if>
-<jstl:if test="${command=='show' }">
+<jstl:if test="${command!='create' }">
 	<acme:form>
 		<acme:form-textbox code= "manager.mytasks.form.label.title" path="title"/>
 		<acme:form-moment  readonly="true" code= "manager.mytasks.form.label.startDate" path="startDate"/>

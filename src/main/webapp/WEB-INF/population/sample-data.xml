@@ -259,7 +259,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="endDate" value="2022/04/29 18:30"/>
 		<property name="workFlow" value="3.0"/>
 		<property name="description" value="Cortar cesped y bordes del patio principal"/>
-		<property name="publicTask" value="true"/>
+		<property name="publicTask" value="false"/>
 		<property name="manager" ref="manager2"/>
 	</bean>
 	<bean id="task15" class="acme.entities.tasks.Task">
@@ -305,7 +305,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
  		<property name="startDate" value="2021/05/29 13:00"/>
  		<property name="endDate" value="2021/05/29 14:30"/>
  		<property name="workLoad" value="2.5"/>
- 		<property name="publicPlan" value="true"/>
+ 		<property name="publicPlan" value="false"/>
  		<property name="manager" ref="manager3"/>
  		<property name="tasks">
 				<set>
@@ -319,7 +319,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
  		<property name="startDate" value="2021/05/30 15:00"/>
  		<property name="endDate" value="2021/05/30 18:30"/>
  		<property name="workLoad" value="4.0"/>
- 		<property name="publicPlan" value="true"/>
+ 		<property name="publicPlan" value="false"/>
  		<property name="manager" ref="manager3"/>
  		<property name="tasks">
 				<set>
@@ -400,11 +400,17 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
  	</bean>
  	
  	<bean id="workplan8" class="acme.entities.workplans.Workplan">
- 		<property name="startDate" value="2021/06/10 20:00"/>
+ 		<property name="startDate" value="2021/05/01 20:00"/>
  		<property name="endDate" value="2021/08/28 22:30"/>
  		<property name="workLoad" value="0.0"/>
  		<property name="publicPlan" value="false"/>
  		<property name="manager" ref="manager2"/>
+ 		<property name="tasks">
+				<set>
+					<ref bean="task8" />
+					<ref bean="task9" />
+				</set>
+		</property>
  	</bean>
   
  <!--  ################### SHOUTS ################### -->
