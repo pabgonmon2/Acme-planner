@@ -12,6 +12,7 @@ public class AnonymousTaskListAllTest extends AcmePlannerTest{
 	@CsvFileSource(resources = "/anonymous/task/list-all.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void listAll(final int recordIndex, final String title, final String startDate, final String endDate, final String workFlow, final String description, final String publicTask,final String url) {
+		
 		super.clickOnMenu("Anonymous", "Tasks");
 		
 		super.checkColumnHasValue(recordIndex, 0, title);
