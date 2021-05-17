@@ -46,7 +46,7 @@ public class ManagerMyTasksCreateTest extends AcmePlannerTest {
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/manager/task/createNegative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	@Order(10)
+	@Order(20)
 	public void createNegative(final int recordIndex, final String title, final String startDate, 
 		final String endDate, final String description, final String url) {
 		super.signIn("manager3", "manager3");
