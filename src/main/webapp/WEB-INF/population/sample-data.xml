@@ -259,7 +259,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="endDate" value="2022/04/29 18:30"/>
 		<property name="workFlow" value="3.0"/>
 		<property name="description" value="Cortar cesped y bordes del patio principal"/>
-		<property name="publicTask" value="true"/>
+		<property name="publicTask" value="false"/>
 		<property name="manager" ref="manager2"/>
 	</bean>
 	<bean id="task15" class="acme.entities.tasks.Task">
