@@ -1,6 +1,7 @@
 package acme.testing.anonymous.task;
 
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -31,5 +32,14 @@ public class AnonymousTaskListAllTest extends AcmePlannerTest{
 		super.checkInputBoxHasValue("publicTask",publicTask);
 		
 	}
+	
+	@Test
+	@Order(20)
+	public void listNegativeAnonymous() {
+		super.navigate("/anonymous/task/list", ""); ;
+		super.checkErrorsExist();
+	}
+	
+	
 
 }
