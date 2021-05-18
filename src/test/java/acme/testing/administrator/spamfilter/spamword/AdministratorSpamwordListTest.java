@@ -32,7 +32,7 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 	@Test
 	@Order(20)
 	public void listNegativeAnonymous() {
-		super.navigate("/administrator/spamword/list", ""); ;
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/list");
 		super.checkErrorsExist();
 	}
 	
@@ -40,7 +40,7 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 	@Order(30)
 	public void listNegativeManager() {
 		this.signIn("manager2", "manager2");
-		super.navigate("/administrator/spamword/list", ""); ;
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/list");
 		super.checkErrorsExist();
 	}
 	

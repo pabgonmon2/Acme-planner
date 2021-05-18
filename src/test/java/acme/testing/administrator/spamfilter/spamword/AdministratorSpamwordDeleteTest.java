@@ -33,10 +33,22 @@ public class AdministratorSpamwordDeleteTest extends AcmePlannerTest{
 	}
 	
 	@Test
+	@Order(10)
+	public void deletePositive() {
+		this.signIn("administrator", "administrator");
+		
+		super.clickOnMenu("Administrator", "Spam filter");
+		
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/delete?id=66");
+	
+		this.signOut();
+	}
+	
+	@Test
 	@Order(20)
 	public void deleteNegativeManager() {	
 		this.signIn("manager2", "manager2");
-		super.navigate("/administrator/spamword/delete", "id=59"); ;
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/delete?id=66");
 		super.checkErrorsExist();
 		this.signOut();
 	}
@@ -44,7 +56,7 @@ public class AdministratorSpamwordDeleteTest extends AcmePlannerTest{
 	@Test
 	@Order(20)
 	public void deleteNegativeAnonymous() {	
-		super.navigate("/administrator/spamword/delete", "id=59"); ;
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/delete?id=66");
 		super.checkErrorsExist();
 	}
 	

@@ -42,7 +42,7 @@ public class AdministratorSpamwordUpdateTest extends AcmePlannerTest {
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/spamfilter/listSpamword.csv", encoding = "utf-8", numLinesToSkip = 1)
-	@Order(10)
+	@Order(15)
 	public void updateNegative(final int recordIndex, final String spamword) {
 		this.signIn("administrator", "administrator");
 		
@@ -69,14 +69,18 @@ public class AdministratorSpamwordUpdateTest extends AcmePlannerTest {
 	@Order(20)
 	public void updateNegativeManager() {
 		this.signIn("manager2", "manager2");
-		super.navigate("/administrator/spamword/show", "id=59"); ;
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/show?id=66");
 		super.checkErrorsExist();
 
 	}
 	@Test
 	@Order(30)
 	public void updateNegativeAnonymous() {
-		super.navigate("/administrator/spamword/show", "id=59"); ;
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/show?id=66");
 		super.checkErrorsExist();
 	}
+	
+
+	
+
 }

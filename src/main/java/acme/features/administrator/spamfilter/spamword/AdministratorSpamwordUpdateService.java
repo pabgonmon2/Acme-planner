@@ -45,12 +45,7 @@ public class AdministratorSpamwordUpdateService implements AbstractUpdateService
 
 	@Override
 	public void unbind(final Request<Spamword> request, final Spamword entity, final Model model) {
-		assert request != null;
-		assert entity != null;
-		assert model != null;
 
-		request.unbind(entity, model, "spamword");
-		model.setAttribute("spamwordId", entity.getId());
 	}
 
 	@Override
