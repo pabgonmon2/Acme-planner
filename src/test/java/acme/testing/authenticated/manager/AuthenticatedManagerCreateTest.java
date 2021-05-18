@@ -10,10 +10,13 @@ public class AuthenticatedManagerCreateTest extends AcmePlannerTest{
 	@Test
 	@Order(10)
 	public void createPositive() {
+		//Iniciamos sesison como usuario que no es manager
 		super.signIn("fervalnav", "Qwerty123");
+		//Accedemos al formulario para convertirnos en manager
 		super.clickOnMenu("Account", "Become a manager");
+		//Nos convertimos en manager
 		super.clickOnSubmitButton("Register");
-	
+		//Comprobamos que tenemos los links para acceder que debe tener un manager
 		super.checkLinkExists("Own tasks");
 		super.signOut();
 	}
