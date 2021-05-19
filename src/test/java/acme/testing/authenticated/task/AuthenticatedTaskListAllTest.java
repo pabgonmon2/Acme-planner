@@ -37,8 +37,8 @@ public class AuthenticatedTaskListAllTest extends AcmePlannerTest{
 	
 	@Test
 	@Order(20)
-	public void listNegativeAnonymous() {
-		super.navigate("/authenticated/task/list", ""); ;
+	public void listNegativeAuthenticated() {
+		super.driver.get("http://localhost:8080/Acme-Planner/authenticated/task/list");
 		super.checkErrorsExist();
 	}
 

@@ -36,8 +36,10 @@ public class AnonymousTaskListAllTest extends AcmePlannerTest{
 	@Test
 	@Order(20)
 	public void listNegativeAnonymous() {
-		super.navigate("/anonymous/task/list", ""); ;
+		this.signIn("fervalnav", "Qwerty123");
+		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/task/list");
 		super.checkErrorsExist();
+		this.signOut();
 	}
 	
 	
