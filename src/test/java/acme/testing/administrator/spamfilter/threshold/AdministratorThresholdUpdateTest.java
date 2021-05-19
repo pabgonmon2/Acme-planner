@@ -68,7 +68,11 @@ public class AdministratorThresholdUpdateTest extends AcmePlannerTest{
         super.signOut();
 
     }
-	
+	/*
+		En este test se comprueba que un manager no sea capaz de acceder al formulario del threshold
+		Para ello accedemos a la url del formulario del threshold comprobando que nos devuelve un error de autorizacion
+		
+	 */
 	@Test
 	@Order(20)
 	public void updateNegativeManager() {
@@ -78,7 +82,10 @@ public class AdministratorThresholdUpdateTest extends AcmePlannerTest{
 
 	}
 
-	
+	/*
+		En este test se comprueba que un anonimo no sea capaz de acceder al formulario del threshold
+		Para ello accedemos a la url del formulario del threshold comprobando que nos devuelve un error de autorizacion
+	 */
 	@Test
 	@Order(20)
 	public void updateNegativeAnonymous() {
