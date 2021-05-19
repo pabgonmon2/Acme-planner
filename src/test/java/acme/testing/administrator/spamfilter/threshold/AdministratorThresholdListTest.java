@@ -10,6 +10,11 @@ import acme.testing.AcmePlannerTest;
 public class AdministratorThresholdListTest extends AcmePlannerTest {
 
 	
+	/*
+		En este test se comprueba que un administrador sea capaz de listar el threshold
+		Para ello accedemos al listado de threshold comprobando que el valor de los campos del
+		listado son correctos, así como, que el valor del formulario (show) es correcto tambien.
+	 */
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/spamfilter/listThreshold.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
@@ -22,26 +27,32 @@ public class AdministratorThresholdListTest extends AcmePlannerTest {
 		
 		super.clickOnListingRecord(recordIndex);
 		
-//		super.checkSimplePath("/administrator/threshold/show");
-		
 		super.checkInputBoxHasValue("value", value);
 		
 		this.signOut();
 	}
 	
+	
+	/*
+		En este test se comprueba que un anonimo no sea capaz de listar el threshold
+		Para ello accedemos al listado de threshold comprobando que nos devuelve un error de autorizacion
+	 */
 	@Test
 	@Order(20)
 	public void listNegativeAnonymous() {
-		super.navigate("/administrator/threshold/list", ""); ;
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/threshold/list");
 		super.checkErrorsExist();
 	}
 	
-	
+	/*
+		En este test se comprueba que un manager no sea capaz de listar el threshold
+		Para ello accedemos al listado de threshold comprobando que nos devuelve un error de autorizacion
+	 */
 	@Test
 	@Order(30)
 	public void listNegativeManager() {
 		this.signIn("manager2", "manager2");
-		super.navigate("/administrator/threshold/list", ""); ;
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/threshold/list");
 		super.checkErrorsExist();
 	}
 }
