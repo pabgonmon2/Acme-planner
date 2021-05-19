@@ -9,59 +9,56 @@ import acme.testing.AcmePlannerTest;
 public class AdministratorThresholdUpdateTest extends AcmePlannerTest{
 
 	
-	@ParameterizedTest
-	@CsvFileSource(resources = "/administrator/spamfilter/listThreshold.csv", encoding = "utf-8", numLinesToSkip = 1)
-	@Order(10)
-	public void updatePositive(final int recordIndex, final String value) {
-		this.signIn("administrator", "administrator");
-		
-		super.clickOnMenu("Administrator", "Spam threshold");
-		
-		super.checkColumnHasValue(recordIndex, 0, value);
-		
-		super.clickOnListingRecord(recordIndex);
-		
-//		super.checkSimplePath("/administrator/threshold/show");
-		
-		super.checkInputBoxHasValue("value", value);
-		
-		super.fillInputBoxIn("value", "15.00");
-
-		super.clickOnSubmitButton("Update");
-		
-		super.clickOnMenu("Administrator", "Spam threshold");
-		super.checkColumnHasValue(recordIndex, 0, "15.00");
-		
-		super.clickOnListingRecord(recordIndex);
-		super.checkInputBoxHasValue("value", "15.00");
-		super.fillInputBoxIn("value", value);
-		super.clickOnSubmitButton("Update");
-		
-		this.signOut();
-	}
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "/administrator/spamfilter/listThreshold.csv", encoding = "utf-8", numLinesToSkip = 1)
-	@Order(20)
-	public void updateNegative(final int recordIndex, final String value) {
-		this.signIn("administrator", "administrator");
-		
-		super.clickOnMenu("Administrator", "Spam threshold");
-		
-		super.checkColumnHasValue(recordIndex, 0, value);
-		
-		super.clickOnListingRecord(recordIndex);
-		
-//		super.checkSimplePath("/administrator/threshold/show");
-		
-		super.checkInputBoxHasValue("value", value);
-		
-		super.fillInputBoxIn("value", "asd");
-		super.clickOnSubmitButton("Update");
+	@CsvFileSource(resources = "/administrator/spamfilter/updateThresholdPositive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@Order(15)
+	public void updatePositive(final int recordIndex, final String value) {        
+        super.signIn("administrator", "administrator");
+        
+        super.clickOnMenu("Administrator", "Spam threshold");
+        super.checkColumnHasValue(recordIndex, 0, "10.00");
+        
+        super.clickOnListingRecord(recordIndex);
+        
+        super.fillInputBoxIn("value", value);    
 
-		super.checkErrorsExist("value");
+        super.clickOnSubmitButton("Update");
+        
+        super.checkSimplePath("/administrator/threshold/list");
+                
+        super.driver.get("http://localhost:8080/Acme-Planner/administrator/threshold/update?id=67");
 
-	}
+        super.checkInputBoxHasValue("value", value);
+        
+        super.fillInputBoxIn("value", "10.00");    
+        super.clickOnSubmitButton("Update");
+        super.signOut();
+    }
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "/administrator/spamfilter/updateThresholdNegative.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@Order(15)
+	public void updateNegative(final int recordIndex, final String value) {        
+		super.signIn("administrator", "administrator");
+        
+        super.clickOnMenu("Administrator", "Spam threshold");
+        super.checkColumnHasValue(recordIndex, 0, "10.00");
+        super.clickOnListingRecord(recordIndex);
+        super.fillInputBoxIn("value", value);    
+
+        super.clickOnSubmitButton("Update");
+        
+        super.checkErrorsExist();
+        
+                
+        super.driver.get("http://localhost:8080/Acme-Planner/administrator/threshold/update?id=67");
+
+        super.checkInputBoxHasValue("value", "10.00");
+        super.signOut();
+
+    }
+
 	
 
 	

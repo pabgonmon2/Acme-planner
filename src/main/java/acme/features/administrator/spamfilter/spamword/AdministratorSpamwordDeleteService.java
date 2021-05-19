@@ -28,20 +28,20 @@ public class AdministratorSpamwordDeleteService implements AbstractDeleteService
 
 	@Override
 	public void bind(final Request<Spamword> request, final Spamword entity, final Errors errors) {
-//		assert request != null;
-//		assert entity != null;
-//		assert errors != null;
-//
-//		request.bind(entity, errors);
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
+
+		request.bind(entity, errors);
 	}
 
 	@Override
 	public void unbind(final Request<Spamword> request, final Spamword entity, final Model model) {
-//		assert request != null;
-//		assert entity != null;
-//		assert model != null;
-//
-//		request.unbind(entity, model, "spamword");
+		assert request != null;
+		assert entity != null;
+		assert model != null;
+
+		request.unbind(entity, model, "spamword");
 	}
 
 	@Override

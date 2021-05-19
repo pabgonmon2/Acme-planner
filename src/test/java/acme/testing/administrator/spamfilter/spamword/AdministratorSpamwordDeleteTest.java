@@ -16,31 +16,15 @@ public class AdministratorSpamwordDeleteTest extends AcmePlannerTest{
 	public void deletePositive(final int recordIndex, final String spamword) {
 		this.signIn("administrator", "administrator");
 		
-		super.clickOnMenu("Administrator", "Spam filter");
-		
-		super.checkColumnHasValue(recordIndex-AdministratorSpamwordDeleteTest.i, 0, spamword);
-		
-		super.clickOnListingRecord(recordIndex-AdministratorSpamwordDeleteTest.i);
-		
-//		super.checkSimplePath("/administrator/threshold/show");
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/delete?id=66");
 		
 		super.checkInputBoxHasValue("spamword", spamword);
+		super.clickOnSubmitButton("delete");
 		
+		super.checkSimplePath("/master/welcome");
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/show?id=66");
+		super.checkErrorsExist();
 		
-		super.clickOnSubmitButton("Delete");
-		AdministratorSpamwordDeleteTest.i++;
-		this.signOut();
-	}
-	
-	@Test
-	@Order(10)
-	public void deletePositive() {
-		this.signIn("administrator", "administrator");
-		
-		super.clickOnMenu("Administrator", "Spam filter");
-		
-		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/delete?id=66");
-	
 		this.signOut();
 	}
 	
