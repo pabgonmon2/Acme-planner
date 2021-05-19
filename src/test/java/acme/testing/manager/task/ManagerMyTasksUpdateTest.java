@@ -8,6 +8,11 @@ import acme.testing.AcmePlannerTest;
 
 public class ManagerMyTasksUpdateTest extends AcmePlannerTest {
 	
+	//En este test se actualiza una task del manager2. Además, se lista las tasks que hay creadas y se
+	//muestran sus detalles. Por lo tanto, se prueba las funcionalidades list, show y update de tasks.
+	//Al clicar en una task, se muestran los detalles, pudiendo modificar algunos campos. Se espera que se actualice
+	//la task correctamente.
+	//Hay que haber iniciado sesión con un rol de manager pero no se infringe ninguna restricción.
 	@ParameterizedTest
 	@CsvFileSource(resources = "/manager/task/updatePositive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
@@ -38,6 +43,8 @@ public class ManagerMyTasksUpdateTest extends AcmePlannerTest {
 		super.signOut();
 	}
 	
+	//Este test prueba la funcionalidad de publicar una tarea. Se accede a una task privada y se hace click en pulicar.
+	//Se espera que se publique correctamente.
 	@ParameterizedTest
 	@CsvFileSource(resources = "/manager/task/publishTask.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)
@@ -66,6 +73,9 @@ public class ManagerMyTasksUpdateTest extends AcmePlannerTest {
 		super.signOut();
 	}
 	
+	//En este caso, se intenta actualizar una task como manager3 pero haciendo que salten validaciones del formulario.
+	//Se infringe la restricción correspondiente a la descripción (no puede ser nula) y las restricciones de las fechas
+	//(fecha final no puede ser puede ser antes que la fecha inicial y la fecha final debe ser más tarde a la fecha de hoy)
 	@ParameterizedTest
 	@CsvFileSource(resources = "/manager/task/updateNegative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(30)

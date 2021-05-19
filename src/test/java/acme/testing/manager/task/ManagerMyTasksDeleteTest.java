@@ -11,6 +11,11 @@ public class ManagerMyTasksDeleteTest extends AcmePlannerTest {
 	
 	public Integer i = 0;
 	
+	//En este test se prueba la funcionalidad eliminar una task propia de un manager. Además, también se vuelve
+	//a probar el listado y el show.
+	//El resultado esperado es que se liste la task, se haga click en ella para mostrar todos sus campos, se haga
+	//click en el botón Delete y, con esto, se borre la task.
+	//No se infringe ninguna restricción.
 	@ParameterizedTest
 	@CsvFileSource(resources = "/manager/task/list.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
@@ -42,36 +47,39 @@ public class ManagerMyTasksDeleteTest extends AcmePlannerTest {
 		super.signOut();
 	}
 	
+	//Aquí se prueba la funcionalidad delete de tasks pero de forma negativa. El resultado esperado es
+	//un error de acceso denegado ya que se está accediendo con un rol de administrador que no tiene 
+	//acceso ni a la funcionalidad ni a la task con id 23 (que pertenece al manager2)
 	@Test
 	@Order(20)
 	public void deleteNegativeAdministrator() {	
 		this.signIn("administrator", "administrator");
-		super.navigate("/manager/task/delete", "id=23"); ;
+		super.driver.get("http://localhost:8080/Acme-Planner/manager/task/delete?id=23");
 		super.checkErrorsExist();
 		this.signOut();
 	}
 	
+	//Aquí se prueba la funcionalidad delete de tasks pero de forma negativa. El resultado esperado es
+	//un error de acceso denegado ya que se está accediendo con un rol anónimo que no tiene acceso
+	//ni a la funcionalidad ni a la task con id 23 (que pertenece al manager2)
 	@Test
 	@Order(30)
-	public void deleteNegativeAnonymous() {	
-		super.navigate("/manager/task/delete", "id=23"); ;
+	public void deleteNegativeAnonymous() {
+		super.driver.get("http://localhost:8080/Acme-Planner/manager/task/delete?id=23");
 		super.checkErrorsExist();
 	}
 	
+	//Se vuelve a probar la funcionalidad delete de tasks pero, ahora, accediendo a través de la URL.
+	//Se espera que se acceda a la vista del show de la tarea con id 23 para luego hacer click en el
+	//botón delete sin ningún error.
+	//No se infringe ninguna restricción.
 	@Test
 	@Order(40)
-	public void deleteNegativeManager3() {	
-		super.signIn("manager3", "manager3");
-		super.navigate("/manager/task/delete", "id=23"); ;
-		super.checkErrorsExist();
-	}
-	
-	@Test
-	@Order(50)
-	public void deleteNegativeManager2() {	
+	public void deleteTaskURL() {
 		super.signIn("manager2", "manager2");
-		super.navigate("/manager/task/delete", "id="); ;
-		super.checkErrorsExist();
+		super.driver.get("http://localhost:8080/Acme-Planner/manager/task/delete?id=23");
+		super.clickOnSubmitButton("Delete");
+		super.signOut();
 	}
 
 
