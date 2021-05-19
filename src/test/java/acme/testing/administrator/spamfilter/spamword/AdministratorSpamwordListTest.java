@@ -10,6 +10,11 @@ import acme.testing.AcmePlannerTest;
 public class AdministratorSpamwordListTest extends AcmePlannerTest{
 
 	
+	/*
+		En este test se comprueba que un administrador sea capaz de listar las spamwords
+		Para ello accedemos al listado de spamword comprobando que el valor de los campos del
+		listado son correctos, así como, que el valor del formulario (show) es correcto tambien.
+	 */
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/spamfilter/listSpamword.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
@@ -22,13 +27,15 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 		
 		super.clickOnListingRecord(recordIndex);
 		
-//		super.checkSimplePath("/administrator/threshold/show");
-		
 		super.checkInputBoxHasValue("spamword", spamword);
 		
 		this.signOut();
 	}
 	
+	/*
+		En este test se comprueba que un anonimo no sea capaz de listar el spamword
+		Para ello accedemos al listado de spamword comprobando que nos devuelve un error de autorizacion
+	 */
 	@Test
 	@Order(20)
 	public void listNegativeAnonymous() {
@@ -36,6 +43,10 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 		super.checkErrorsExist();
 	}
 	
+	/*
+		En este test se comprueba que un manager no sea capaz de listar las spamwords
+		Para ello accedemos al listado de spamword comprobando que nos devuelve un error de autorizacion
+	 */
 	@Test
 	@Order(30)
 	public void listNegativeManager() {
@@ -44,6 +55,12 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 		super.checkErrorsExist();
 	}
 	
+	
+	/*
+		Este test se realiza debido a que el servicio de list de spamword contiene los metodo de validacion de filtro de spam
+		Por lo tanto para poder cumplir el porcentaje exigido tenemos que crear un shout para poder acceder a estos metodos.
+		Simplemente como anonimo se crea un shout valido y se comprueba que no salta el filtro spam, publicandose el shout.
+	 */
 	@Test
 	@Order(35)
 	public void filtrosShoutPositive() {
@@ -68,6 +85,9 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 		
 	}
 	
+	/*
+		Este caso es igual que el anterior pero esperando que la restriccion de Spam se cumple, provocando un error al intentar publicar el shout.
+	 */
 	@Test
 	@Order(40)
 	public void filtrosShoutNegative() {
@@ -88,10 +108,15 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 		
 	}
 	
+	/*
+		Este test se realiza debido a que el servicio de list de spamword contiene los metodo de validacion de filtro de spam
+		Por lo tanto para poder cumplir el porcentaje exigido tenemos que crear un task para poder acceder a estos metodos.
+		Simplemente como anonimo se crea un task valido y se comprueba que no salta el filtro spam, creandose la task.
+	 */
 	@ParameterizedTest
 	@CsvFileSource(resources = "/manager/task/createPositive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(50)
-	public void createPositive(final int recordIndex, final String title, final String startDate, 
+	public void taskPositive(final int recordIndex, final String title, final String startDate, 
 		final String endDate, final String workFlow, final String description, final String publicTask, final String url) {
 		super.signIn("manager3", "manager3");
 		

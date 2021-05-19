@@ -9,7 +9,12 @@ import acme.testing.AcmePlannerTest;
 
 public class AdministratorSpamwordCreateTest extends AcmePlannerTest{
 
-	
+	/*
+		En este test comprobamos que un administrador puede crear una palabra spam.
+		Para ello accedemos al formulario de create a través del menú y rellenamos el campo necesario 
+		con un valor válido (NotNull) y pulsando el boton Create.
+		A continuación se comprueba si la palabra se ha creado.
+	 */
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/spamfilter/createSpamword.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
@@ -18,9 +23,6 @@ public class AdministratorSpamwordCreateTest extends AcmePlannerTest{
 		
 		super.clickOnMenu("Administrator", "Add spam word");
 
-		
-//		super.checkSimplePath("/administrator/threshold/show");
-		
 		super.checkInputBoxHasValue("spamword", "");
 		
 		super.fillInputBoxIn("spamword", spamword);
@@ -32,6 +34,12 @@ public class AdministratorSpamwordCreateTest extends AcmePlannerTest{
 		this.signOut();
 	}
 	
+	/*
+		En este test comprobamos que un administrador no puede crear una palabra spam vacía.
+		Para ello accedemos al formulario de create a través del menú y rellenamos el campo necesario 
+		con un valor no válido (Null) y pulsando el boton Create.
+		A continuación se comprueba que han surgido errores.
+	 */
 	@Test
 	@Order(15)
 	public void createNegative() {
@@ -47,6 +55,10 @@ public class AdministratorSpamwordCreateTest extends AcmePlannerTest{
 		this.signOut();
 	}
 	
+	/*
+		En este test se comprueba que un anonimo no sea capaz de crear una spamword
+		Para ello accedemos a la url del formulario de create de spamword comprobando que nos devuelve un error de autorizacion
+	 */
 	@Test
 	@Order(20)
 	public void listNegativeAnonymous() {
@@ -54,6 +66,10 @@ public class AdministratorSpamwordCreateTest extends AcmePlannerTest{
 		super.checkErrorsExist();
 	}
 	
+	/*
+		En este test se comprueba que un manager no sea capaz de crear una spamword
+		Para ello accedemos a la url del formulario de create de spamword comprobando que nos devuelve un error de autorizacion
+	 */
 	@Test
 	@Order(30)
 	public void listNegativeManager() {
