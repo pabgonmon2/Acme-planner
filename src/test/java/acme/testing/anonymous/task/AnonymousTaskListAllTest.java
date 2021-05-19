@@ -8,7 +8,10 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import acme.testing.AcmePlannerTest;
 
 public class AnonymousTaskListAllTest extends AcmePlannerTest{
-
+	
+	//En este test se prueba la funcionalidad list y show de las tasks propias de una persona anónima. El resultado esperado es que se listen
+	//las tasks y se muestren sus detalles.
+	//No se infringe ninguna restricción.
 	@ParameterizedTest
 	@CsvFileSource(resources = "/anonymous/task/list-all.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
@@ -33,9 +36,12 @@ public class AnonymousTaskListAllTest extends AcmePlannerTest{
 		
 	}
 	
+	//Aquí se prueba la funcionalidad list de tasks pero de forma negativa. El resultado esperado es
+	//un error de acceso denegado ya que se está accediendo con un rol de manager que no tiene acceso
+	//a la funcionalidad.
 	@Test
 	@Order(20)
-	public void listNegativeAnonymous() {
+	public void listNegativeManager() {
 		this.signIn("fervalnav", "Qwerty123");
 		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/task/list");
 		super.checkErrorsExist();
