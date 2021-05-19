@@ -8,6 +8,10 @@ import acme.testing.AcmePlannerTest;
 
 public class ManagerMyTasksCreateTest extends AcmePlannerTest {
 	
+	//En este test se crea una task como manager3. Además, se lista la task recientemente creada y se
+	//muestran sus detalles. Por lo tanto, se prueba las funcionalidades list, show y create de task.
+	//Se espera que se cree, se liste y se muestren los detalles de la task correctamente.
+	//Hay que haber iniciado sesión con un rol de manager pero no se infringe ninguna restricción.
 	@ParameterizedTest
 	@CsvFileSource(resources = "/manager/task/createPositive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
@@ -44,6 +48,10 @@ public class ManagerMyTasksCreateTest extends AcmePlannerTest {
 		super.signOut();
 	}
 	
+	//En este caso, se intenta crear una task como manager3 pero haciendo que salten validaciones del formulario.
+	//En la primera línea del csv se infringe la restricción de las spamwords
+	//En la segunda línea, a parte de la anterior, las restricciones de las fechas (fecha final no puede ser 
+	//puede ser antes que la fecha inicial y la fecha inicial y final deben ser más tarde a la fecha de hoy)
 	@ParameterizedTest
 	@CsvFileSource(resources = "/manager/task/createNegative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)

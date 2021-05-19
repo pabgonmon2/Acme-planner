@@ -19,8 +19,6 @@ public class ManagerMyTaskDeleteService implements AbstractDeleteService<Manager
 	@Autowired
 	protected ManagerMyTasksRepository repository;
 
-
-
 	@Override
 	public boolean authorise(final Request<Task> request) {
 		assert request != null;
@@ -42,18 +40,14 @@ public class ManagerMyTaskDeleteService implements AbstractDeleteService<Manager
 
 	@Override
 	public void bind(final Request<Task> request, final Task entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
+		assert request != null && entity != null && errors != null;
 
 		request.bind(entity, errors);
 	}
 
 	@Override
 	public void unbind(final Request<Task> request, final Task entity, final Model model) {
-		assert request != null;
-		assert entity != null;
-		assert model != null;
+		assert request != null && entity != null && model != null;
 
 		request.unbind(entity, model, "title", "startDate", "endDate", "description", "publicTask", "url");
 	}
@@ -73,9 +67,7 @@ public class ManagerMyTaskDeleteService implements AbstractDeleteService<Manager
 
 	@Override
 	public void validate(final Request<Task> request, final Task entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
+		assert request != null && entity != null && errors != null;
 	}
 
 	@Override
