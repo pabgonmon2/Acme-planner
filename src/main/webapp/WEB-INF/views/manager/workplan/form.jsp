@@ -36,7 +36,9 @@
 	<acme:form-double readonly="true" code="manager.workplan.form.label.workLoad" path="workLoad"/>
 	<acme:form-checkbox readonly="true" code="manager.workplan.form.label.publicPlan" path="publicPlan"/>
 </jstl:if>
-
+<jstl:if test="${command=='delete'}">
+	<acme:form-submit code="manager.workplan.form.button.delete" action="/manager/workplan/delete"/>
+</jstl:if>
 <jstl:if test="${command!='create' && !publicTask}"> 
 	<acme:form-submit code="manager.workplan.form.button.publish" action="/manager/workplan/publish"/>
 </jstl:if>

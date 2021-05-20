@@ -68,6 +68,7 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 		
 		final Workplan wp=(Workplan) this.repository.findById(request.getModel().getInteger("id")).get();
 		
+		
 		if(entity.getEndDate()!=null && entity.getStartDate()!=null) {
 			final Boolean b3 = this.validacionFechas(entity);
 			errors.state(request, b3, "endDate", "manager.workplan.error.dates");
@@ -85,7 +86,7 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 			errors.state(request, b2a, "endDate", "manager.workplan.error.endDate.task");
 		}
 		
-		Collection<Task>ta;
+		final Collection<Task>ta;
 		
 		if(!wp.getTasks().isEmpty()) {
 			final Date startRecommend=wp.getTasks().stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(null);
