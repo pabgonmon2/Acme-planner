@@ -11,7 +11,7 @@
 		<acme:form-textarea code= "manager.mytasks.form.label.description" path="description"/>
 		<acme:form-url code="manager.mytasks.form.label.url" path="url"/>
 			
-		<acme:form-submit code= "manager.mytasks.form.button.create" action="/manager/task/create"/>
+		<acme:form-submit code= "manager.mytasks.form.button.create" action="/manageracc/task/create"/>
 		<acme:form-return  code= "manager.mytasks.form.button.return"/>
 	</acme:form>
 </jstl:if>
@@ -30,8 +30,8 @@
 		</jstl:if>
 		<acme:form-url code="manager.mytasks.form.label.url" path="url"/>
 			
-		<acme:form-submit code= "manager.mytasks.form.button.update" action="/manager/task/update"/>
-     		<acme:form-submit code="manager.mytasks.form.button.delete" action="/manager/task/delete"/>
+		<acme:form-submit code= "manager.mytasks.form.button.update" action="/manageracc/task/update"/>
+     		<acme:form-submit code="manager.mytasks.form.button.delete" action="/manageracc/task/delete"/>
 		<acme:form-return  code= "manager.mytasks.form.button.return"/>
 	</acme:form>
 </jstl:if>

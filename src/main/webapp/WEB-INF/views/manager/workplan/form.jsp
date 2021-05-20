@@ -25,8 +25,8 @@
 	<acme:form-double readonly="true" code="manager.workplan.form.label.workLoad" path="workLoad"/>
 	<acme:form-checkbox readonly="true" code="manager.workplan.form.label.publicPlan" path="publicPlan"/>
 
-	<acme:form-submit code="manager.workplan.form.button.update" action="/manager/workplan/update"/>
-	<acme:form-submit code="manager.workplan.form.button.delete" action="/manager/workplan/delete"/>
+	<acme:form-submit code="manager.workplan.form.button.update" action="/manageracc/workplan/update"/>
+	<acme:form-submit code="manager.workplan.form.button.delete" action="/manageracc/workplan/delete"/>
 </jstl:if>
 
 <jstl:if test="${command!='create' && !canUpdate}">
@@ -38,7 +38,7 @@
 </jstl:if>
 
 <jstl:if test="${command!='create' && !publicTask}"> 
-	<acme:form-submit code="manager.workplan.form.button.publish" action="/manager/workplan/publish"/>
+	<acme:form-submit code="manager.workplan.form.button.publish" action="/manageracc/workplan/publish"/>
 </jstl:if>
 
 	<acme:form-return  code= "manager.workplan.form.button.return"/>
@@ -65,7 +65,7 @@
 					 <jstl:if test="${canUpdate}"><td><acme:form>
 						<input type="hidden" name="deleteTask" value="${task.id}"/>
 						<acme:form-hidden path="id"/>
-						<acme:form-submit code="manager.workplan.form.button.delete" action="/manager/workplan/delete_task"/>
+						<acme:form-submit code="manager.workplan.form.button.delete" action="/manageracc/workplan/delete_task"/>
 					</acme:form></td></jstl:if>
 				</tr>
 			</jstl:forEach>
@@ -82,7 +82,7 @@
 				<acme:form-option code="${task.title}" value="${task.id}"/>
 			</jstl:forEach>
 		</acme:form-select>
-		<acme:form-submit code="manager.workplan.form.button.addTask" action="/manager/workplan/add_task"/>
+		<acme:form-submit code="manager.workplan.form.button.addTask" action="/manageracc/workplan/add_task"/>
 	</acme:form>
 	</jstl:if>
 
