@@ -376,6 +376,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
  		<property name="endDate" value="2021/12/30 18:30"/>
  		<property name="workLoad" value="2.0"/>
  		<property name="publicPlan" value="false"/>
+
  		<property name="manager" ref="manager3"/>
  		<property name="tasks">
 				<set>

@@ -65,3 +65,4 @@ public class ManagerWorkPlanCreateTest extends AcmePlannerTest {
 	}
 	
 }
+

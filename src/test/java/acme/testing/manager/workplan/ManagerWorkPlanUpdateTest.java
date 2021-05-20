@@ -53,3 +53,4 @@ public class ManagerWorkPlanUpdateTest  extends AcmePlannerTest {
 		super.checkErrorsExist();
 	}
 }
+
