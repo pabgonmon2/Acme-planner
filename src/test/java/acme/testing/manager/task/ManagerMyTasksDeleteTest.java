@@ -54,8 +54,8 @@ public class ManagerMyTasksDeleteTest extends AcmePlannerTest {
 	@Order(20)
 	public void deleteNegativeAdministrator() {	
 		this.signIn("administrator", "administrator");
-		super.driver.get("http://localhost:8080/Acme-Planner/manager/task/delete?id=23");
-		super.checkErrorsExist();
+		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/task/delete?id=23");
+		super.checkPanicExists();
 		this.signOut();
 	}
 	
@@ -65,8 +65,8 @@ public class ManagerMyTasksDeleteTest extends AcmePlannerTest {
 	@Test
 	@Order(30)
 	public void deleteNegativeAnonymous() {
-		super.driver.get("http://localhost:8080/Acme-Planner/manager/task/delete?id=23");
-		super.checkErrorsExist();
+		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/task/delete?id=23");
+		super.checkPanicExists();
 	}
 	
 	//Se vuelve a probar la funcionalidad delete de tasks pero, ahora, accediendo a través de la URL.
@@ -76,9 +76,10 @@ public class ManagerMyTasksDeleteTest extends AcmePlannerTest {
 	@Test
 	@Order(40)
 	public void deleteTaskURL() {
-		super.signIn("manager2", "manager2");
-		super.driver.get("http://localhost:8080/Acme-Planner/manager/task/delete?id=23");
+		super.signIn("manager3", "manager3");
+		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/task/delete?id=18");
 		super.clickOnSubmitButton("Delete");
+		super.checkNotPanicExists();
 		super.signOut();
 	}
 

@@ -39,7 +39,7 @@ public class AnonymousWorkPlanListTest extends AcmePlannerTest {
 	public void listManagerNegative() {
 		super.signIn("manager2", "manager2");
 		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/workplan/list");
-		super.checkErrorsExist();
+		super.checkPanicExists();
 	}
 	
 	//Este test prueba la funcionalidad list workplan de forma negativa. Se intenta acceder al listado
@@ -50,7 +50,7 @@ public class AnonymousWorkPlanListTest extends AcmePlannerTest {
 	public void listAdministratorNegative() {
 		super.signIn("administrator", "administrator");
 		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/workplan/list");
-		super.checkErrorsExist();
+		super.checkPanicExists();
 	}
 
 }
