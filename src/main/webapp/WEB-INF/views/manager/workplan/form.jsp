@@ -9,7 +9,7 @@
 	<acme:form-moment code="manager.workplan.form.label.startDate" path="startDate"/>
 	<acme:form-moment code="manager.workplan.form.label.endDate" path="endDate"/>
 	<acme:form-checkbox readonly="true" code="manager.workplan.form.label.publicPlan" path="publicPlan"/>
-	<acme:form-submit code="manager.workplan.form.button.create" action="/manager/workplan/create"/>
+	<acme:form-submit code="manager.workplan.form.button.create" action="/manageracc/workplan/create"/>
 	
 </jstl:if>
 
@@ -36,7 +36,9 @@
 	<acme:form-double readonly="true" code="manager.workplan.form.label.workLoad" path="workLoad"/>
 	<acme:form-checkbox readonly="true" code="manager.workplan.form.label.publicPlan" path="publicPlan"/>
 </jstl:if>
-
+<jstl:if test="${command=='delete'}">
+	<acme:form-submit code="manager.workplan.form.button.delete" action="/manageracc/workplan/delete"/>
+</jstl:if>
 <jstl:if test="${command!='create' && !publicTask}"> 
 	<acme:form-submit code="manager.workplan.form.button.publish" action="/manageracc/workplan/publish"/>
 </jstl:if>
@@ -51,8 +53,6 @@
 			<th width="20%"><acme:message code="manager.workplan.tasks.title"/></th>
 			<th width="40%"><acme:message code="manager.workplan.tasks.description"/></th>
 			<th width="20%"><acme:message code="manager.workplan.tasks.workflow"/></th>
-			<th></th>
-			<th></th>
 			<th></th>
 		</tr></thead>
 <jstl:if test="${tasks.size()>0 }">
