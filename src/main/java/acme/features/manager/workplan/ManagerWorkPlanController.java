@@ -13,7 +13,7 @@ import acme.framework.components.BasicCommand;
 import acme.framework.controllers.AbstractController;
 
 @Controller
-@RequestMapping("manager/workplan/")
+@RequestMapping("/manageracc/workplan/")
 public class ManagerWorkPlanController extends AbstractController<Manager, Workplan> {
 	
 	@Autowired
