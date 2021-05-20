@@ -41,7 +41,7 @@ public class ManagerWorkPlanListTest extends AcmePlannerTest {
 	@Order(20)
 	public void listAnonymousNegative() {
 		//Accedemos al listado
-		super.driver.get("http://localhost:8080/Acme-Planner/manager/workplan/list");
+		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/list");
 		//Verificamos que han saltado errores
 		super.checkErrorsExist();
 	}
@@ -53,7 +53,7 @@ public class ManagerWorkPlanListTest extends AcmePlannerTest {
 		//Iniciamos sesion
 		super.signIn("administrator", "administrator");
 		//Accedemos al listado
-		super.driver.get("http://localhost:8080/Acme-Planner/manager/workplan/list");
+		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/list");
 		//Veridicamos que han saltado errores
 		super.checkErrorsExist();
 	}

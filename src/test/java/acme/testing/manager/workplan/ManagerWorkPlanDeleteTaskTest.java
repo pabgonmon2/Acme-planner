@@ -40,7 +40,7 @@ public class ManagerWorkPlanDeleteTaskTest extends AcmePlannerTest{
 		//Iniciamos sesion
 		super.signIn("manager3", "manager3");
 		//Intetamos acceder a un formlario de un plan de trabajo que no es nuestro
-		super.driver.get("http://localhost:8080/Acme-Planner/manager/workplan/show?id=42");
+		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/show?id=42");
 		//Verificamos que ha saltado un error
 		super.checkErrorsExist();
 	}
