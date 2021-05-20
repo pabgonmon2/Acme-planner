@@ -38,7 +38,7 @@ public class ManagerWorkPlanPublishTest extends AcmePlannerTest {
 	@Order(20)
 	public void publishNegative(final int recordIndex) {
 		//Iniciamos sesion
-		super.signIn("manager2", "manager2");
+		super.signIn("manager3", "manager3");
 		//Accedemos a un workplan
 		super.clickOnMenu("Manager", "Works Plans");
 		super.clickOnListingRecord(recordIndex);

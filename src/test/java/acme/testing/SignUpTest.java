@@ -18,8 +18,8 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 public class SignUpTest extends AcmePlannerTest {
 
-	// This is a placeholder where you can introduce your own sign-up test
-  	// Note that it depends on your project-specific test class.
+	//En este test verificaremos que se puede registrar un usuario, 
+	//para ello accederemos al formulario, lo rellenaremos y lo enviaremos
 	@ParameterizedTest
 	@CsvFileSource(resources="/sign-up/positive.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(10)
@@ -41,6 +41,8 @@ public class SignUpTest extends AcmePlannerTest {
 		super.signOut();
 	}
 	
+	//En este test se comprobaran las validaciones,
+	//para ello se accedera al formulario y se rellenaran los campos de forma incorrecta  para verficar que saltan errores
 	@ParameterizedTest
 	@CsvFileSource(resources="/sign-up/negative.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(10)

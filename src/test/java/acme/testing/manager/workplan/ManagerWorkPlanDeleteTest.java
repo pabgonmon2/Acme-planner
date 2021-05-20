@@ -67,7 +67,7 @@ public class ManagerWorkPlanDeleteTest extends AcmePlannerTest{
 		//Iniciamos sesion
 		super.signIn("manager3", "manager3");
 		//Accedemos a la url
-		final String url="http://localhost:8080/Acme-Planner/manager/workplanacc/delete?id=" + id;
+		final String url="http://localhost:8080/Acme-Planner/manageracc/workplan/delete?id=" + id;
 		super.driver.get(url);
 		//Borramos el workplan
 		super.clickOnSubmitButton("Delete");

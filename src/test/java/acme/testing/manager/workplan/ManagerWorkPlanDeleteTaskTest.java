@@ -38,7 +38,7 @@ public class ManagerWorkPlanDeleteTaskTest extends AcmePlannerTest{
 	@Order(20)
 	public void deleteTaskNegative() {
 		//Iniciamos sesion
-		super.signIn("manager3", "manager3");
+		super.signIn("manager2", "manager2");
 		//Intetamos acceder a un formlario de un plan de trabajo que no es nuestro
 		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/show?id=42");
 		//Verificamos que ha saltado un error

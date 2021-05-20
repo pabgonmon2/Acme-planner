@@ -7,6 +7,9 @@ import acme.testing.AcmePlannerTest;
 
 public class AuthenticatedManagerCreateTest extends AcmePlannerTest{
 
+	
+	//En este test verificaremos que un authenticated puede convertirse en manager,
+	//para ello accederemos al formulario y lo enviaremos
 	@Test
 	@Order(10)
 	public void createPositive() {
@@ -21,11 +24,14 @@ public class AuthenticatedManagerCreateTest extends AcmePlannerTest{
 		super.signOut();
 	}
 	
+	
+	//EN este test verificaremos que un manager no puede volver a convertirse en manager,
+	//esto lo verficaremos viendo que saltan erroes al intentar acceder
 	@Test
 	@Order(20)
 	public void createNegative() {
 		super.signIn("manager2", "manager2");
-		super.navigate("/authenticated/manager/create", "");
+		super.driver.get("http://localhost:8080/Acme-Planner/authenticated/manager/create");
 		
 		super.checkErrorsExist();
 	}
