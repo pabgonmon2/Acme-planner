@@ -55,7 +55,6 @@
 			<th width="20%"><acme:message code="manager.workplan.tasks.workflow"/></th>
 			<th></th>
 			<th></th>
-			<th></th>
 		</tr></thead>
 <jstl:if test="${tasks.size()>0 }">
 		<tbody>

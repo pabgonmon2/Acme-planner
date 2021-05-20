@@ -72,18 +72,19 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 		if(entity.getEndDate()!=null && entity.getStartDate()!=null) {
 			final Boolean b3 = this.validacionFechas(entity);
 			errors.state(request, b3, "endDate", "manager.workplan.error.dates");
+			
+			final Boolean b2a = this.validacionFechaFinal(entity);
+			errors.state(request, b2a, "endDate", "manager.workplan.error.endDate.task");
+			final Boolean b1a = this.validacionFechaInicial(entity);
+			errors.state(request, b1a, "startDate", "manager.workplan.error.startDate.task");
 		}
 		if(entity.getStartDate()!=null) {
 			final Boolean b1 = this.fechaInicialDespuesFechaActual(entity);
-			final Boolean b1a = this.validacionFechaInicial(entity);
 			errors.state(request, b1, "startDate", "manager.workplan.error.startDate");
-			errors.state(request, b1a, "startDate", "manager.workplan.error.startDate.task");
 		}
 		if(entity.getEndDate()!=null) {
 			final Boolean b2 = this.fechaFinalDespuesFechaActual(entity);
-			final Boolean b2a = this.validacionFechaFinal(entity);
 			errors.state(request, b2, "endDate", "manager.workplan.error.endDate");
-			errors.state(request, b2a, "endDate", "manager.workplan.error.endDate.task");
 		}
 		
 		final Collection<Task>ta;
