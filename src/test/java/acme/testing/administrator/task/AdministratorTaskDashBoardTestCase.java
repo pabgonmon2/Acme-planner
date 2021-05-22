@@ -14,7 +14,7 @@ public class AdministratorTaskDashBoardTestCase extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/task/task-dashboard.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void listAll(final int recordIndex, 
+	public void listAll( 
 	final String publicTasks,
 	final String privateTasks,
 	final String finishedTasks,
@@ -29,35 +29,9 @@ public class AdministratorTaskDashBoardTestCase extends AcmePlannerTest{
 	final String minExecutionPeriod) {
 		
 		this.signIn("administrator", "administrator");
-		super.clickOnMenu("Administrator", "Dashboard Tasks");
+		super.clickOnMenu("Administrator", "Dashboard");
 		
-		super.checkColumnHasValue(recordIndex, 0, publicTasks);
-		super.checkColumnHasValue(recordIndex, 1, privateTasks);
-		super.checkColumnHasValue(recordIndex, 2, finishedTasks);
-		super.checkColumnHasValue(recordIndex, 3, nonFinishedTasks);
-		super.checkColumnHasValue(recordIndex, 4, averageWorkFlow);
-		super.checkColumnHasValue(recordIndex, 5, deviationWorkFlow);
-		super.checkColumnHasValue(recordIndex, 6, maxWorkFlow);
-		super.checkColumnHasValue(recordIndex, 7, minWorkFlow);
-		super.checkColumnHasValue(recordIndex, 8, averageExecutionPeriod);
-		super.checkColumnHasValue(recordIndex, 9, deviationExecutionPeriod);
-		super.checkColumnHasValue(recordIndex, 10, maxExecutionPeriod);
-		super.checkColumnHasValue(recordIndex, 11, minExecutionPeriod);
-		
-		super.clickOnListingRecord(recordIndex);
-		
-		super.checkInputBoxHasValue("publicTasks", publicTasks);
-		super.checkInputBoxHasValue("privateTasks", privateTasks);
-		super.checkInputBoxHasValue("finishedTasks", finishedTasks);
-		super.checkInputBoxHasValue("nonFinishedTasks", nonFinishedTasks);
-		super.checkInputBoxHasValue("averageWorkFlow", averageWorkFlow);
-		super.checkInputBoxHasValue("deviationWorkFlow", deviationWorkFlow);
-		super.checkInputBoxHasValue("maxWorkFlow", maxWorkFlow);
-		super.checkInputBoxHasValue("minWorkFlow", minWorkFlow);
-		super.checkInputBoxHasValue("averageExecutionPeriod", averageExecutionPeriod);
-		super.checkInputBoxHasValue("deviationExecutionPeriod", deviationExecutionPeriod);
-		super.checkInputBoxHasValue("maxExecutionPeriod", maxExecutionPeriod);
-		super.checkInputBoxHasValue("minExecutionPeriod", minExecutionPeriod);
+		super.checkDashBoard(publicTasks, privateTasks, finishedTasks, nonFinishedTasks, averageWorkFlow, deviationWorkFlow, maxWorkFlow, minWorkFlow, averageExecutionPeriod, deviationExecutionPeriod, maxExecutionPeriod, minExecutionPeriod);;
 		
 		this.signOut();
 	}
