@@ -1,11 +1,16 @@
 
 package acme.features.manager.task;
 
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.roles.Manager;
 import acme.entities.tasks.Task;
+import acme.entities.workplans.Workplan;
+import acme.features.manager.workplan.ManagerWorkPlanRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -18,8 +23,8 @@ public class ManagerMyTaskDeleteService implements AbstractDeleteService<Manager
 
 	@Autowired
 	protected ManagerMyTasksRepository repository;
-
-
+	@Autowired
+	protected ManagerWorkPlanRepository repositoryWorkplan;
 
 	@Override
 	public boolean authorise(final Request<Task> request) {
@@ -42,18 +47,14 @@ public class ManagerMyTaskDeleteService implements AbstractDeleteService<Manager
 
 	@Override
 	public void bind(final Request<Task> request, final Task entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
+		assert request != null && entity != null && errors != null;
 
 		request.bind(entity, errors);
 	}
 
 	@Override
 	public void unbind(final Request<Task> request, final Task entity, final Model model) {
-		assert request != null;
-		assert entity != null;
-		assert model != null;
+		assert request != null && entity != null && model != null;
 
 		request.unbind(entity, model, "title", "startDate", "endDate", "description", "publicTask", "url");
 	}
@@ -73,9 +74,7 @@ public class ManagerMyTaskDeleteService implements AbstractDeleteService<Manager
 
 	@Override
 	public void validate(final Request<Task> request, final Task entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
+		assert request != null && entity != null && errors != null;
 	}
 
 	@Override
@@ -83,6 +82,14 @@ public class ManagerMyTaskDeleteService implements AbstractDeleteService<Manager
 		assert request != null;
 		assert entity != null;
 
+		final List<Workplan> wps = this.repository.findTaskWorkplans(entity.getId());
+		
+		for(final Workplan wp: wps) {
+			final Set<Task> tasks = wp.getTasks();
+			tasks.remove(entity);
+			wp.setTasks(tasks);
+			this.repositoryWorkplan.save(wp);
+		}
 		this.repository.delete(entity);
 	}
 

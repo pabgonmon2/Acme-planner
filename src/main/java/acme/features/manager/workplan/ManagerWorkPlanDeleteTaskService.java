@@ -29,23 +29,20 @@ public class ManagerWorkPlanDeleteTaskService implements AbstractUpdateService<M
 		final int id=request.getModel().getInteger("id");
 		final Workplan wp=this.repository.findById(id);
 		final int managerId= request.getPrincipal().getActiveRoleId();
-		return wp.getManager().getId()==managerId;
+		final Boolean result=wp.getManager().getId()==managerId;
+		return result;
 	}
 
 	@Override
 	public void bind(final Request<Workplan> request, final Workplan entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
+		assert request != null && entity != null && errors != null;
 		request.bind(entity, errors);
 		
 	}
 
 	@Override
 	public void unbind(final Request<Workplan> request, final Workplan entity, final Model model) {
-		assert request != null;
-		assert entity != null;
-		assert model != null;
+		assert request != null && entity != null && model != null;
 
 		request.unbind(entity, model, "startDate", "endDate", "workLoad", "publicPlan", "tasks");
 		
@@ -60,9 +57,7 @@ public class ManagerWorkPlanDeleteTaskService implements AbstractUpdateService<M
 
 	@Override
 	public void validate(final Request<Workplan> request, final Workplan entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
+		assert request != null && entity != null && errors != null;
 	}
 
 	@Override
@@ -70,9 +65,10 @@ public class ManagerWorkPlanDeleteTaskService implements AbstractUpdateService<M
 		Set<Task> tasks;
 		Workplan wp;
 		Task t;
+		final Integer taskId;
 		wp=this.repository.findById(entity.getId());
-		
-		t=(Task) this.tasksRepository.findById(request.getModel().getInteger("deleteTask")).get();
+		taskId=request.getModel().getInteger("deleteTask");
+		t=(Task) this.tasksRepository.findById(taskId).get();
 		tasks=entity.getTasks();
 		tasks.remove(t);
 		wp.setTasks(tasks);
