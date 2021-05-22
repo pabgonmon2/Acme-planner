@@ -67,9 +67,9 @@ public class AdministratorUserAccountUpdateService implements AbstractUpdateServ
 			buffer.append(role.getAuthorityName());
 			buffer.append(" ");
 		}
-
+		
 		model.setAttribute("roleList", buffer.toString());
-
+		
 		if (entity.isEnabled()) {
 			model.setAttribute("status", UserAccountStatus.ENABLED);
 		} else {
