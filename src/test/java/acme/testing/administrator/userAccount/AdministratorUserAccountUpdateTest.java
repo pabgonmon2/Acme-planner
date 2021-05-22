@@ -1,6 +1,7 @@
 package acme.testing.administrator.userAccount;
 
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -12,30 +13,30 @@ public class AdministratorUserAccountUpdateTest extends AcmePlannerTest{
 	//Al clicar en el perfil del usuario, se muestran los detalles, pudiendo modificar algunos campos. Se espera que se actualice
 	//el perfil del usuario correctamente.
 	//Hay que haber iniciado sesión con un rol de administrador pero no se infringe ninguna restricción.
-//	@ParameterizedTest
-//	@CsvFileSource(resources = "/administrator/userAccount/updatePositive.csv", encoding = "utf-8", numLinesToSkip = 1)
-//	@Order(10)
-//	public void updatePositive(final int recordIndex, final String username, final String name, final String surname, final String email, final String roles, final String status,final String newStatus) {
-//		super.signIn("administrator", "administrator");
-//		
-//		super.clickOnMenu("Administrator", "User accounts");
-//		super.clickOnListingRecord(recordIndex);
-//		
-//		super.fillInputBoxIn("newStatus", newStatus);
-//		super.clickOnSubmitButton("Update");
-//		
-//		super.clickOnListingRecord(recordIndex);
-//		
-//		super.checkInputBoxHasValue("username", username);
-//		super.checkInputBoxHasValue("identity.name", name);
-//		super.checkInputBoxHasValue("identity.surname", surname);
-//		super.checkInputBoxHasValue("identity.email",email);
-//		super.checkInputBoxHasValue("roleList",roles);
-//		super.checkInputBoxHasValue("status",status);
-//		super.checkInputBoxHasValue("newStatus",newStatus);
-//		
-//		super.signOut();
-//	}
+	@ParameterizedTest
+	@CsvFileSource(resources = "/administrator/userAccount/updatePositive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@Order(10)
+	public void updatePositive(final int recordIndex, final String username, final String name, final String surname, final String email, final String roles, final String status,final String newStatus) {
+		super.signIn("administrator", "administrator");
+		
+		super.clickOnMenu("Administrator", "User accounts");
+		super.clickOnListingRecord(recordIndex);
+		
+		super.fillInputBoxIn("newStatus", newStatus);
+		super.clickOnSubmitButton("Update");
+		
+		super.clickOnListingRecord(recordIndex);
+		
+		super.checkInputBoxHasValue("username", username);
+		super.checkInputBoxHasValue("identity.name", name);
+		super.checkInputBoxHasValue("identity.surname", surname);
+		super.checkInputBoxHasValue("identity.email",email);
+		super.checkInputBoxHasValue("roleList",roles);
+		super.checkInputBoxHasValue("status",status);
+		super.checkInputBoxHasValue("newStatus",newStatus);
+		
+		super.signOut();
+	}
 	
 	//En este caso, se intenta actualizar el perfil de usuario de manager2 pero haciendo que salten validaciones del formulario.
 	//Se infringe la restricción correspondiente a 
@@ -48,7 +49,7 @@ public class AdministratorUserAccountUpdateTest extends AcmePlannerTest{
 //		super.clickOnMenu("Administrator", "User accounts");
 //		super.clickOnListingRecord(recordIndex);
 //		
-//		super.fillInputBoxIn("newStatus", newStatus);
+//		super.fillInputBoxIn("newStatus", "");
 //		super.clickOnSubmitButton("Update");
 //		 
 //		super.checkErrorsExist();
@@ -62,26 +63,26 @@ public class AdministratorUserAccountUpdateTest extends AcmePlannerTest{
 	Para ello accedemos a la url del formulario del perfil que queremos actualizar comprobando que nos 
 	devuelve un error de autorizacion
 	 */
-//	@Test
-//	@Order(20)
-//	public void updateNegativeManager() {
-//		this.signIn("manager2", "manager2");
-//		super.driver.get("http://localhost:8080/Acme-Planner/administrator/user-account/update?id=6");
-//		super.checkErrorsExist();
-//
-//	}
+	@Test
+	@Order(20)
+	public void updateNegativeManager() {
+		this.signIn("manager2", "manager2");
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/user-account/update?id=6");
+		super.checkErrorsExist();
+
+	}
 	
 	/*
 	En este test se comprueba que un anonimo no sea capaz de acceder al formulario de los perfiles de usuario
 	Para ello accedemos a la url del formulario del perfil que queremos actualizar comprobando que nos 
 	devuelve un error de autorizacion
 	 */
-//	@Test
-//	@Order(30)
-//	public void updateNegativeAnonymous() {
-//		super.driver.get("http://localhost:8080/Acme-Planner/administrator/user-account/update?id=6");
-//		super.checkErrorsExist();
-//	}
+	@Test
+	@Order(30)
+	public void updateNegativeAnonymous() {
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/user-account/update?id=6");
+		super.checkErrorsExist();
+	}
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/userAccount/updatePositive2.csv", encoding = "utf-8", numLinesToSkip = 1)
@@ -94,7 +95,10 @@ public class AdministratorUserAccountUpdateTest extends AcmePlannerTest{
 		super.fillInputBoxIn("newStatus", newStatus);
 		super.clickOnSubmitButton("Update");
 		
-		super.checkNotErrorsExist();
+		super.clickOnMenu("Administrator", "User accounts");
+		super.clickOnListingRecord(recordIndex);
+		
+		super.checkInputBoxHasValue("newStatus", newStatus);
 		
 		super.signOut();	
 	}
