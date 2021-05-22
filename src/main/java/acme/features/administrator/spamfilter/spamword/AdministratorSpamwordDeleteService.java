@@ -9,6 +9,8 @@ import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Administrator;
+import acme.framework.entities.Principal;
+import acme.framework.entities.UserRole;
 import acme.framework.services.AbstractDeleteService;
 
 @Service
@@ -23,15 +25,15 @@ public class AdministratorSpamwordDeleteService implements AbstractDeleteService
 	public boolean authorise(final Request<Spamword> request) {
 		assert request != null;
 
-		return request.getPrincipal().getActiveRole().equals(Administrator.class);
+		final Principal p = request.getPrincipal();
+		final Class<? extends UserRole> a = p.getActiveRole();
+		final Boolean b = a.equals(Administrator.class);
+		return b;
 	}
 
 	@Override
 	public void bind(final Request<Spamword> request, final Spamword entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
-
+		assert request != null && entity !=null && errors!=null;
 		request.bind(entity, errors);
 	}
 
@@ -50,8 +52,10 @@ public class AdministratorSpamwordDeleteService implements AbstractDeleteService
 
 		Spamword result;
 		int id;
+		Model m;
 
-		id = request.getModel().getInteger("id");
+		m = request.getModel();
+		id = m.getInteger("id");
 		result = this.repository.findSpamwordById(id);
 
 		return result;
