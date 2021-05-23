@@ -50,10 +50,10 @@
 <jstl:if test="${command!='create'}">
 <table class="table table-striped table-condensed table-hover nowrap w-100"> 
 		<thead><tr>
-			<th width="20%"><acme:message code="manager.workplan.tasks.title"/></th>
-			<th width="40%"><acme:message code="manager.workplan.tasks.description"/></th>
-			<th width="20%"><acme:message code="manager.workplan.tasks.workflow"/></th>
-			<th></th>
+			<th scope="col"><acme:message code="manager.workplan.tasks.title"/></th>
+			<th scope="col"><acme:message code="manager.workplan.tasks.description"/></th>
+			<th scope="col"><acme:message code="manager.workplan.tasks.workflow"/></th>
+			<th scope="col"></th>
 		</tr></thead>
 <jstl:if test="${tasks.size()>0 }">
 		<tbody>
