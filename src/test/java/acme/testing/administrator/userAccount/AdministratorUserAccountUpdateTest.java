@@ -38,25 +38,6 @@ public class AdministratorUserAccountUpdateTest extends AcmePlannerTest{
 		super.signOut();
 	}
 	
-	//En este caso, se intenta actualizar el perfil de usuario de manager2 pero haciendo que salten validaciones del formulario.
-	//Se infringe la restricción correspondiente a 
-//	@ParameterizedTest
-//    @CsvFileSource(resources = "/administrator/userAccount/updateNegative.csv", encoding = "utf-8", numLinesToSkip = 1)
-//	@Order(20)
-//	public void updateNegative(final int recordIndex, final String username, final String name, final String surname, final String email, final String roles, final String status,final String newStatus) {
-//		super.signIn("administrator", "administrator");
-//		
-//		super.clickOnMenu("Administrator", "User accounts");
-//		super.clickOnListingRecord(recordIndex);
-//		
-//		super.fillInputBoxIn("newStatus", "");
-//		super.clickOnSubmitButton("Update");
-//		 
-//		super.checkErrorsExist();
-//		
-//	    super.signOut();
-//	}
-	
 	
 	/*
 	En este test se comprueba que un manager no sea capaz de acceder al formulario de los perfiles de usuario
