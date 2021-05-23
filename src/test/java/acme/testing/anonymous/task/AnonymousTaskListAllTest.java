@@ -48,6 +48,17 @@ public class AnonymousTaskListAllTest extends AcmePlannerTest{
 		this.signOut();
 	}
 	
+	//Aquí se prueba la funcionalidad list de tasks pero de forma negativa. El resultado esperado es
+	//un error de acceso denegado ya que se está accediendo con un rol de administrador que no tiene acceso
+	//a la funcionalidad.
+	@Test
+	@Order(30)
+	public void listNegativeAdministrator() {
+		this.signIn("administrator", "administrator");
+		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/task/list");
+		super.checkErrorsExist();
+		this.signOut();
+	}	
 	
 
 }
