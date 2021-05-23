@@ -75,5 +75,15 @@ public class AdministratorUserAccountListTest extends AcmePlannerTest{
 		super.driver.get("http://localhost:8080/Acme-Planner/administrator/user-account/list");
 		super.checkErrorsExist();
 	}
+	
+	//Aquí se prueba la funcionalidad list de los perfiles de los usuarios pero de forma negativa. El resultado esperado es
+	//un error de acceso denegado ya que se está accediendo con un rol anonimo que no tiene acceso
+	//a la funcionalidad.
+	@Test
+	@Order(40)
+	public void listAnonymousNegative() {
+		super.driver.get("http://localhost:8080/Acme-Planner/administrator/user-account/list");
+		super.checkErrorsExist();
+	}
 
 }
