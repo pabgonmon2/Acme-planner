@@ -1,5 +1,3 @@
-recordIndex,startDate,endDate,workFlow,description,publicTask,url
-0,2021/08/09 15:55,2021/08/09 16:55,1.0,el ropero esta roto,true,https://www.google.com/
-1,2021/07/09 16:55,2021/07/09 17:55,1.0,el armario esta roto,true,https://www.google.com/
-2,2021/07/12 17:55,2021/07/12 18:55,1.0,la cama esta sucia,true,https://www.google.com/
-3,2021/09/15 18:55,2021/09/15 28:55,2.0,los platos sin fregar,true,https://www.google.com/
+recordIndex,title,startDate,endDate,workFlow,description,publicTask,url
+0,Barrer la casa,2021/08/09 15:55,2021/08/09 18:55,3.00,La casa estaba muy sucia,true,https://www.google.com
+1,Pintar la habitacion,2021/09/09 15:55,2021/09/09 16:55,1.00,La pintura estaba gastada,true,https://www.google.com
