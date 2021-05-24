@@ -12,7 +12,7 @@ public class AdministratorSpamwordCreateTest extends AcmePlannerTest{
 	/*
 		En este test comprobamos que un administrador puede crear una palabra spam.
 		Para ello accedemos al formulario de create a través del menú y rellenamos el campo necesario 
-		con un valor válido (NotNull) y pulsando el boton Create.
+		con un valor válido (NotNull&NotSpam) y pulsando el boton Create.
 		A continuación se comprueba si la palabra se ha creado.
 	 */
 	@ParameterizedTest
@@ -29,7 +29,7 @@ public class AdministratorSpamwordCreateTest extends AcmePlannerTest{
 		super.clickOnSubmitButton("Create");
 		
 		super.clickOnMenu("Administrator", "Spam filter");
-		super.checkColumnHasValue(0, 0, spamword);
+		super.checkColumnHasValue(recordIndex, 0, spamword);
 		
 		this.signOut();
 	}
