@@ -1,5 +1,6 @@
 package acme.features.manager.workplan;
 
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import acme.features.manager.task.ManagerMyTasksRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.DomainEntity;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
@@ -34,18 +36,14 @@ public class ManagerWorkPlanDeleteTaskService implements AbstractUpdateService<M
 
 	@Override
 	public void bind(final Request<Workplan> request, final Workplan entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
+		assert request != null && entity != null && errors != null;
 		request.bind(entity, errors);
 		
 	}
 
 	@Override
 	public void unbind(final Request<Workplan> request, final Workplan entity, final Model model) {
-		assert request != null;
-		assert entity != null;
-		assert model != null;
+		assert request != null && entity != null && model != null;
 
 		request.unbind(entity, model, "startDate", "endDate", "workLoad", "publicPlan", "tasks");
 		
@@ -60,19 +58,19 @@ public class ManagerWorkPlanDeleteTaskService implements AbstractUpdateService<M
 
 	@Override
 	public void validate(final Request<Workplan> request, final Workplan entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
+		assert request != null && entity != null && errors != null;
 	}
 
 	@Override
 	public void update(final Request<Workplan> request, final Workplan entity) {
-		Set<Task> tasks;
+		final Set<Task> tasks;
 		Workplan wp;
-		Task t;
+		Task t=new Task();
+		final Integer taskId;
 		wp=this.repository.findById(entity.getId());
-		
-		t=(Task) this.tasksRepository.findById(request.getModel().getInteger("deleteTask")).get();
+		taskId=request.getModel().getInteger("deleteTask");
+		final Optional<DomainEntity>opTask=this.tasksRepository.findById(taskId);
+		if(opTask.isPresent())t=(Task) opTask.get();
 		tasks=entity.getTasks();
 		tasks.remove(t);
 		wp.setTasks(tasks);

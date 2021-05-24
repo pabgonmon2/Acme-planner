@@ -48,9 +48,8 @@ public class AdministratorSpamwordUpdateService implements AbstractUpdateService
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-
+	
 		request.unbind(entity, model, "spamword");
-		model.setAttribute("spamwordId", entity.getId());
 	}
 
 	@Override

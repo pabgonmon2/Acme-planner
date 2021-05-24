@@ -2,6 +2,7 @@ package acme.features.manager.workplan;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -15,6 +16,7 @@ import acme.features.manager.task.ManagerMyTasksRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.DomainEntity;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
@@ -67,10 +69,15 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 		assert entity != null;
 		assert errors != null;
 		
-		final Workplan wp=(Workplan) this.repository.findById(request.getModel().getInteger("id")).get();
 		
-		final Task t=(Task) this.tasksRepository.findById(request.getModel().getInteger("addTask")).get();
-		if(entity.getPublicPlan()) {
+		Workplan wp=new Workplan();
+		Optional<DomainEntity> opWorkplan;
+		opWorkplan= this.repository.findById(request.getModel().getInteger("id"));
+		if(opWorkplan.isPresent())wp=(Workplan) opWorkplan.get();
+		Task t = new Task();
+		final Optional<DomainEntity> opTask=this.tasksRepository.findById(request.getModel().getInteger("addTask"));
+		if(opTask.isPresent()) t=(Task) opTask.get();
+		if(Boolean.TRUE.equals(entity.getPublicPlan())) {
 			final Boolean b=t.getPublicTask();
 			errors.state(request,b, "addTask", "manager.workplan.error.taskPrivate");
 		}
@@ -79,24 +86,27 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 		errors.state(request, b1, "addTask", "manager.workplan.error.taskStarted");
 		
 		
-		Collection<Task>ta;
+		final Collection<Task>ta;
 		
-		if(!wp.getTasks().isEmpty()) {
-			final Date startRecommend=wp.getTasks().stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(null);
+		Set<Task> tasks;
+		tasks=wp.getTasks();
+		
+		if(!tasks.isEmpty()) {
+			final Date startRecommend=tasks.stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(new Date());
 			startRecommend.setDate(startRecommend.getDate()-1);
 			startRecommend.setHours(8);
 			startRecommend.setMinutes(0);
 			
-			final Date finalRecommend=wp.getTasks().stream().map(Task::getEndDate).max((x,y)->x.compareTo(y)).orElse(null);
+			final Date finalRecommend=tasks.stream().map(Task::getEndDate).max((x,y)->x.compareTo(y)).orElse(new Date());
 			finalRecommend.setDate(finalRecommend.getDate()+1);
 			finalRecommend.setHours(17);
 			finalRecommend.setMinutes(0);
 			request.getModel().setAttribute("startRecommend", startRecommend);
 			request.getModel().setAttribute("finalRecommend", finalRecommend);
 			}
-			if(wp.getPublicPlan())ta= this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
+			if(Boolean.TRUE.equals(wp.getPublicPlan()))ta= this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
 			else ta= this.tasksRepository.findMyTasks(wp.getManager().getId());
-			ta.stream().filter(x->!wp.getTasks().contains(x)).collect(Collectors.toSet());
+			ta.stream().filter(x->!tasks.contains(x)).collect(Collectors.toSet());
 			
 			request.getModel().setAttribute("tasksInsert", ta);
 		
@@ -107,7 +117,7 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 		request.getModel().setAttribute("endDate", wp.getEndDate());
 		request.getModel().setAttribute("workLoad", wp.getWorkLoad());
 		request.getModel().setAttribute("publicPlan", wp.getPublicPlan());
-		request.getModel().setAttribute("tasks", wp.getTasks());
+		request.getModel().setAttribute("tasks",tasks);
 	}
 	
 	
@@ -117,10 +127,11 @@ public class ManagerWorkPlanAddTaskService implements AbstractUpdateService<Mana
 	public void update(final Request<Workplan> request, final Workplan entity) {
 		Set<Task> tasks;
 		Workplan wp;
-		Task t;
 		wp=this.repository.findById(entity.getId());
 	
-		t=(Task) this.tasksRepository.findById(request.getModel().getInteger("addTask")).get();
+		Task t = new Task();
+		final Optional<DomainEntity> opTask=this.tasksRepository.findById(request.getModel().getInteger("addTask"));
+		if(opTask.isPresent()) t=(Task) opTask.get();
 		tasks=entity.getTasks();
 		tasks.add(t);
 		

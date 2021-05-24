@@ -1,7 +1,7 @@
 package acme.entities.dashboard;
 
 import java.util.Collection;
-import java.util.function.Function;
+import java.util.function.DoubleUnaryOperator;
 
 import javax.persistence.Entity;
 import javax.persistence.Transient;
@@ -35,8 +35,8 @@ public class Dashboard extends DomainEntity{
 		public static Double deviation(final Collection<Double> data) {
 			final int n = data.size();
 			final double avg = data.stream().mapToDouble(x->x).average().getAsDouble();
-			final Function<Double, Double> f = x-> Math.pow(x - avg, 2);
-			return Math.sqrt(data.stream().mapToDouble(x->f.apply(x)).sum()/n);
+			final DoubleUnaryOperator f = x-> Math.pow(x - avg, 2);
+			return Math.sqrt(data.stream().mapToDouble(f::applyAsDouble).sum()/n);
 		}
 		// Derived atttributes ----------------------------------------------------
 

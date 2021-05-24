@@ -45,12 +45,12 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 		final Collection<Task>t;
 		
 		if(!wp.getTasks().isEmpty()) {
-		final Date startRecommend=wp.getTasks().stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(null);
+		final Date startRecommend=wp.getTasks().stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(new Date());
 		startRecommend.setDate(startRecommend.getDate()-1);
 		startRecommend.setHours(8);
 		startRecommend.setMinutes(0);
 		
-		final Date finalRecommend=wp.getTasks().stream().map(Task::getEndDate).max((x,y)->x.compareTo(y)).orElse(null);
+		final Date finalRecommend=wp.getTasks().stream().map(Task::getEndDate).max((x,y)->x.compareTo(y)).orElse(new Date());
 		finalRecommend.setDate(finalRecommend.getDate()+1);
 		finalRecommend.setHours(17);
 		finalRecommend.setMinutes(0);
@@ -60,7 +60,7 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 		model.setAttribute("startRecommend", startRecommend);
 		model.setAttribute("finalRecommend", finalRecommend);
 		}
-		if(wp.getPublicPlan())t=this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
+		if(Boolean.TRUE.equals(wp.getPublicPlan()))t=this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
 		else t=this.tasksRepository.findMyTasks(wp.getManager().getId());
 		t.stream().filter(x->!wp.getTasks().contains(x)).collect(Collectors.toSet());
 		

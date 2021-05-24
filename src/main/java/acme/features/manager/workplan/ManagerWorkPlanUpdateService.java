@@ -2,6 +2,8 @@ package acme.features.manager.workplan;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import acme.features.manager.task.ManagerMyTasksRepository;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.DomainEntity;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
@@ -66,34 +69,40 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 		assert entity != null;
 		assert errors != null;
 		
-		final Workplan wp=(Workplan) this.repository.findById(request.getModel().getInteger("id")).get();
+		Workplan wp=new Workplan();
+		Optional<DomainEntity> opWorkplan;
+		opWorkplan= this.repository.findById(request.getModel().getInteger("id"));
+		if(opWorkplan.isPresent())wp=(Workplan) opWorkplan.get();
+		
 		
 		if(entity.getEndDate()!=null && entity.getStartDate()!=null) {
 			final Boolean b3 = this.validacionFechas(entity);
 			errors.state(request, b3, "endDate", "manager.workplan.error.dates");
+			
+			final Boolean b2a = this.validacionFechaFinal(entity);
+			errors.state(request, b2a, "endDate", "manager.workplan.error.endDate.task");
+			final Boolean b1a = this.validacionFechaInicial(entity);
+			errors.state(request, b1a, "startDate", "manager.workplan.error.startDate.task");
 		}
 		if(entity.getStartDate()!=null) {
 			final Boolean b1 = this.fechaInicialDespuesFechaActual(entity);
-			final Boolean b1a = this.validacionFechaInicial(entity);
 			errors.state(request, b1, "startDate", "manager.workplan.error.startDate");
-			errors.state(request, b1a, "startDate", "manager.workplan.error.startDate.task");
 		}
 		if(entity.getEndDate()!=null) {
 			final Boolean b2 = this.fechaFinalDespuesFechaActual(entity);
-			final Boolean b2a = this.validacionFechaFinal(entity);
 			errors.state(request, b2, "endDate", "manager.workplan.error.endDate");
-			errors.state(request, b2a, "endDate", "manager.workplan.error.endDate.task");
 		}
 		
-		Collection<Task>ta;
-		
-		if(!wp.getTasks().isEmpty()) {
-			final Date startRecommend=wp.getTasks().stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(null);
+		final Collection<Task>ta;
+		Set<Task> tasks;
+		tasks=wp.getTasks();
+		if(!tasks.isEmpty()) {
+			final Date startRecommend=tasks.stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(new Date());
 			startRecommend.setDate(startRecommend.getDate()-1);
 			startRecommend.setHours(8);
 			startRecommend.setMinutes(0);
 			
-			final Date finalRecommend=wp.getTasks().stream().map(Task::getEndDate).max((x,y)->x.compareTo(y)).orElse(null);
+			final Date finalRecommend=tasks.stream().map(Task::getEndDate).max((x,y)->x.compareTo(y)).orElse(new Date());
 			finalRecommend.setDate(finalRecommend.getDate()+1);
 			finalRecommend.setHours(17);
 			finalRecommend.setMinutes(0);
@@ -101,9 +110,9 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 			request.getModel().setAttribute("startRecommend", startRecommend);
 			request.getModel().setAttribute("finalRecommend", finalRecommend);
 			}
-			if(wp.getPublicPlan())ta= this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
+			if(Boolean.TRUE.equals(wp.getPublicPlan()))ta= this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
 			else ta= this.tasksRepository.findMyTasks(wp.getManager().getId());
-			ta.stream().filter(x->!wp.getTasks().contains(x)).collect(Collectors.toSet());
+			ta.stream().filter(x->!tasks.contains(x)).collect(Collectors.toSet());
 			
 			request.getModel().setAttribute("tasksInsert", ta);
 		

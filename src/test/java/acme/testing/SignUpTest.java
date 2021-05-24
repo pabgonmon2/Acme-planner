@@ -12,73 +12,59 @@
 
 package acme.testing;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.openqa.selenium.By;
 
-import acme.framework.testing.AbstractTest;
+public class SignUpTest extends AcmePlannerTest {
 
-public class SignUpTest extends AbstractTest {
-
-	// Internal state ---------------------------------------------------------
-
-	// Lifecycle management ---------------------------------------------------
-
-	@Override
-	@BeforeAll
-	public void beforeAll() {
-		super.beforeAll();
-
-		super.setBaseCamp("http", "localhost", "8080", "/Starter-Project", "/master/welcome", "?language=en&debug=true");
-		super.setAutoPausing(true);
-
-		this.signIn("administrator", "administrator");
-		super.click(By.linkText("Administrator"));
-		super.submit(By.linkText("Populate DB (initial)"));
-		this.signOut();
+	//En este test verificaremos que se puede registrar un usuario, 
+	//para ello accederemos al formulario, lo rellenaremos y lo enviaremos
+	@ParameterizedTest
+	@CsvFileSource(resources="/sign-up/positive.csv", encoding="utf-8", numLinesToSkip=1)
+	@Order(10)
+	public void createPositive(final String username, final String password, final String name, 
+		final String surname, final String email) {
+		
+		//Registramos al usuario
+		super.signUp(username, password, password, name, surname, email);
+		//Iniciamos sesion
+		super.signIn(username, password);
+		//Accedemos los datos del usuario
+		super.clickOnMenu("Account", "General data");
+		//Comprobamos que los datos son los mismos con los que nos hemos registrado
+		super.checkInputBoxHasValue("username", username);
+		super.checkInputBoxHasValue("identity.name", name);
+		super.checkInputBoxHasValue("identity.surname", surname);
+		super.checkInputBoxHasValue("identity.email", email);
+		
+		super.signOut();
 	}
-
-	// Test cases -------------------------------------------------------------
+	
+	//En este test se comprobaran las validaciones,
+	//para ello se accedera al formulario y se rellenaran los campos de forma incorrecta  para verficar que saltan errores
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/sign-up/positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	@CsvFileSource(resources="/sign-up/negative.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(10)
-	public void positiveSignUp(final String username, final String password, final String name, final String surname, final String email) {
-		this.signUp(username, password, name, surname, email);
-		this.signIn(username, password);
-		assert super.exists(By.linkText("Account"));
-		this.signOut();
+	public void createNegative(final String username, final String password, final String name, 
+		final String surname, final String email, final String license) {
+		//Accedemos al formulario de registro
+		super.clickOnLink("Sign up");
+		//Rellenamos los datos del formulario
+		super.fillInputBoxIn("username", username);
+		super.fillInputBoxIn("password", password);
+		super.fillInputBoxIn("confirmation", password);
+		super.fillInputBoxIn("identity.name", name);
+		super.fillInputBoxIn("identity.surname", surname);
+		super.fillInputBoxIn("identity.email", email);
+		super.fillInputBoxIn("accept", "true");
+		//Intentamos registranos
+		super.clickOnSubmitButton("Sign up");
+		//Verificamos que han saltado errores
+		super.checkErrorsExist();
+	
 	}
-
-	// Ancillary methods ------------------------------------------------------
-
-	protected void signIn(final String username, final String password) {
-		super.navigateHome();
-		super.click(By.linkText("Sign in"));
-		super.fill(By.id("username"), username);
-		super.fill(By.id("password"), password);
-		super.click(By.id("remember$proxy"));
-		super.submit(By.className("btn-primary"));
-	}
-
-	protected void signOut() {
-		super.navigateHome();
-		super.submit(By.linkText("Sign out"));
-	}
-
-	protected void signUp(final String username, final String password, final String name, final String surname, final String email) {
-		super.navigateHome();
-		super.click(By.linkText("Sign up"));
-		super.fill(By.id("username"), username);
-		super.fill(By.id("password"), password);
-		super.fill(By.id("confirmation"), password);
-		super.fill(By.id("identity.name"), name);
-		super.fill(By.id("identity.surname"), surname);
-		super.fill(By.id("identity.email"), email);
-		super.click(By.id("accept$proxy"));
-		super.submit(By.className("btn-primary"));
-	}
-
+	
+	
 }
