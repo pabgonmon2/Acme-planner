@@ -46,7 +46,7 @@ public class AdministratorUserAccountUpdateService implements AbstractUpdateServ
 
 	@Override
 	public void bind(final Request<UserAccount> request, final UserAccount entity, final Errors errors) {
-		assert request != null && entity != null & errors != null;
+		assert request != null && entity != null && errors != null;
 		request.bind(entity, errors);
 	}
 
