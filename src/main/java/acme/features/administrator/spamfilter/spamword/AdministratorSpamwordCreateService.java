@@ -59,12 +59,9 @@ public class AdministratorSpamwordCreateService implements AbstractCreateService
 
 	@Override
 	public Spamword instantiate(final Request<Spamword> request) {
-		assert request != null;
+		assert request != null;		
 
-		final Spamword result = new Spamword();
-		
-
-		return result;
+		return new Spamword();
 	}
 
 	@Override

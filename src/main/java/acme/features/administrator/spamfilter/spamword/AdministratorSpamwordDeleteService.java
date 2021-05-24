@@ -27,7 +27,7 @@ public class AdministratorSpamwordDeleteService implements AbstractDeleteService
 
 		final Principal p = request.getPrincipal();
 		final Class<? extends UserRole> a = p.getActiveRole();
-		final Boolean b = a.equals(Administrator.class);
+		Boolean b = a.equals(Administrator.class)
 		return b;
 	}
 
