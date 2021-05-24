@@ -15,4 +15,4 @@ This project has different functionalities depending on the role of the user.
 	- Administrators can list all user-accounts, tasks and workplans' dashboards, lista, modify and delete spamwords and threshold, populate the database and shut the system down.
 	
 GitHub Repository: https://github.com/pabgonmon2/Acme-planner
-CleverCloud: http://app-894e9d30-676b-49ee-9bfd-e82ce416b169.cleverapps.io/
+CleverCloud: http://app-8b36c631-7fcf-4353-9f40-4029a7e2b121.cleverapps.io/
