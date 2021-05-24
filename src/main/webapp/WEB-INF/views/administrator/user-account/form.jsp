@@ -23,7 +23,7 @@
 	<acme:form-textbox code="administrator.user-account.form.label.role-list" path="roleList" readonly="true"/>
 	<acme:form-textbox code="administrator.user-account.form.label.status" path="status" readonly="true"/>
 	
-	<jstl:if test="${canUpdate}">
+	<jstl:if test="${canUpdate || command == 'update'}" >
 		<acme:form-select code="administrator.user-account.form.label.new-status" path="newStatus">
 			<acme:form-option code="KEEP" value="KEEP" selected="true"/>
 			<acme:form-option code="ENABLED" value="ENABLED"/>

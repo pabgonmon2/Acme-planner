@@ -18,6 +18,7 @@ import java.util.Iterator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.Valid;
@@ -87,7 +88,7 @@ public class UserAccount extends DomainEntity {
 
 
 	@NotEmpty
-	@OneToMany(mappedBy = "userAccount")
+	@OneToMany(mappedBy = "userAccount", fetch = FetchType.EAGER)
 	protected Collection<@Valid UserRole> roles;
 
 
