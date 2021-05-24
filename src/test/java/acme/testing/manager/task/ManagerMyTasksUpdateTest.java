@@ -74,8 +74,9 @@ public class ManagerMyTasksUpdateTest extends AcmePlannerTest {
 	}
 	
 	//En este caso, se intenta actualizar una task como manager3 pero haciendo que salten validaciones del formulario.
-	//Se infringe la restricción correspondiente a la descripción (no puede ser nula) y las restricciones de las fechas
-	//(fecha final no puede ser puede ser antes que la fecha inicial y la fecha final debe ser más tarde a la fecha de hoy)
+	//Se infringe las restricciones correspondiente a dejar el formulario completamente vacío, las restricciones de las fechas
+	//(fecha final no puede ser puede ser antes que la fecha inicial y la fecha final debe ser más tarde a la fecha de hoy),
+	//la restricción del filtro anti palabras spam y las restricciones del workload (debe ser máximo el intervalo entre las dos fechas y debe ser mínimo 0)
 	@ParameterizedTest
 	@CsvFileSource(resources = "/manager/task/updateNegative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(30)
