@@ -89,7 +89,7 @@ public class ManagerWorkPlanPublishService implements AbstractUpdateService<Mana
 			request.getModel().setAttribute("startRecommend", startRecommend);
 			request.getModel().setAttribute("finalRecommend", finalRecommend);
 			}
-			if(wp.getPublicPlan())ta= this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
+			if(Boolean.TRUE.equals(wp.getPublicPlan()))ta= this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
 			else ta= this.tasksRepository.findMyTasks(wp.getManager().getId());
 			ta.stream().filter(x->!wp.getTasks().contains(x)).collect(Collectors.toSet());
 			

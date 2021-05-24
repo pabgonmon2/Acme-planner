@@ -60,7 +60,7 @@ public class ManagerWorkPlanShowService implements AbstractShowService<Manager, 
 		model.setAttribute("startRecommend", startRecommend);
 		model.setAttribute("finalRecommend", finalRecommend);
 		}
-		if(wp.getPublicPlan())t=this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
+		if(Boolean.TRUE.equals(wp.getPublicPlan()))t=this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
 		else t=this.tasksRepository.findMyTasks(wp.getManager().getId());
 		t.stream().filter(x->!wp.getTasks().contains(x)).collect(Collectors.toSet());
 		
