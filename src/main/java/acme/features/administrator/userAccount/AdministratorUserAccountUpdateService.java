@@ -46,10 +46,7 @@ public class AdministratorUserAccountUpdateService implements AbstractUpdateServ
 
 	@Override
 	public void bind(final Request<UserAccount> request, final UserAccount entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
-
+		assert request != null && entity != null && errors != null;
 		request.bind(entity, errors);
 	}
 
@@ -70,9 +67,9 @@ public class AdministratorUserAccountUpdateService implements AbstractUpdateServ
 			buffer.append(role.getAuthorityName());
 			buffer.append(" ");
 		}
-
+		
 		model.setAttribute("roleList", buffer.toString());
-
+		
 		if (entity.isEnabled()) {
 			model.setAttribute("status", UserAccountStatus.ENABLED);
 		} else {

@@ -277,7 +277,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="endDate" value="2019/04/29 14:30"/>
 		<property name="workFlow" value="1.0"/>
 		<property name="description" value="Hacer ejercicios de programacion"/>
-		<property name="publicTask" value="true"/>
+		<property name="publicTask" value="false"/>
 		<property name="manager" ref="manager3"/>
 	</bean>
 	<bean id="task17" class="acme.entities.tasks.Task">
@@ -334,7 +334,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
  		<property name="endDate" value="2021/07/30 11:30"/>
  		<property name="workLoad" value="26.0"/>
  		<property name="publicPlan" value="true"/>
- 		<property name="manager" ref="manager3"/>
+ 		<property name="manager" ref="manager2"/>
  		<property name="tasks">
 				<set>
 					<ref bean="task5" />
@@ -351,7 +351,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
  		<property name="manager" ref="manager2"/>
  		<property name="tasks">
 				<set>
-					<ref bean="task3" />
+					<ref bean="task13" />
 					<ref bean="task8" />
 				</set>
 		</property>
@@ -362,7 +362,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
  		<property name="endDate" value="2021/05/10 18:30"/>
  		<property name="workLoad" value="2.0"/>
  		<property name="publicPlan" value="true"/>
- 		<property name="manager" ref="manager3"/>
+ 		<property name="manager" ref="manager2"/>
  		<property name="tasks">
 				<set>
 					<ref bean="task17" />
@@ -374,12 +374,13 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
  	<bean id="workplan6" class="acme.entities.workplans.Workplan">
  		<property name="startDate" value="2021/12/30 15:00"/>
  		<property name="endDate" value="2021/12/30 18:30"/>
- 		<property name="workLoad" value="4.0"/>
- 		<property name="publicPlan" value="true"/>
+ 		<property name="workLoad" value="2.0"/>
+ 		<property name="publicPlan" value="false"/>
+
  		<property name="manager" ref="manager3"/>
  		<property name="tasks">
 				<set>
-					<ref bean="task14" />
+					<ref bean="task16" />
 					<ref bean="task15" />
 				</set>
 		</property>
@@ -390,7 +391,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
  		<property name="endDate" value="2021/09/18 22:30"/>
  		<property name="workLoad" value="5.0"/>
  		<property name="publicPlan" value="true"/>
- 		<property name="manager" ref="manager2"/>
+ 		<property name="manager" ref="manager3"/>
  		<property name="tasks">
 				<set>
 					<ref bean="task1" />
@@ -405,13 +406,9 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
  		<property name="workLoad" value="0.0"/>
  		<property name="publicPlan" value="false"/>
  		<property name="manager" ref="manager2"/>
- 		<property name="tasks">
-				<set>
-					<ref bean="task8" />
-					<ref bean="task9" />
-				</set>
-		</property>
+ 		
  	</bean>
+ 		
   
  <!--  ################### SHOUTS ################### -->
 	<bean id="shout1" class="acme.entities.shouts.Shout">
@@ -527,6 +524,4 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	<bean id="threshold1" class="acme.entities.spamfilter.Threshold">
 		<property name="value" value="10.0"/>
 	</bean>
-	
-
 </beans>

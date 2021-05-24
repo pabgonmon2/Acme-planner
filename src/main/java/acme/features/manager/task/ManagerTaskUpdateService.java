@@ -67,10 +67,11 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		
-		if(entity.getEndDate()!=null && entity.getStartDate()!=null) {
+		if(entity.getEndDate()!=null && entity.getStartDate()!=null && entity.getWorkFlow()!=null) {
+			final Boolean b1 = this.workFlowValidation(entity);
 			final Boolean b3 = this.validacionFechas(entity);
 			errors.state(request, b3, "endDate", "manager.mytasks.error.dates");
+			errors.state(request, b1, "workFlow", "manager.mytasks.error.workFlow");
 		}
 		if(entity.getStartDate()!=null) {
 			final Boolean b1 = this.fechaInicialDespuesFechaActual(entity);
@@ -79,10 +80,11 @@ public class ManagerTaskUpdateService implements AbstractUpdateService<Manager, 
 		if(entity.getEndDate()!=null) {
 			final Boolean b2 = this.fechaFinalDespuesFechaActual(entity);
 			errors.state(request, b2, "endDate", "manager.mytasks.error.endDate");
+			
 		}
-		final Boolean b1 = this.workFlowValidation(entity);
+		
 		final Boolean spam = this.spamService.filtroTasks(entity);
-		errors.state(request, b1, "workFlow", "manager.mytasks.error.workFlow");
+		
 		errors.state(request, spam, "description", "manager.mytasks.error.spam");
 	}
 	

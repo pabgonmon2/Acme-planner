@@ -46,8 +46,8 @@ public class ManagerMyTasksListTest extends AcmePlannerTest {
 	@Test
 	@Order(20)
 	public void listNegativeAnonymous() {
-		super.driver.get("http://localhost:8080/Acme-Planner/manager/task/list");
-		super.checkErrorsExist();
+		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/task/list");
+		super.checkPanicExists();
 	}
 	
 	//Aquí se vuelve a probar la funcionalidad list de tasks pero de forma negativa. El resultado esperado es
@@ -57,8 +57,8 @@ public class ManagerMyTasksListTest extends AcmePlannerTest {
 	@Order(30)
 	public void listNegativeAdministrator() {
 		this.signIn("administrator", "administrator");
-		super.driver.get("http://localhost:8080/Acme-Planner/manager/task/list");
-		super.checkErrorsExist();
+		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/task/list");
+		super.checkPanicExists();
 	}
 
 }

@@ -68,24 +68,26 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 		
 		final Workplan wp=(Workplan) this.repository.findById(request.getModel().getInteger("id")).get();
 		
+		
 		if(entity.getEndDate()!=null && entity.getStartDate()!=null) {
 			final Boolean b3 = this.validacionFechas(entity);
 			errors.state(request, b3, "endDate", "manager.workplan.error.dates");
+			
+			final Boolean b2a = this.validacionFechaFinal(entity);
+			errors.state(request, b2a, "endDate", "manager.workplan.error.endDate.task");
+			final Boolean b1a = this.validacionFechaInicial(entity);
+			errors.state(request, b1a, "startDate", "manager.workplan.error.startDate.task");
 		}
 		if(entity.getStartDate()!=null) {
 			final Boolean b1 = this.fechaInicialDespuesFechaActual(entity);
-			final Boolean b1a = this.validacionFechaInicial(entity);
 			errors.state(request, b1, "startDate", "manager.workplan.error.startDate");
-			errors.state(request, b1a, "startDate", "manager.workplan.error.startDate.task");
 		}
 		if(entity.getEndDate()!=null) {
 			final Boolean b2 = this.fechaFinalDespuesFechaActual(entity);
-			final Boolean b2a = this.validacionFechaFinal(entity);
 			errors.state(request, b2, "endDate", "manager.workplan.error.endDate");
-			errors.state(request, b2a, "endDate", "manager.workplan.error.endDate.task");
 		}
 		
-		Collection<Task>ta;
+		final Collection<Task>ta;
 		
 		if(!wp.getTasks().isEmpty()) {
 			final Date startRecommend=wp.getTasks().stream().map(Task::getStartDate).min((x,y)->x.compareTo(y)).orElse(null);
@@ -101,7 +103,7 @@ public class ManagerWorkPlanUpdateService implements AbstractUpdateService<Manag
 			request.getModel().setAttribute("startRecommend", startRecommend);
 			request.getModel().setAttribute("finalRecommend", finalRecommend);
 			}
-			if(wp.getPublicPlan())ta= this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
+			if(Boolean.TRUE.equals(wp.getPublicPlan()))ta= this.tasksRepository.findMyPublicTasks(wp.getManager().getId());
 			else ta= this.tasksRepository.findMyTasks(wp.getManager().getId());
 			ta.stream().filter(x->!wp.getTasks().contains(x)).collect(Collectors.toSet());
 			

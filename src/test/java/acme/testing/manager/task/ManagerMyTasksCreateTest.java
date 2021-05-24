@@ -49,9 +49,12 @@ public class ManagerMyTasksCreateTest extends AcmePlannerTest {
 	}
 	
 	//En este caso, se intenta crear una task como manager3 pero haciendo que salten validaciones del formulario.
-	//En la primera línea del csv se infringe la restricción de las spamwords
-	//En la segunda línea, a parte de la anterior, las restricciones de las fechas (fecha final no puede ser 
-	//puede ser antes que la fecha inicial y la fecha inicial y final deben ser más tarde a la fecha de hoy)
+	//En la primera línea del csv se infringen todas las restricciones correspondientes a dejar el formulario vacío.
+	//En esta, también se infringe la restricción del formato de la url.
+	//En la segunda línea del csv se infringe el formato de las fechas.
+	//En la tercera línea del csv se infringe la restricción de las spamwords
+	//En la cuarta línea, las restricciones de las fechas (fecha final no puede ser puede ser antes que la fecha inicial
+	//y la fecha inicial y final deben ser más tarde a la fecha de hoy)
 	@ParameterizedTest
 	@CsvFileSource(resources = "/manager/task/createNegative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)
