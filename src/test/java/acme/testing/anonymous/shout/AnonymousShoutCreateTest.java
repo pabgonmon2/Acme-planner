@@ -71,6 +71,10 @@ public class AnonymousShoutCreateTest extends AcmePlannerTest{
 		super.clickOnSubmitButton("Shout!");
 		
 		super.checkErrorsExist();
+		if(recordIndex==1) {
+			super.checkErrorsExist("author");
+			super.checkErrorsExist("info");
+		}
 		
 	}
 	/*
