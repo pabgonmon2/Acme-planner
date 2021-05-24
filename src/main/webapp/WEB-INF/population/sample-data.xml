@@ -524,6 +524,4 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	<bean id="threshold1" class="acme.entities.spamfilter.Threshold">
 		<property name="value" value="10.0"/>
 	</bean>
-	
-
 </beans>
