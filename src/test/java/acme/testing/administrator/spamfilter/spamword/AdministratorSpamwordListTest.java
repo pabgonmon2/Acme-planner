@@ -65,7 +65,7 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 	@Order(35)
 	public void filtrosShoutPositive() {
 		
-		super.clickOnMenu("Anonymous", "Shouts!");
+		super.clickOnMenu("Anonymous", "Shout!");
 		
 		super.checkInputBoxHasValue("author", "John Doe");
 		super.checkInputBoxHasValue("text", "Lorem ipsum!");
@@ -77,7 +77,7 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 		
 		super.clickOnSubmitButton("Shout!");
 		
-		super.clickOnMenu("Anonymous", "List shout");
+		super.clickOnMenu("Anonymous", "List shouts");
 		
 		super.checkColumnHasValue(0, 1, "Pablo");
 		super.checkColumnHasValue(0, 2, "Hola como estais?");
@@ -92,7 +92,7 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 	@Order(40)
 	public void filtrosShoutNegative() {
 		
-		super.clickOnMenu("Anonymous", "Shouts!");
+		super.clickOnMenu("Anonymous", "Shout!");
 		
 		super.checkInputBoxHasValue("author", "John Doe");
 		super.checkInputBoxHasValue("text", "Lorem ipsum!");
