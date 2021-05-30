@@ -31,7 +31,7 @@ public class AdministratorTaskDashBoardTestCase extends AcmePlannerTest{
 		this.signIn("administrator", "administrator");
 		super.clickOnMenu("Administrator", "Dashboard");
 		
-		super.checkDashBoard(publicTasks, privateTasks, finishedTasks, nonFinishedTasks, averageWorkFlow, deviationWorkFlow, maxWorkFlow, minWorkFlow, averageExecutionPeriod, deviationExecutionPeriod, maxExecutionPeriod, minExecutionPeriod);;
+		super.checkDashBoard(publicTasks, privateTasks, finishedTasks, nonFinishedTasks, averageWorkFlow, deviationWorkFlow, maxWorkFlow, minWorkFlow, averageExecutionPeriod, deviationExecutionPeriod, maxExecutionPeriod, minExecutionPeriod);
 		
 		this.signOut();
 	}
