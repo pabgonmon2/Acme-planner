@@ -1,7 +1,6 @@
 package acme.testing.manager.workplan;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -38,7 +37,7 @@ public class ManagerWorkPlanDeleteTest extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources="/manager/workplan/delete-negative.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
-	public void deleteWithoutAuthorizedNegative(final String username, final String password) {
+	public void deleteNegative(final String username, final String password) {
 		//Iniciamos sesion
 		super.signIn(username, password);
 		//Intentamos acceder al fomulario
@@ -49,21 +48,21 @@ public class ManagerWorkPlanDeleteTest extends AcmePlannerTest{
 	}
 	
 	//En este test intentaremos borrar un workplan como anonimo, verificando asi que no tenemos permisos
-	@Test
-	@Order(30)
-	public void deleteAnonymousNegative() {
-		//Accedemos al formulario
-		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/delete?id=41");
-		//Comporbamos que ha saltado un error
-		super.checkErrorsExist();
-	}
+//	@Test
+//	@Order(30)
+//	public void deleteAnonymousNegative() {
+//		//Accedemos al formulario
+//		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/delete?id=41");
+//		//Comporbamos que ha saltado un error
+//		super.checkErrorsExist();
+//	}
 	
 	//En este test verificaremos que podemos borrar un workplan accediendo por la url al formulario siendo sus managers,
 	//para ello iniciaremos sesion, accederemos al formulario, lo borraremos y comprobaremos que ahora no esta en la lista
 	@ParameterizedTest
 	@CsvFileSource(resources="/manager/workplan/delete-positive1.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(40)
-	public void deleteWithUrl(final int id, final String nextStartDate, final String nextEndDate, final String nextWorkLoad) {
+	public void deletePositive(final int id, final String nextStartDate, final String nextEndDate, final String nextWorkLoad) {
 		//Iniciamos sesion
 		super.signIn("manager3", "manager3");
 		//Accedemos a la url

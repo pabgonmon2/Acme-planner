@@ -61,7 +61,7 @@ public class AdministratorSpamwordCreateTest extends AcmePlannerTest{
 	 */
 	@Test
 	@Order(20)
-	public void listNegativeAnonymous() {
+	public void listNegative() {
 		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/create");
 		super.checkErrorsExist();
 	}
@@ -70,11 +70,11 @@ public class AdministratorSpamwordCreateTest extends AcmePlannerTest{
 		En este test se comprueba que un manager no sea capaz de crear una spamword
 		Para ello accedemos a la url del formulario de create de spamword comprobando que nos devuelve un error de autorizacion
 	 */
-	@Test
-	@Order(30)
-	public void listNegativeManager() {
-		this.signIn("manager2", "manager2");
-		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/create");
-		super.checkErrorsExist();
-	}
+//	@Test
+//	@Order(30)
+//	public void listNegative() {
+//		this.signIn("manager2", "manager2");
+//		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/create");
+//		super.checkErrorsExist();
+//	}
 }

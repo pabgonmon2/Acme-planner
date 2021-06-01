@@ -83,7 +83,7 @@ public class AnonymousShoutCreateTest extends AcmePlannerTest{
 	 */
 	@Test
 	@Order(30)
-	public void createNegativeAdministrator() {
+	public void createNegative() {
 		super.signIn("administrator", "administrator");
 		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/shout/create");
 		super.checkPanicExists();
@@ -95,15 +95,15 @@ public class AnonymousShoutCreateTest extends AcmePlannerTest{
 		En este test se comprueba que un manager no sea capaz de crear un shout
 		Para ello accedemos a la url del formulario de create de shouts comprobando que nos devuelve un error de autorizacion
 	 */
-	@Test
-	@Order(30)
-	public void createNegativeManager() {
-		super.signIn("manager2", "manager2");
-		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/shout/create");
-		super.checkPanicExists();
-		super.signOut();
-		
-	}
+//	@Test
+//	@Order(30)
+//	public void createNegativeManager() {
+//		super.signIn("manager2", "manager2");
+//		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/shout/create");
+//		super.checkPanicExists();
+//		super.signOut();
+//		
+//	}
 	
 	
 	

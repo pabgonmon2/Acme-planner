@@ -15,7 +15,7 @@ public class ManagerWorkPlanAddTaskTest extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources="/manager/workplan/addTask-positive.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(10)
-	public void addTaskPositive(final int recordIndex, final String taskId, final String workLoad, final String newWorkLoad) {
+	public void updatePositive(final int recordIndex, final String taskId, final String workLoad, final String newWorkLoad) {
 		//Iniciamos sesion como manager y accedemos al formulario del plan de trabajo dado en los parametros
 		super.signIn("manager2", "manager2");
 		super.clickOnMenu("Manager", "Works Plans");
@@ -36,7 +36,7 @@ public class ManagerWorkPlanAddTaskTest extends AcmePlannerTest{
 		@ParameterizedTest
 		@CsvFileSource(resources="/manager/workplan/addTask-negative.csv", encoding="utf-8", numLinesToSkip=1)
 		@Order(20)
-		public void addTaskNegative(final int recordIndex, final String taskId) {
+		public void updateNegative(final int recordIndex, final String taskId) {
 			//Iniciamos sesion como manager y accedemos al formulario del plan de trabajo dado en los parametros
 			super.signIn("manager2", "manager2");
 			super.clickOnMenu("Manager", "Works Plans");
