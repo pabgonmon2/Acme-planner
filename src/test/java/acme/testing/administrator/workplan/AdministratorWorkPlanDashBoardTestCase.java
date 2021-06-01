@@ -14,7 +14,8 @@ public class AdministratorWorkPlanDashBoardTestCase extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/workplan/workplan-dashboard.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void listPositive( 
+	public void listPositive(
+	final Integer recordIndex,
 	final String publicTasks,
 	final String privateTasks,
 	final String finishedTasks,
@@ -28,6 +29,16 @@ public class AdministratorWorkPlanDashBoardTestCase extends AcmePlannerTest{
 	final String maxExecutionPeriod,
 	final String minExecutionPeriod) {
 		
+		if(recordIndex!=2) {
+			super.signIn("manager3","manager3");
+			super.clickOnMenu("Manager", "Works Plans");
+			
+			super.clickOnListingRecord(recordIndex);
+			super.clickOnSubmitButton("Publish");
+			super.signOut();
+		}
+		
+		
 		this.signIn("administrator", "administrator");
 		super.clickOnMenu("Administrator", "Dashboard Work Plans");
 		
@@ -39,7 +50,7 @@ public class AdministratorWorkPlanDashBoardTestCase extends AcmePlannerTest{
 	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un manager*/
 	@Test
 	@Order(20)
-	public void listNgative() {
+	public void listNegative() {
 			this.signIn("manager3", "manager3");
 			super.driver.get("http://localhost:8080/Acme-Planner/administrator/dashboardwp/list");
 			super.checkErrorsExist();
