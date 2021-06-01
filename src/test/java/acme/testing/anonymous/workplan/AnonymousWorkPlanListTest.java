@@ -15,7 +15,7 @@ public class AnonymousWorkPlanListTest extends AcmePlannerTest {
 	@ParameterizedTest
 	@CsvFileSource(resources="/anonymous/workplan/list.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(10)
-	public void listAndShowPositive(final int recordIndex, final String startDate, final String endDate, final String workLoad, final String publicPlan) {
+	public void listPositive(final int recordIndex, final String startDate, final String endDate, final String workLoad, final String publicPlan) {
 		super.clickOnMenu("Anonymous", "Workplans");
 		
 		super.checkColumnHasValue(recordIndex, 0, startDate);
@@ -36,7 +36,7 @@ public class AnonymousWorkPlanListTest extends AcmePlannerTest {
 	//El resultado esperado es un error acceso denegado.
 	@Test
 	@Order(20)
-	public void listManagerNegative() {
+	public void listNegative() {
 		super.signIn("manager2", "manager2");
 		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/workplan/list");
 		super.checkPanicExists();
@@ -45,12 +45,12 @@ public class AnonymousWorkPlanListTest extends AcmePlannerTest {
 	//Este test prueba la funcionalidad list workplan de forma negativa. Se intenta acceder al listado
 	//como un usuario con rol de administrador cuando esta funcionalidad es para roles anónimos.
 	//El resultado esperado es un error acceso denegado.
-	@Test
-	@Order(30)
-	public void listAdministratorNegative() {
-		super.signIn("administrator", "administrator");
-		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/workplan/list");
-		super.checkPanicExists();
-	}
+//	@Test
+//	@Order(30)
+//	public void listAdministratorNegative() {
+//		super.signIn("administrator", "administrator");
+//		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/workplan/list");
+//		super.checkPanicExists();
+//	}
 
 }

@@ -14,7 +14,7 @@ public class AdministratorTaskDashBoardTestCase extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/task/task-dashboard.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void listAll( 
+	public void listPositive( 
 	final String publicTasks,
 	final String privateTasks,
 	final String finishedTasks,
@@ -39,7 +39,7 @@ public class AdministratorTaskDashBoardTestCase extends AcmePlannerTest{
 	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un manager*/
 	@Test
 	@Order(20)
-	public void dashBoardNegativeTestCase2() {
+	public void listNegative() {
 			this.signIn("manager3", "manager3");
 			super.driver.get("http://localhost:8080/Acme-Planner/administrator/dashboard/list");
 			super.checkErrorsExist();
@@ -48,10 +48,10 @@ public class AdministratorTaskDashBoardTestCase extends AcmePlannerTest{
 
 	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un anonimo*/
 	
-	@Test
-	@Order(30)
-	public void dashBoardNegativeTestCase3() {
-			super.driver.get("http://localhost:8080/Acme-Planner/administrator/dashboard/list");
-			super.checkErrorsExist();
-	}
+//	@Test
+//	@Order(30)
+//	public void listNegativeAnonymous() {
+//			super.driver.get("http://localhost:8080/Acme-Planner/administrator/dashboard/list");
+//			super.checkErrorsExist();
+//	}
 }

@@ -16,7 +16,7 @@ public class AdministratorUserAccountListTest extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/userAccount/list-all.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void listAllWithoutNewStatus(final int recordIndex, final String username, final String name, final String surname, final String email, final String roles, final String status) {
+	public void listPositive(final int recordIndex, final String username, final String name, final String surname, final String email, final String roles, final String status) {
 		super.signIn("administrator", "administrator");
 		
 		super.clickOnMenu("Administrator", "User accounts");
@@ -43,7 +43,7 @@ public class AdministratorUserAccountListTest extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/userAccount/list-all-status.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)
-	public void listAllWithNewStatus(final int recordIndex, final String username, final String name, final String surname, final String email, final String roles, final String status, final String newStatus) {
+	public void listPositive(final int recordIndex, final String username, final String name, final String surname, final String email, final String roles, final String status, final String newStatus) {
 		super.signIn("administrator", "administrator");
 		
 		super.clickOnMenu("Administrator", "User accounts");

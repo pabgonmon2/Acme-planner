@@ -75,7 +75,7 @@ public class AdministratorSpamwordUpdateTest extends AcmePlannerTest {
 	 */
 	@Test
 	@Order(20)
-	public void updateNegativeManager() {
+	public void updateNegative() {
 		this.signIn("manager2", "manager2");
 		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/update?id=66");
 		super.checkErrorsExist();
@@ -86,12 +86,12 @@ public class AdministratorSpamwordUpdateTest extends AcmePlannerTest {
 		En este test se comprueba que un anonimo no sea capaz de acceder al formulario de la spamword
 		Para ello accedemos a la url del formulario de la spamword comprobando que nos devuelve un error de autorizacion
 	 */
-	@Test
-	@Order(30)
-	public void updateNegativeAnonymous() {
-		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/update?id=66");
-		super.checkErrorsExist();
-	}
+//	@Test
+//	@Order(30)
+//	public void updateNegativeAnonymous() {
+//		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/update?id=66");
+//		super.checkErrorsExist();
+//	}
 
 
 }

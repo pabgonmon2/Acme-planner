@@ -15,7 +15,7 @@ public class ManagerWorkPlanListTest extends AcmePlannerTest {
 	@ParameterizedTest
 	@CsvFileSource(resources="/manager/workplan/list.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(10)
-	public void listAndShow(final int recordIndex, final String startDate, final String endDate, final String workLoad, final String publicPlan) {
+	public void listPositive(final int recordIndex, final String startDate, final String endDate, final String workLoad, final String publicPlan) {
 		//Iniciamos sesion
 		super.signIn("manager2", "manager2");
 		//Accedemos al listado de workplans
@@ -39,7 +39,7 @@ public class ManagerWorkPlanListTest extends AcmePlannerTest {
 	//En este test verificaremos que no podemos acceder al listado siendo anonimo ya que saltaran errores
 	@Test
 	@Order(20)
-	public void listAnonymousNegative() {
+	public void listNegative() {
 		//Accedemos al listado
 		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/list");
 		//Verificamos que han saltado errores
@@ -47,16 +47,16 @@ public class ManagerWorkPlanListTest extends AcmePlannerTest {
 	}
 	
 	//En este test verificaremos que no podemos acceder al listado siendo administrador
-	@Test
-	@Order(30)
-	public void listAdministratorNegative() {
-		//Iniciamos sesion
-		super.signIn("administrator", "administrator");
-		//Accedemos al listado
-		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/list");
-		//Veridicamos que han saltado errores
-		super.checkErrorsExist();
-	}
+//	@Test
+//	@Order(30)
+//	public void listAdministratorNegative() {
+//		//Iniciamos sesion
+//		super.signIn("administrator", "administrator");
+//		//Accedemos al listado
+//		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/list");
+//		//Veridicamos que han saltado errores
+//		super.checkErrorsExist();
+//	}
 	
 	
 	

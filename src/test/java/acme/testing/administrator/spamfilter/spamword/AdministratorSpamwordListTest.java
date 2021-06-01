@@ -36,12 +36,12 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 		En este test se comprueba que un anonimo no sea capaz de listar el spamword
 		Para ello accedemos al listado de spamword comprobando que nos devuelve un error de autorizacion
 	 */
-	@Test
-	@Order(20)
-	public void listNegativeAnonymous() {
-		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/list");
-		super.checkErrorsExist();
-	}
+//	@Test
+//	@Order(20)
+//	public void listNegativeAnonymous() {
+//		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/list");
+//		super.checkErrorsExist();
+//	}
 	
 	/*
 		En este test se comprueba que un manager no sea capaz de listar las spamwords
@@ -49,7 +49,7 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 	 */
 	@Test
 	@Order(30)
-	public void listNegativeManager() {
+	public void listNegative() {
 		this.signIn("manager2", "manager2");
 		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/list");
 		super.checkErrorsExist();
@@ -63,7 +63,7 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 	 */
 	@Test
 	@Order(35)
-	public void filtrosShoutPositive() {
+	public void filtroShoutPositive() {
 		
 		super.clickOnMenu("Anonymous", "Shout!");
 		
@@ -90,7 +90,7 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 	 */
 	@Test
 	@Order(40)
-	public void filtrosShoutNegative() {
+	public void filtroShoutNegative() {
 		
 		super.clickOnMenu("Anonymous", "Shout!");
 		
@@ -116,7 +116,7 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/manager/task/createPositive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(50)
-	public void taskPositive(final int recordIndex, final String title, final String startDate, 
+	public void filtroTaskPositive(final int recordIndex, final String title, final String startDate, 
 		final String endDate, final String workFlow, final String description, final String publicTask, final String url) {
 		super.signIn("manager3", "manager3");
 		

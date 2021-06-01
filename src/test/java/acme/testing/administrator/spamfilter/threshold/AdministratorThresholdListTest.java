@@ -37,12 +37,12 @@ public class AdministratorThresholdListTest extends AcmePlannerTest {
 		En este test se comprueba que un anonimo no sea capaz de listar el threshold
 		Para ello accedemos al listado de threshold comprobando que nos devuelve un error de autorizacion
 	 */
-	@Test
-	@Order(20)
-	public void listNegativeAnonymous() {
-		super.driver.get("http://localhost:8080/Acme-Planner/administrator/threshold/list");
-		super.checkErrorsExist();
-	}
+//	@Test
+//	@Order(20)
+//	public void listNegativeAnonymous() {
+//		super.driver.get("http://localhost:8080/Acme-Planner/administrator/threshold/list");
+//		super.checkErrorsExist();
+//	}
 	
 	/*
 		En este test se comprueba que un manager no sea capaz de listar el threshold
@@ -50,7 +50,7 @@ public class AdministratorThresholdListTest extends AcmePlannerTest {
 	 */
 	@Test
 	@Order(30)
-	public void listNegativeManager() {
+	public void listNegative() {
 		this.signIn("manager2", "manager2");
 		super.driver.get("http://localhost:8080/Acme-Planner/administrator/threshold/list");
 		super.checkErrorsExist();

@@ -14,7 +14,7 @@ public class AdministratorWorkPlanDashBoardTestCase extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/workplan/workplan-dashboard.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void listAll( 
+	public void listPositive( 
 	final String publicTasks,
 	final String privateTasks,
 	final String finishedTasks,
@@ -39,7 +39,7 @@ public class AdministratorWorkPlanDashBoardTestCase extends AcmePlannerTest{
 	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un manager*/
 	@Test
 	@Order(20)
-	public void workPlanDashBoardNegativeTestCase2() {
+	public void listNgative() {
 			this.signIn("manager3", "manager3");
 			super.driver.get("http://localhost:8080/Acme-Planner/administrator/dashboardwp/list");
 			super.checkErrorsExist();
@@ -48,10 +48,10 @@ public class AdministratorWorkPlanDashBoardTestCase extends AcmePlannerTest{
 
 	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un anonimo*/
 	
-	@Test
-	@Order(30)
-	public void workPlanDashBoardNegativeTestCase3() {
-			super.driver.get("http://localhost:8080/Acme-Planner/administrator/dashboardwp/list");
-			super.checkErrorsExist();
-	}
+//	@Test
+//	@Order(30)
+//	public void workPlanDashBoardNegativeTestCase3() {
+//			super.driver.get("http://localhost:8080/Acme-Planner/administrator/dashboardwp/list");
+//			super.checkErrorsExist();
+//	}
 }

@@ -45,7 +45,7 @@ public class ManagerMyTasksListTest extends AcmePlannerTest {
 	//a la funcionalidad.
 	@Test
 	@Order(20)
-	public void listNegativeAnonymous() {
+	public void listNegative() {
 		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/task/list");
 		super.checkPanicExists();
 	}
@@ -53,12 +53,12 @@ public class ManagerMyTasksListTest extends AcmePlannerTest {
 	//Aquí se vuelve a probar la funcionalidad list de tasks pero de forma negativa. El resultado esperado es
 	//un error de acceso denegado ya que se está accediendo con un rol de administrador que no tiene acceso
 	//a la funcionalidad.
-	@Test
-	@Order(30)
-	public void listNegativeAdministrator() {
-		this.signIn("administrator", "administrator");
-		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/task/list");
-		super.checkPanicExists();
-	}
+//	@Test
+//	@Order(30)
+//	public void listNegativeAdministrator() {
+//		this.signIn("administrator", "administrator");
+//		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/task/list");
+//		super.checkPanicExists();
+//	}
 
 }
