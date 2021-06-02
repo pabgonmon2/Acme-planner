@@ -1,7 +1,6 @@
 package acme.testing.anonymous.workplan;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -34,12 +33,14 @@ public class AnonymousWorkPlanListTest extends AcmePlannerTest {
 	//Este test prueba la funcionalidad list workplan de forma negativa. Se intenta acceder al listado
 	//como un usuario con rol de manager cuando esta funcionalidad es para roles anónimos.
 	//El resultado esperado es un error acceso denegado.
-	@Test
+	@ParameterizedTest
+	@CsvFileSource(resources="/anonymous/workplan/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
-	public void listNegative() {
-		super.signIn("manager2", "manager2");
+	public void listNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/workplan/list");
 		super.checkPanicExists();
+		if(username!=null) super.signOut();
 	}
 	
 	//Este test prueba la funcionalidad list workplan de forma negativa. Se intenta acceder al listado

@@ -1,7 +1,6 @@
 package acme.testing.administrator.userAccount;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -44,13 +43,14 @@ public class AdministratorUserAccountUpdateTest extends AcmePlannerTest{
 	Para ello accedemos a la url del formulario del perfil que queremos actualizar comprobando que nos 
 	devuelve un error de autorizacion
 	 */
-	@Test
+	@ParameterizedTest
+	@CsvFileSource(resources="/administrator/userAccount/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
-	public void updateNegative() {
-		this.signIn("manager2", "manager2");
+	public void updateNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 		super.driver.get("http://localhost:8080/Acme-Planner/administrator/user-account/update?id=6");
 		super.checkErrorsExist();
-
+		if(username!=null) super.signOut();
 	}
 	
 	/*

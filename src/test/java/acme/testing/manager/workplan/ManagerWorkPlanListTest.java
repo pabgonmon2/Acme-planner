@@ -1,7 +1,6 @@
 package acme.testing.manager.workplan;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -37,13 +36,16 @@ public class ManagerWorkPlanListTest extends AcmePlannerTest {
 	}
 	
 	//En este test verificaremos que no podemos acceder al listado siendo anonimo ya que saltaran errores
-	@Test
+	@ParameterizedTest
+	@CsvFileSource(resources="/manager/workplan/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
-	public void listNegative() {
+	public void listNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 		//Accedemos al listado
 		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/list");
 		//Verificamos que han saltado errores
 		super.checkErrorsExist();
+		if(username!=null) super.signOut();
 	}
 	
 	//En este test verificaremos que no podemos acceder al listado siendo administrador

@@ -1,6 +1,5 @@
 package acme.testing.administrator.spamfilter.spamword;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.springframework.core.annotation.Order;
@@ -73,13 +72,14 @@ public class AdministratorSpamwordUpdateTest extends AcmePlannerTest {
 		En este test se comprueba que un manager no sea capaz de acceder al formulario de la spamword
 		Para ello accedemos a la url del formulario de la spamword comprobando que nos devuelve un error de autorizacion
 	 */
-	@Test
+	@ParameterizedTest
+	@CsvFileSource(resources="/administrator/spamfilter/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
-	public void updateNegative() {
-		this.signIn("manager2", "manager2");
+	public void updateNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/update?id=66");
 		super.checkErrorsExist();
-
+		if(username!=null) super.signOut();
 	}
 	
 	/*

@@ -39,12 +39,12 @@ public class ManagerWorkPlanDeleteTest extends AcmePlannerTest{
 	@Order(20)
 	public void deleteNegative(final String username, final String password) {
 		//Iniciamos sesion
-		super.signIn(username, password);
+		if(username!=null) this.signIn(username, password);
 		//Intentamos acceder al fomulario
 		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/delete?id=41");
 		//COmprobamos que ha saltado un error
 		super.checkErrorsExist();
-		super.signOut();
+		if(username!=null) super.signOut();
 	}
 	
 	//En este test intentaremos borrar un workplan como anonimo, verificando asi que no tenemos permisos

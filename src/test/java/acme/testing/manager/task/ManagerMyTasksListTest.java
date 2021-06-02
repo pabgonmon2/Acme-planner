@@ -1,7 +1,6 @@
 package acme.testing.manager.task;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -43,11 +42,14 @@ public class ManagerMyTasksListTest extends AcmePlannerTest {
 	//Aquí se prueba la funcionalidad list de tasks pero de forma negativa. El resultado esperado es
 	//un error de acceso denegado ya que se está accediendo con un rol anónimo que no tiene acceso
 	//a la funcionalidad.
-	@Test
+	@ParameterizedTest
+	@CsvFileSource(resources="/manager/task/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
-	public void listNegative() {
+	public void listNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/task/list");
 		super.checkPanicExists();
+		if(username!=null) super.signOut();
 	}
 	
 	//Aquí se vuelve a probar la funcionalidad list de tasks pero de forma negativa. El resultado esperado es

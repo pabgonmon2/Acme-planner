@@ -62,11 +62,14 @@ public class ManagerMyTasksDeleteTest extends AcmePlannerTest {
 	//Aquí se prueba la funcionalidad delete de tasks pero de forma negativa. El resultado esperado es
 	//un error de acceso denegado ya que se está accediendo con un rol anónimo que no tiene acceso
 	//ni a la funcionalidad ni a la task con id 23 (que pertenece al manager2)
-	@Test
+	@ParameterizedTest
+	@CsvFileSource(resources="/manager/task/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(30)
-	public void deleteNegative() {
+	public void deleteNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/task/delete?id=23");
 		super.checkPanicExists();
+		if(username!=null) super.signOut();
 	}
 	
 	//Se vuelve a probar la funcionalidad delete de tasks pero, ahora, accediendo a través de la URL.

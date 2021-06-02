@@ -1,7 +1,6 @@
 package acme.testing.administrator.task;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -37,13 +36,14 @@ public class AdministratorTaskDashBoardTestCase extends AcmePlannerTest{
 	}
 	
 	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un manager*/
-	@Test
+	@ParameterizedTest
+	@CsvFileSource(resources="/administrator/task/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
-	public void listNegative() {
-			this.signIn("manager3", "manager3");
+	public void listNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 			super.driver.get("http://localhost:8080/Acme-Planner/administrator/dashboard/list");
 			super.checkErrorsExist();
-			this.signOut();
+			if(username!=null) super.signOut();
 	}
 
 	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un anonimo*/

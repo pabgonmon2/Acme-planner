@@ -59,11 +59,14 @@ public class AdministratorSpamwordCreateTest extends AcmePlannerTest{
 		En este test se comprueba que un anonimo no sea capaz de crear una spamword
 		Para ello accedemos a la url del formulario de create de spamword comprobando que nos devuelve un error de autorizacion
 	 */
-	@Test
+	@ParameterizedTest
+	@CsvFileSource(resources="/administrator/spamfilter/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
-	public void listNegative() {
+	public void listNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/create");
 		super.checkErrorsExist();
+		if(username!=null) super.signOut();
 	}
 	
 	/*

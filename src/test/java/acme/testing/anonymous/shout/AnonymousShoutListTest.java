@@ -1,7 +1,6 @@
 package acme.testing.anonymous.shout;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -47,14 +46,15 @@ public class AnonymousShoutListTest extends AcmePlannerTest{
 		Para ello accedemos a la url del lsitado de shouts comprobando que nos devuelve 
 		un error de autorizacion
 	 */
-	@Test
+	@ParameterizedTest
+	@CsvFileSource(resources="/anonymous/shout/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(30)
-	public void listNegative() {
+	public void listNegative(final String username, final String password) {
 		
-		super.signIn("manager2", "manager2");
+		if(username!=null) this.signIn(username, password);
 		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/shout/list");
 		super.checkPanicExists();
-		super.signOut();
+		if(username!=null) super.signOut();
 		
 	}
 }

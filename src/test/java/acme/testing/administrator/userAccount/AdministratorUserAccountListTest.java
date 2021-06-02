@@ -1,7 +1,6 @@
 package acme.testing.administrator.userAccount;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -68,22 +67,24 @@ public class AdministratorUserAccountListTest extends AcmePlannerTest{
 	//Aquí se prueba la funcionalidad list de los perfiles de los usuarios pero de forma negativa. El resultado esperado es
 	//un error de acceso denegado ya que se está accediendo con un rol manager que no tiene acceso
 	//a la funcionalidad.
-	@Test
+	@ParameterizedTest
+	@CsvFileSource(resources="/administrator/userAccount/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(30)
-	public void listManagerNegative() {
-		super.signIn("manager2", "manager2");
+	public void listNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 		super.driver.get("http://localhost:8080/Acme-Planner/administrator/user-account/list");
 		super.checkErrorsExist();
+		if(username!=null) super.signOut();
 	}
 	
 	//Aquí se prueba la funcionalidad list de los perfiles de los usuarios pero de forma negativa. El resultado esperado es
 	//un error de acceso denegado ya que se está accediendo con un rol anonimo que no tiene acceso
 	//a la funcionalidad.
-	@Test
-	@Order(40)
-	public void listAnonymousNegative() {
-		super.driver.get("http://localhost:8080/Acme-Planner/administrator/user-account/list");
-		super.checkErrorsExist();
-	}
+//	@Test
+//	@Order(40)
+//	public void listAnonymousNegative() {
+//		super.driver.get("http://localhost:8080/Acme-Planner/administrator/user-account/list");
+//		super.checkErrorsExist();
+//	}
 
 }

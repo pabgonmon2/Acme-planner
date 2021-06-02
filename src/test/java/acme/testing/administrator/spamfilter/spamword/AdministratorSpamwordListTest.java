@@ -47,12 +47,14 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 		En este test se comprueba que un manager no sea capaz de listar las spamwords
 		Para ello accedemos al listado de spamword comprobando que nos devuelve un error de autorizacion
 	 */
-	@Test
+	@ParameterizedTest
+	@CsvFileSource(resources="/administrator/spamfilter/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(30)
-	public void listNegative() {
-		this.signIn("manager2", "manager2");
+	public void listNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/list");
 		super.checkErrorsExist();
+		if(username!=null) super.signOut();
 	}
 	
 	
