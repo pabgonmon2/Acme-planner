@@ -48,8 +48,8 @@ public class ManagerMyTasksUpdateTest extends AcmePlannerTest {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/manager/task/publishTask.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)
-	public void publishTask(final int recordIndex, final String title, final String startDate, 
-		final String endDate, final String workFlow, final String description, final String publicTask, final String url) {
+	public void updatePositive(final int recordIndex, final String title, final String startDate, 
+		final String endDate, final String workFlow, final String publicTask, final String url) {
 		super.signIn("manager2", "manager2");
 		
 		super.clickOnMenu("Manager", "Own tasks");
@@ -66,7 +66,6 @@ public class ManagerMyTasksUpdateTest extends AcmePlannerTest {
 		super.checkInputBoxHasValue("startDate", startDate);
 		super.checkInputBoxHasValue("endDate", endDate);
 		super.checkInputBoxHasValue("workFlow", workFlow);
-		super.checkInputBoxHasValue("description", description);
 		super.checkInputBoxHasValue("publicTask", publicTask);
 		super.checkInputBoxHasValue("url", url);
 		

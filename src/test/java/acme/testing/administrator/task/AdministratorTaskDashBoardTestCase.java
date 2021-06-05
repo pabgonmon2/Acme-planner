@@ -1,7 +1,6 @@
 package acme.testing.administrator.task;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -14,7 +13,7 @@ public class AdministratorTaskDashBoardTestCase extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/task/task-dashboard.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void listAll( 
+	public void listPositive( 
 	final String publicTasks,
 	final String privateTasks,
 	final String finishedTasks,
@@ -36,22 +35,16 @@ public class AdministratorTaskDashBoardTestCase extends AcmePlannerTest{
 		this.signOut();
 	}
 	
-	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un manager*/
-	@Test
+	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un usuario no autorizado*/
+	@ParameterizedTest
+	@CsvFileSource(resources="/administrator/task/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
-	public void dashBoardNegativeTestCase2() {
-			this.signIn("manager3", "manager3");
+	public void listNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 			super.driver.get("http://localhost:8080/Acme-Planner/administrator/dashboard/list");
 			super.checkErrorsExist();
-			this.signOut();
+			if(username!=null) super.signOut();
 	}
 
-	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un anonimo*/
-	
-	@Test
-	@Order(30)
-	public void dashBoardNegativeTestCase3() {
-			super.driver.get("http://localhost:8080/Acme-Planner/administrator/dashboard/list");
-			super.checkErrorsExist();
-	}
+
 }

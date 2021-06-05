@@ -15,7 +15,7 @@ public class AuthenticatedTaskListAllTest extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/authenticated/task/list-all.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void listAll(final int recordIndex, final String title, final String startDate, final String endDate, final String workFlow, final String description, final String publicTask,final String url) {
+	public void listPositive(final int recordIndex, final String title, final String startDate, final String endDate, final String workFlow, final String description, final String publicTask,final String url) {
 		this.signIn("fervalnav", "Qwerty123");
 		
 		super.clickOnMenu("Authenticated", "Tasks");
@@ -43,7 +43,7 @@ public class AuthenticatedTaskListAllTest extends AcmePlannerTest{
 	//a la funcionalidad.
 	@Test
 	@Order(20)
-	public void listNegativeAnonymous() {
+	public void listNegative() {
 		super.driver.get("http://localhost:8080/Acme-Planner/authenticated/task/list");
 		super.checkErrorsExist();
 	}

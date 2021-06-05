@@ -15,7 +15,7 @@ public class ManagerWorkPlanPublishTest extends AcmePlannerTest {
 	@ParameterizedTest
 	@CsvFileSource(resources="/manager/workplan/publish-positive.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(10)
-	public void publishPositive(final int recordIndex) {
+	public void updatePositive(final int recordIndex) {
 		//Iniciamos sesion
 		super.signIn("manager3", "manager3");
 		//Accedemos a un workplan
@@ -36,7 +36,7 @@ public class ManagerWorkPlanPublishTest extends AcmePlannerTest {
 	@ParameterizedTest
 	@CsvFileSource(resources="/manager/workplan/publish-negative.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
-	public void publishNegative(final int recordIndex) {
+	public void updateNegative(final int recordIndex) {
 		//Iniciamos sesion
 		super.signIn("manager3", "manager3");
 		//Accedemos a un workplan
