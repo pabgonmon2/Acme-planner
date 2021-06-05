@@ -32,19 +32,9 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 		this.signOut();
 	}
 	
-	/*
-		En este test se comprueba que un anonimo no sea capaz de listar el spamword
-		Para ello accedemos al listado de spamword comprobando que nos devuelve un error de autorizacion
-	 */
-//	@Test
-//	@Order(20)
-//	public void listNegativeAnonymous() {
-//		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/list");
-//		super.checkErrorsExist();
-//	}
 	
 	/*
-		En este test se comprueba que un manager no sea capaz de listar las spamwords
+		En este test se comprueba que un usuario no autorizado no sea capaz de listar las spamwords
 		Para ello accedemos al listado de spamword comprobando que nos devuelve un error de autorizacion
 	 */
 	@ParameterizedTest

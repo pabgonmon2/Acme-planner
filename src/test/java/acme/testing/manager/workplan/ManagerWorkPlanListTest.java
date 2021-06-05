@@ -35,7 +35,7 @@ public class ManagerWorkPlanListTest extends AcmePlannerTest {
 		super.signOut();
 	}
 	
-	//En este test verificaremos que no podemos acceder al listado siendo anonimo ya que saltaran errores
+	//En este test verificaremos que no podemos acceder al listado siendo usuario no autorizado ya que saltaran errores
 	@ParameterizedTest
 	@CsvFileSource(resources="/manager/workplan/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
@@ -48,17 +48,7 @@ public class ManagerWorkPlanListTest extends AcmePlannerTest {
 		if(username!=null) super.signOut();
 	}
 	
-	//En este test verificaremos que no podemos acceder al listado siendo administrador
-//	@Test
-//	@Order(30)
-//	public void listAdministratorNegative() {
-//		//Iniciamos sesion
-//		super.signIn("administrator", "administrator");
-//		//Accedemos al listado
-//		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/list");
-//		//Veridicamos que han saltado errores
-//		super.checkErrorsExist();
-//	}
+
 	
 	
 	

@@ -47,15 +47,7 @@ public class ManagerWorkPlanDeleteTest extends AcmePlannerTest{
 		if(username!=null) super.signOut();
 	}
 	
-	//En este test intentaremos borrar un workplan como anonimo, verificando asi que no tenemos permisos
-//	@Test
-//	@Order(30)
-//	public void deleteAnonymousNegative() {
-//		//Accedemos al formulario
-//		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/delete?id=41");
-//		//Comporbamos que ha saltado un error
-//		super.checkErrorsExist();
-//	}
+
 	
 	//En este test verificaremos que podemos borrar un workplan accediendo por la url al formulario siendo sus managers,
 	//para ello iniciaremos sesion, accederemos al formulario, lo borraremos y comprobaremos que ahora no esta en la lista

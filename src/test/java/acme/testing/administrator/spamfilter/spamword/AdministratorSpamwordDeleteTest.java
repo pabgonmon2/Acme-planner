@@ -33,21 +33,9 @@ public class AdministratorSpamwordDeleteTest extends AcmePlannerTest{
 		this.signOut();
 	}
 	
-	/*
-		En este test se comprueba que un manager no sea capaz de acceder al formulario de delete de una spamword
-		Para ello accedemos a la url del formulario de la spamword comprobando que nos devuelve un error de autorizacion
-	 */
-//	@Test
-//	@Order(20)
-//	public void deleteNegativeManager() {	
-//		this.signIn("manager2", "manager2");
-//		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/delete?id=66");
-//		super.checkErrorsExist();
-//		this.signOut();
-//	}
 	
 	/*
-		En este test se comprueba que un anonimo no sea capaz de acceder al formulario de delete de una spamword
+		En este test se comprueba que un usuario no autorizado no sea capaz de acceder al formulario de delete de una spamword
 		Para ello accedemos a la url del formulario de la spamword comprobando que nos devuelve un error de autorizacion
 	 */
 	@ParameterizedTest

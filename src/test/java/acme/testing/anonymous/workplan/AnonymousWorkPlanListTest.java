@@ -31,7 +31,7 @@ public class AnonymousWorkPlanListTest extends AcmePlannerTest {
 	}
 	
 	//Este test prueba la funcionalidad list workplan de forma negativa. Se intenta acceder al listado
-	//como un usuario con rol de manager cuando esta funcionalidad es para roles anónimos.
+	//como un usuario con rol de usuario no autorizado cuando esta funcionalidad es para roles anónimos.
 	//El resultado esperado es un error acceso denegado.
 	@ParameterizedTest
 	@CsvFileSource(resources="/anonymous/workplan/users.csv", encoding="utf-8", numLinesToSkip=1)
@@ -43,15 +43,6 @@ public class AnonymousWorkPlanListTest extends AcmePlannerTest {
 		if(username!=null) super.signOut();
 	}
 	
-	//Este test prueba la funcionalidad list workplan de forma negativa. Se intenta acceder al listado
-	//como un usuario con rol de administrador cuando esta funcionalidad es para roles anónimos.
-	//El resultado esperado es un error acceso denegado.
-//	@Test
-//	@Order(30)
-//	public void listAdministratorNegative() {
-//		super.signIn("administrator", "administrator");
-//		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/workplan/list");
-//		super.checkPanicExists();
-//	}
+
 
 }

@@ -77,7 +77,7 @@ public class AnonymousShoutCreateTest extends AcmePlannerTest{
 		
 	}
 	/*
-		En este test se comprueba que un adminsitrator no sea capaz de crear un shout
+		En este test se comprueba que un usuario no autorizado no sea capaz de crear un shout
 		Para ello accedemos a la url del formulario de create de shouts comprobando que nos devuelve un error de autorizacion
 	 */
 	@ParameterizedTest
@@ -90,21 +90,6 @@ public class AnonymousShoutCreateTest extends AcmePlannerTest{
 		if(username!=null) super.signOut();
 		
 	}
-	
-	/*
-		En este test se comprueba que un manager no sea capaz de crear un shout
-		Para ello accedemos a la url del formulario de create de shouts comprobando que nos devuelve un error de autorizacion
-	 */
-//	@Test
-//	@Order(30)
-//	public void createNegativeManager() {
-//		super.signIn("manager2", "manager2");
-//		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/shout/create");
-//		super.checkPanicExists();
-//		super.signOut();
-//		
-//	}
-	
 	
 	
 }

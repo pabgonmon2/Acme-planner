@@ -46,7 +46,7 @@ public class AdministratorWorkPlanDashBoardTestCase extends AcmePlannerTest{
 		this.signOut();
 	}
 	
-	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un manager*/
+	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un usuario no autorizado*/
 	@ParameterizedTest
 	@CsvFileSource(resources="/administrator/workplan/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
@@ -57,12 +57,5 @@ public class AdministratorWorkPlanDashBoardTestCase extends AcmePlannerTest{
 			if(username!=null) super.signOut();;
 	}
 
-	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un anonimo*/
-	
-//	@Test
-//	@Order(30)
-//	public void workPlanDashBoardNegativeTestCase3() {
-//			super.driver.get("http://localhost:8080/Acme-Planner/administrator/dashboardwp/list");
-//			super.checkErrorsExist();
-//	}
+
 }

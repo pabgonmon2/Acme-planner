@@ -35,7 +35,7 @@ public class AdministratorTaskDashBoardTestCase extends AcmePlannerTest{
 		this.signOut();
 	}
 	
-	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un manager*/
+	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un usuario no autorizado*/
 	@ParameterizedTest
 	@CsvFileSource(resources="/administrator/task/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
@@ -46,12 +46,5 @@ public class AdministratorTaskDashBoardTestCase extends AcmePlannerTest{
 			if(username!=null) super.signOut();
 	}
 
-	/*En el siguiente test se provara la no posibilidad de acceder al dashboard por parte de un anonimo*/
-	
-//	@Test
-//	@Order(30)
-//	public void listNegativeAnonymous() {
-//			super.driver.get("http://localhost:8080/Acme-Planner/administrator/dashboard/list");
-//			super.checkErrorsExist();
-//	}
+
 }

@@ -26,24 +26,11 @@ public class AnonymousShoutListTest extends AcmePlannerTest{
 		
 		
 	}
+
+
 	/*
-		En este test se comprueba que un adminsitrator no sea capaz de listar los shouts
-		Para ello accedemos a la url del lsitado de shouts comprobando que nos devuelve 
-		un error de autorizacion
-	 */
-//	@Test
-//	@Order(20)
-//	public void listNegativeAdministrator() {
-//		
-//		super.signIn("administrator", "administrator");
-//		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/shout/list");
-//		super.checkPanicExists();
-//		super.signOut();
-//		
-//	}
-	/*
-		En este test se comprueba que un manager no sea capaz de listar los shouts
-		Para ello accedemos a la url del lsitado de shouts comprobando que nos devuelve 
+		En este test se comprueba que un usuario no autorizado no sea capaz de listar los shouts
+		Para ello accedemos a la url del listado de shouts comprobando que nos devuelve 
 		un error de autorizacion
 	 */
 	@ParameterizedTest
