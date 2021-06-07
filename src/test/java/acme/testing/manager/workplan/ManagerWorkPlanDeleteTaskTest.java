@@ -16,7 +16,7 @@ public class ManagerWorkPlanDeleteTaskTest extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources="/manager/workplan/deleteTask-positive.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(10)
-	public void deleteTaskPositive(final int recordIndex, final int taskIndex, final String workLoad, final String newWorkLoad) {
+	public void updatePositive(final int recordIndex, final int taskIndex, final String workLoad, final String newWorkLoad) {
 		//Iniciamos sesion como manager y accedemos al formulario del plan de trabajo dado en los parametros
 		super.signIn("manager2", "manager2");
 		super.clickOnMenu("Manager", "Works Plans");
@@ -36,7 +36,7 @@ public class ManagerWorkPlanDeleteTaskTest extends AcmePlannerTest{
 	//para comprobar que este no puede acceder verificaremos que salta un error al intentar acceder
 	@Test
 	@Order(20)
-	public void deleteTaskNegative() {
+	public void updateNegative() {
 		//Iniciamos sesion
 		super.signIn("manager2", "manager2");
 		//Intetamos acceder a un formlario de un plan de trabajo que no es nuestro

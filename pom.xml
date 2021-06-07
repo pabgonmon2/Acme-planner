@@ -22,7 +22,7 @@
 	<description>This is the project for the second delivery of DP2.</description>
 
 	<artifactId>Acme-Planner</artifactId>
-	<version>21.4</version>
+	<version>21.6</version>
 	<packaging>war</packaging>
 
 	<parent>

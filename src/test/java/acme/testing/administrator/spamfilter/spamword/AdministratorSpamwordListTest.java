@@ -32,27 +32,19 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 		this.signOut();
 	}
 	
-	/*
-		En este test se comprueba que un anonimo no sea capaz de listar el spamword
-		Para ello accedemos al listado de spamword comprobando que nos devuelve un error de autorizacion
-	 */
-	@Test
-	@Order(20)
-	public void listNegativeAnonymous() {
-		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/list");
-		super.checkErrorsExist();
-	}
 	
 	/*
-		En este test se comprueba que un manager no sea capaz de listar las spamwords
+		En este test se comprueba que un usuario no autorizado no sea capaz de listar las spamwords
 		Para ello accedemos al listado de spamword comprobando que nos devuelve un error de autorizacion
 	 */
-	@Test
+	@ParameterizedTest
+	@CsvFileSource(resources="/administrator/spamfilter/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(30)
-	public void listNegativeManager() {
-		this.signIn("manager2", "manager2");
+	public void listNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 		super.driver.get("http://localhost:8080/Acme-Planner/administrator/spamword/list");
 		super.checkErrorsExist();
+		if(username!=null) super.signOut();
 	}
 	
 	
@@ -63,7 +55,7 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 	 */
 	@Test
 	@Order(35)
-	public void filtrosShoutPositive() {
+	public void filtroShoutPositive() {
 		
 		super.clickOnMenu("Anonymous", "Shout!");
 		
@@ -90,7 +82,7 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 	 */
 	@Test
 	@Order(40)
-	public void filtrosShoutNegative() {
+	public void filtroShoutNegative() {
 		
 		super.clickOnMenu("Anonymous", "Shout!");
 		
@@ -116,7 +108,7 @@ public class AdministratorSpamwordListTest extends AcmePlannerTest{
 	@ParameterizedTest
 	@CsvFileSource(resources = "/manager/task/createPositive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(50)
-	public void taskPositive(final int recordIndex, final String title, final String startDate, 
+	public void filtroTaskPositive(final int recordIndex, final String title, final String startDate, 
 		final String endDate, final String workFlow, final String description, final String publicTask, final String url) {
 		super.signIn("manager3", "manager3");
 		

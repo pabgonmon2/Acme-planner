@@ -14,7 +14,7 @@ public class AuthenticatedUserAccountShowTest extends AcmePlannerTest{
 	@ParameterizedTest
     @CsvFileSource(resources = "/authenticated/useraccount/show.csv", encoding = "utf-8", numLinesToSkip = 1)    
 	@Order(10)
-    public void showUserAccount(
+    public void showPositive(
     		final String username, 
     		final String password,
     		final String confirmation, 
@@ -36,7 +36,7 @@ public class AuthenticatedUserAccountShowTest extends AcmePlannerTest{
 	  user account sin haber iniciado sesion*/    
 	@Test
 	@Order(20)
-    public void showUserAccountNegativeCase() {
+    public void showNegative() {
         super.driver.get("http://localhost:8080/Acme-Planner/authenticated/user-account/update");
         super.checkErrorsExist();
         

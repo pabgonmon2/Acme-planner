@@ -1,7 +1,6 @@
 package acme.testing.manager.workplan;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -15,7 +14,7 @@ public class ManagerWorkPlanListTest extends AcmePlannerTest {
 	@ParameterizedTest
 	@CsvFileSource(resources="/manager/workplan/list.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(10)
-	public void listAndShow(final int recordIndex, final String startDate, final String endDate, final String workLoad, final String publicPlan) {
+	public void listPositive(final int recordIndex, final String startDate, final String endDate, final String workLoad, final String publicPlan) {
 		//Iniciamos sesion
 		super.signIn("manager2", "manager2");
 		//Accedemos al listado de workplans
@@ -36,27 +35,20 @@ public class ManagerWorkPlanListTest extends AcmePlannerTest {
 		super.signOut();
 	}
 	
-	//En este test verificaremos que no podemos acceder al listado siendo anonimo ya que saltaran errores
-	@Test
+	//En este test verificaremos que no podemos acceder al listado siendo usuario no autorizado ya que saltaran errores
+	@ParameterizedTest
+	@CsvFileSource(resources="/manager/workplan/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(20)
-	public void listAnonymousNegative() {
+	public void listNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 		//Accedemos al listado
 		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/list");
 		//Verificamos que han saltado errores
 		super.checkErrorsExist();
+		if(username!=null) super.signOut();
 	}
 	
-	//En este test verificaremos que no podemos acceder al listado siendo administrador
-	@Test
-	@Order(30)
-	public void listAdministratorNegative() {
-		//Iniciamos sesion
-		super.signIn("administrator", "administrator");
-		//Accedemos al listado
-		super.driver.get("http://localhost:8080/Acme-Planner/manageracc/workplan/list");
-		//Veridicamos que han saltado errores
-		super.checkErrorsExist();
-	}
+
 	
 	
 	

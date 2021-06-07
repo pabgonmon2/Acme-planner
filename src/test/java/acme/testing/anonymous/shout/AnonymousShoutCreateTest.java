@@ -1,7 +1,6 @@
 package acme.testing.anonymous.shout;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -78,33 +77,19 @@ public class AnonymousShoutCreateTest extends AcmePlannerTest{
 		
 	}
 	/*
-		En este test se comprueba que un adminsitrator no sea capaz de crear un shout
+		En este test se comprueba que un usuario no autorizado no sea capaz de crear un shout
 		Para ello accedemos a la url del formulario de create de shouts comprobando que nos devuelve un error de autorizacion
 	 */
-	@Test
+	@ParameterizedTest
+	@CsvFileSource(resources="/anonymous/shout/users.csv", encoding="utf-8", numLinesToSkip=1)
 	@Order(30)
-	public void createNegativeAdministrator() {
-		super.signIn("administrator", "administrator");
+	public void createNegative(final String username, final String password) {
+		if(username!=null) this.signIn(username, password);
 		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/shout/create");
 		super.checkPanicExists();
-		super.signOut();
+		if(username!=null) super.signOut();
 		
 	}
-	
-	/*
-		En este test se comprueba que un manager no sea capaz de crear un shout
-		Para ello accedemos a la url del formulario de create de shouts comprobando que nos devuelve un error de autorizacion
-	 */
-	@Test
-	@Order(30)
-	public void createNegativeManager() {
-		super.signIn("manager2", "manager2");
-		super.driver.get("http://localhost:8080/Acme-Planner/anonymous/shout/create");
-		super.checkPanicExists();
-		super.signOut();
-		
-	}
-	
 	
 	
 }
