@@ -88,6 +88,7 @@ public class ManagerMyTaskDeleteService implements AbstractDeleteService<Manager
 			final Set<Task> tasks = wp.getTasks();
 			tasks.remove(entity);
 			wp.setTasks(tasks);
+			wp.setWorkLoad();
 			this.repositoryWorkplan.save(wp);
 		}
 		this.repository.delete(entity);

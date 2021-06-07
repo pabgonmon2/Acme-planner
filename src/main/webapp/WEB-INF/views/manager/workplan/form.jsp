@@ -8,7 +8,6 @@
 <jstl:if test="${command=='create' }">
 	<acme:form-moment code="manager.workplan.form.label.startDate" path="startDate"/>
 	<acme:form-moment code="manager.workplan.form.label.endDate" path="endDate"/>
-	<acme:form-checkbox readonly="true" code="manager.workplan.form.label.publicPlan" path="publicPlan"/>
 	<acme:form-submit code="manager.workplan.form.button.create" action="/manageracc/workplan/create"/>
 	
 </jstl:if>
@@ -39,7 +38,7 @@
 <jstl:if test="${command=='delete'}">
 	<acme:form-submit code="manager.workplan.form.button.delete" action="/manageracc/workplan/delete"/>
 </jstl:if>
-<jstl:if test="${command!='create' && !publicTask}"> 
+<jstl:if test="${command!='create' && !publicTask && !publicPlan}"> 
 	<acme:form-submit code="manager.workplan.form.button.publish" action="/manageracc/workplan/publish"/>
 </jstl:if>
 
